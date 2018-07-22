@@ -31,6 +31,13 @@ export class Header extends Component {
 
 
 class App extends Component {
+
+  componentDidMount() {
+      fetch('http://localhost:3001/api/posts')
+          .then(response => response.json())
+          .then(posts => console.log(posts));
+  }
+
   render() {
     return (
       <div className="App">

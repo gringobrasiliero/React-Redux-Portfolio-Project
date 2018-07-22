@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20180722152134) do
     t.string "post"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_posts_on_category_id"
   end
 
 end
