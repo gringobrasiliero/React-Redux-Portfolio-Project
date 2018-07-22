@@ -16,6 +16,13 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+RSpec.configuration do |config|
+    config.include RequestSpecHelper, type: :request
+    end
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
