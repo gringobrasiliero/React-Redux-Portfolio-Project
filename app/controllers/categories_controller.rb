@@ -7,7 +7,7 @@ end
 
 def create
   @category = Category.create!(category_params)
-json_response(@category)
+json_response(@category, :created)
 end
 
 def show
@@ -22,8 +22,9 @@ end
 private
 
 def category_params
-  params.permit(:category)
+  params.permit(:category, :created_at)
 end
+
 def set_category
   @category = Category.find(params[:id])
 end
