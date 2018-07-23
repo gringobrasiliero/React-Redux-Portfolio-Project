@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_serializers'
-
+gem 'devise'
 gem 'foreman', '~> 0.82.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
