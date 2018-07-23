@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :user do
-    email { Faker::Lorem.word }
-    username { Faker::Lorem.word }
+    email { Faker::Internet.unique.email }
+    username { Faker::Pokemon.unique.name }
+    password {"Password"}
     created_at { Time.now }
   end
 end
