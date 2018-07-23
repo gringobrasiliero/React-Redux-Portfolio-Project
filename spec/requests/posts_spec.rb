@@ -59,7 +59,7 @@ RSpec.describe 'Posts API' do
 
   # Test suite for PUT /categories/:category_id/posts
   describe 'POST /categories/:category_id/posts' do
-    let(:valid_attributes) { { post: 'Visit Narnia', created_at: 'Time.now', category_id: '1'} }
+    let(:valid_attributes) { { post: 'Visit Narnia', created_at: Time.now, category_id: '1'} }
 
     context 'when request attributes are valid' do
       before { post "/categories/#{category_id}/posts", params: valid_attributes }
