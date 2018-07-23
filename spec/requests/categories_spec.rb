@@ -1,10 +1,15 @@
 require 'rails_helper'
 
+def json
+  JSON.parse(response.body)
+end
+
+
 RSpec.describe 'categories API', type: :request do
   # initialize test data
   let!(:categories) { create_list(:category, 10) }
   let(:category_id) { categories.first.id }
-
+  let(:created_at) {Time.now}
   # Test suite for GET /categories
   describe 'GET /categories' do
     # make HTTP get request before each example
@@ -54,13 +59,13 @@ RSpec.describe 'categories API', type: :request do
        # Test suite for POST /categories
         describe 'POST /categories' do
           # valid payload
-          let(:valid_attributes) { { title: 'Learn Elm', created_by: '1' } }
+          let(:valid_attributes) { { category: 'Learn Elm', created_at: '1' } }
 
           context 'when the request is valid' do
             before { post '/categories', params: valid_attributes }
 
             it 'creates a category' do
-              expect(json['title']).to eq('Learn Elm')
+              expect(json['category']).to eq('Learn Elm')
             end
 
             it 'returns status code 201' do
@@ -69,41 +74,6 @@ RSpec.describe 'categories API', type: :request do
           end
         end
 
-          context 'when the request is invalid' do
-            before { post '/categories', params: { title: 'Foobar' } }
-
-            it 'returns status code 422' do
-              expect(response).to have_http_status(422)
-            end
-
-            it 'returns a validation failure message' do
-              expect(response.body)
-                .to match(/Validation failed: Created by can't be blank/)
-            end
-          end
-        end
-
-        # Test suite for PUT /categories/:id
-        describe 'PUT /categories/:id' do
-          let(:valid_attributes) { { title: 'Shopping' } }
-
-          context 'when the record exists' do
-            before { put "/categories/#{category_id}", params: valid_attributes }
-
-            it 'updates the record' do
-              expect(response.body).to be_empty
-            end
-
-            it 'returns status code 204' do
-              expect(response).to have_http_status(204)
-            end
-          end
-        end
-
-
-
-
-
        describe 'DELETE /categories/:id' do
           before { delete "/categories/#{category_id}" }
 
@@ -111,4 +81,4 @@ RSpec.describe 'categories API', type: :request do
             expect(response).to have_http_status(204)
           end
         end
-      
+      end

@@ -1,113 +1,110 @@
+# spec/requests/posts_spec.rb
 require 'rails_helper'
 
-RSpec.describe 'posts API', type: :request do
-  # initialize test data
-  let!(:posts) { create_list(:post, 10) }
-  let(:post_id) { posts.first.id }
+RSpec.describe 'Posts API' do
+  # Initialize the test data
+  let!(:category) { create(:category) }
+  let!(:posts) { create_list(:post, 20, category_id: category.id, created_at: Time.now) }
+  let(:category_id) { category.id }
+  let(:category_id) {1}
 
-  # Test suite for GET /posts
-  describe 'GET /posts' do
-    # make HTTP get request before each example
-    before { get '/posts' }
+  let(:id) { posts.first.id }
 
-    it 'returns posts' do
-      # Note `json` is a custom helper to parse JSON responses
-      expect(json).not_to be_empty
-      expect(json.size).to eq(10)
+  # Test suite for GET /categories/:category_id/posts
+  describe 'GET /categories/:category_id/posts' do
+    before { get "/categories/#{category_id}/posts" }
+
+    context 'when post exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns all categories posts' do
+        expect(json.size).to eq(20)
+      end
     end
 
-    it 'returns status code 200' do
-         expect(response).to have_http_status(200)
-       end
-     end
+
+  end
+
+  # Test suite for GET /categories/:category_id/posts/:id
+  describe 'GET /categories/:category_id/posts/:id' do
+    before { get "/categories/#{category_id}/posts/#{id}" }
+
+    context 'when categories post exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns the post' do
+        expect(json['id']).to eq(id)
+      end
+    end
+
+    context 'when categories post does not exist' do
+      let(:id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Post/)
+      end
+    end
+  end
+
+  # Test suite for PUT /categories/:category_id/posts
+  describe 'POST /categories/:category_id/posts' do
+    let(:valid_attributes) { { post: 'Visit Narnia', created_at: 'Time.now', category_id: '1'} }
+
+    context 'when request attributes are valid' do
+      before { post "/categories/#{category_id}/posts", params: valid_attributes }
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when an invalid request' do
+      before { post "/categories/#{category_id}/posts", params: {} }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
 
 
+    end
+  end
 
+  # Test suite for PUT /posts/:category_id/posts/:id
+  describe 'PUT /categories/:category_id/posts/:id' do
+    let(:valid_attributes) { { post: 'Mozart' } }
 
-     describe 'GET /posts/:id' do
-         before { get "/posts/#{post_id}" }
+    before { put "/categories/#{category_id}/posts/#{id}", params: valid_attributes }
 
-         context 'when the record exists' do
-           it 'returns the post' do
-             expect(json).not_to be_empty
-             expect(json['id']).to eq(post_id)
-           end
+    context 'when post exists' do
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
 
-           it 'returns status code 200' do
-             expect(response).to have_http_status(200)
-           end
-         end
+      it 'updates the post' do
+        updated_post = Post.find(id)
+        expect(updated_post.post).to match(/Mozart/)
+      end
+    end
 
-         context 'when the record does not exist' do
-           let(:post_id) { 100 }
+    context 'when the post does not exist' do
+      let(:id) { 0 }
 
-           it 'returns status code 404' do
-             expect(response).to have_http_status(404)
-           end
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
 
-           it 'returns a not found message' do
-             expect(response.body).to match(/Couldn't find post/)
-           end
-         end
-       end
-
-       # Test suite for POST /posts
-        describe 'POST /posts' do
-          # valid payload
-          let(:valid_attributes) { { title: 'Learn Elm', created_by: '1' } }
-
-          context 'when the request is valid' do
-            before { post '/posts', params: valid_attributes }
-
-            it 'creates a post' do
-              expect(json['title']).to eq('Learn Elm')
-            end
-
-            it 'returns status code 201' do
-              expect(response).to have_http_status(201)
-            end
-          end
-        end
-
-          context 'when the request is invalid' do
-            before { post '/posts', params: { title: 'Foobar' } }
-
-            it 'returns status code 422' do
-              expect(response).to have_http_status(422)
-            end
-
-            it 'returns a validation failure message' do
-              expect(response.body)
-                .to match(/Validation failed: Created by can't be blank/)
-            end
-          end
-        end
-
-        # Test suite for PUT /posts/:id
-        describe 'PUT /posts/:id' do
-          let(:valid_attributes) { { title: 'Shopping' } }
-
-          context 'when the record exists' do
-            before { put "/posts/#{post_id}", params: valid_attributes }
-
-            it 'updates the record' do
-              expect(response.body).to be_empty
-            end
-
-            it 'returns status code 204' do
-              expect(response).to have_http_status(204)
-            end
-          end
-        end
-
-
-
-
-
-       describe 'DELETE /posts/:id' do
-          before { delete "/posts/#{post_id}" }
-
-          it 'returns status code 204' do
-            expect(response).to have_http_status(204)
-          end
-        end
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Post/)
+      end
+    end
+  end
+end
+  # Test suite for DELETE /posts/:id
