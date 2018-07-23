@@ -3,11 +3,14 @@ require 'rails_helper'
 RSpec.describe 'Comments API' do
   # Initialize the test data
   let!(:user) { create(:user) }
-  let!(:category) { create(:category) }
-    let!(:post) { create(:post) }
-  let!(:comments) { create_list(:comment, 20, post_id: post.id, user_id: user.id, created_at: Time.now) }
   let(:user_id) { user.id }
-  let(:post_id) { post.id }
+  let!(:category) { create(:category) }
+  let(:category_id) { category.id }
+    let!(:post) { create(:post) }
+    let(:post_id) { post.id }
+  let!(:comments) { create_list(:comment, 20, post_id: post.id, user_id: user.id, created_at: Time.now) }
+
+
   let(:id) { comments.first.id }
 
 
@@ -15,7 +18,7 @@ RSpec.describe 'Comments API' do
   describe 'GET /posts/:post_id/comments' do
     before { get "/posts/#{post_id}/comments" }
 
-    context 'when post exists' do
+    context 'when comments exists' do
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
@@ -53,7 +56,7 @@ RSpec.describe 'Comments API' do
     end
   end
 
-  # Test suite for PUT /posts/:post_id/comments
+  # Test suite for POST /posts/:post_id/comments
   describe 'POST /posts/:post_id/comments' do
     let(:valid_attributes) { { comment: 'Visit Narnia', created_at: Time.now, post_id: 1, user_id: 1} }
 

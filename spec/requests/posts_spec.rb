@@ -4,12 +4,11 @@ require 'rails_helper'
 RSpec.describe 'Posts API' do
   # Initialize the test data
   let!(:user) { create(:user) }
-  let!(:category) { create(:category) }
-  let!(:posts) { create_list(:post, 20, category_id: category.id, user_id: user.id, created_at: Time.now) }
   let(:user_id) { user.id }
-
+  let!(:category) { create(:category) }
   let(:category_id) { category.id }
-  let(:category_id) {1}
+
+  let!(:posts) { create_list(:post, 20, category_id: category.id, user_id: user.id, created_at: Time.now) }
 
   let(:id) { posts.first.id }
 
