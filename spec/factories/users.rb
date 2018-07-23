@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :category do
+  factory :user do
     email { Faker::Lorem.word }
     username { Faker::Lorem.word }
-    created_at { Faker::Number.number(10) }
+    created_at { Time.now }
   end
 end
