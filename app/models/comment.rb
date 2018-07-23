@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :users
-  belongs_to :posts
+  belongs_to :user
+  belongs_to :post
+
+  validates_presence_of :comment, :created_at
 end
