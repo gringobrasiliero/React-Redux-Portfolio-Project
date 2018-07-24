@@ -5,7 +5,7 @@ def json
 end
 
 
-RSpec.describe 'categories API', type: :request do
+RSpec.describe 'Categories API', type: :request do
   # initialize test data
   let!(:categories) { create_list(:category, 10) }
   let(:category_id) { categories.first.id }

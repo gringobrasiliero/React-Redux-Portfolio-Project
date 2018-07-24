@@ -7,6 +7,8 @@ RSpec.describe Post, type: :model do
  it { should belong_to(:category).dependent(:destroy) }
  it { should belong_to(:user)}
  it { should have_many(:comments)}
+ it { should have_many(:votes)}
+
   # Validation tests
 
   it { should validate_presence_of(:post) }
