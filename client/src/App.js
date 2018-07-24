@@ -2,33 +2,16 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import Categories from './containers/categories';
-import Category from './components/categories/category';
+import Categories from './components/categories';
 import Header from './components/header';
-import Posts from './containers/posts';
-import Vote from './components/votes';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
-import LoginForm from './components/users/LoginForm'
-import './index.css';
-import {bindActionCreators} from 'redux'
-import { connect } from 'react-redux';
-import {applyMiddleware, compose, combineReducers, createStore} from 'redux'
-import Login from './login';
-import Home from './Home';
-import PostsContainer from './containers/posts'
-import {fetchCategories} from './actions/categoryActions';
 
+class App extends Component {
 
-
-import SearchablePostsContainer from './components/searchablePostsContainer';
-require('dotenv').config();
-
-  
-
-export default class App extends Component {
-
-
+  componentDidMount() {
+      fetch('/categories')
+          .then(response => response.json())
+          .then(categories => console.log(categories));
+  }
 
   render() {
     return (
@@ -42,8 +25,14 @@ export default class App extends Component {
       <Route exact path="/login" component={LoginForm} />
 
 
-         </React.Fragment>
-        </Router>
+
+            <Header />
+
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+      </div>
     );
   }
 }
