@@ -1,41 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-
-export class Header extends Component {
-  render() {
-    return(
-      <div>
-      <h1 className="App-Title">Neddit</h1>
-
-      <div id="nav-bar">
-      <ul>
-      <li>All</li>
-      <li>Dogs</li>
-      <li>Cats</li>
-      </ul>
-    </div>
-      </div>
-    )
-  }
-
-}
-
-
-
-
-
-
-
-
+import Categories from './components/categories';
+import Header from './components/header';
 
 class App extends Component {
 
   componentDidMount() {
-      fetch('http://localhost:3001/api/posts')
+      fetch('/categories')
           .then(response => response.json())
-          .then(posts => console.log(posts));
+          .then(categories => console.log(categories));
   }
 
   render() {
@@ -46,6 +20,7 @@ class App extends Component {
 
 
             <Header />
+
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
