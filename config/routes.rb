@@ -9,10 +9,14 @@ resources :users
 
 resources :posts do
   resources :comments
+    resources :votes
 end
 
-resources :posts do
+
+
+resources :users do
   resources :votes
+  resources :comments
 end
 
   resources :categories do
