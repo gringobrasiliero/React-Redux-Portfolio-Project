@@ -13,7 +13,7 @@ export default class Posts extends Component {
     this.fetchPosts()
   }
   fetchPosts = () => {
-    fetch('posts')
+    fetch('/posts')
       .then(response => response.json())
       .then(posts => this.setState({posts}));
   }
