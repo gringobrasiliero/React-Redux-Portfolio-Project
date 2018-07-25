@@ -5,5 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-categories = Category.create([{category: 'All'},{category: 'Dogs'},{category: 'Cats'},])
-posts = Post.create([{post: "post1"}, {post: "post2"},{post: "post3"}, ])
+categories = 2.times do
+  Category.create([{category: 'All'},{category: 'Dogs'},{category: 'Cats'},])
+
+end
+
+user = User.create!(username: "nyanCat", id: 1, email: "buzz@lightyear.com", password: "password", created_at: Time.now)
+
+posts = 2.times do
+  Post.create!([{post: "post1", category_id: 1, created_at: Time.now } ])
+    Post.create!([{post: "post2", category_id: 2, created_at: Time.now } ])
+end
