@@ -29,6 +29,22 @@ RSpec.describe 'Comments API' do
     end
   end
 
+  # Test suite for GET /posts/:post_id/comments
+  describe 'GET /users/:user_id/comments' do
+    before { get "/users/#{user_id}/comments" }
+
+    context 'when comments exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns all users comments' do
+        expect(json.size).to eq(20)
+      end
+    end
+  end
+
+
   # Test suite for GET /posts/:post_id/comments/:id
   describe 'GET /posts/:post_id/comments/:id' do
     before { get "/posts/#{post_id}/comments/#{id}" }

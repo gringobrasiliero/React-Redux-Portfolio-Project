@@ -25,6 +25,21 @@ describe 'GET /posts/:post_id/votes' do
     end
   end
 end
+# Test Suite for GET /users/:user_id/votes
+describe 'GET /users/:user_id/votes' do
+  before { get "/users/#{user_id}/votes" }
+
+  context 'when votes exists' do
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'returns all users votes' do
+      expect(json.size).to eq(20)
+    end
+  end
+end
+
 
 
 # Test suite for GET /posts/:post_id/votes/:id
@@ -56,7 +71,7 @@ end
 
 # Test suite for POST /posts/:post_id/votes
 describe 'POST /posts/:post_id/votes' do
-  let(:valid_attributes) { {  like: true, created_at: Time.now, post_id: 1, user_id: 1} }
+  let(:valid_attributes) { {like: true, created_at: Time.now, post_id: 1, user_id: 1} }
 
   context 'when request attributes are valid' do
     before { post "/posts/#{post_id}/votes", params: valid_attributes }

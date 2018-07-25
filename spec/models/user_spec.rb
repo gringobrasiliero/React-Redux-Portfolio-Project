@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   # Model Testing
-it { should have_many(:posts).dependent(:destroy) }
+
 it { should have_many(:comments).dependent(:destroy) }
 
 # Validation testing
