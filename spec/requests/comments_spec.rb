@@ -74,7 +74,7 @@ RSpec.describe 'Comments API' do
 
   # Test suite for POST /posts/:post_id/comments
   describe 'POST /posts/:post_id/comments' do
-    let(:valid_attributes) { { comment: 'Visit Narnia', created_at: Time.now, post_id: 1, user_id: 1} }
+    let(:valid_attributes) { { comment: 'Visit Narnia', created_at: Time.now} }
 
     context 'when request attributes are valid' do
       before { post "/posts/#{post_id}/comments", params: valid_attributes }

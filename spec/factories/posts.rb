@@ -3,6 +3,6 @@ FactoryBot.define do
     post { Faker::Lorem.word }
     created_at { Time.now }
     category_id {1}
-    user_id {1}
+    
   end
 end

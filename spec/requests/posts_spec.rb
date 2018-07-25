@@ -8,7 +8,7 @@ RSpec.describe 'Posts API' do
   let!(:category) { create(:category) }
   let(:category_id) { category.id }
 
-  let!(:posts) { create_list(:post, 20, category_id: category.id, user_id: user.id, created_at: Time.now) }
+  let!(:posts) { create_list(:post, 20, category_id: category.id, created_at: Time.now) }
 
   let(:id) { posts.first.id }
 
