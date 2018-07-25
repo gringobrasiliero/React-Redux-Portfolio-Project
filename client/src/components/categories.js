@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 export default class Categories extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       categories: []
@@ -14,19 +14,34 @@ export default class Categories extends Component {
 
   }
 
+
+
   fetchCategories = () => {
     fetch('/categories')
-    .then(response => response.json())
-
-    .then(categories => console.log(this.setState({ categories})))
+      .then(response => response.json())
+      .then(categories => this.setState({ categories}))
   }
+
+
+renderCategories = () => {
+  return this.state.categories.map(cat => {
+    return(
+<div>
+      <li key={cat.id}> {cat.category}</li>
+    </div>
+    )
+  })
+}
+
 
 render() {
   return(
-    <Categories
-      categories={this.state.categories}
-      />
-  );
+<div id="categories">
+<ul>
+{this.renderCategories()}
+</ul>
+</div>
+  )
 }
 
 
