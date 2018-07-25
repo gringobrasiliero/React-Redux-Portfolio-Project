@@ -36,7 +36,7 @@ renderCategories = () => {
 
 render() {
   return(
-<div id="categories">
+<div id="nav-bar">
 <ul>
 {this.renderCategories()}
 </ul>
