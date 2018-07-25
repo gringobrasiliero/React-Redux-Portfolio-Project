@@ -5,7 +5,7 @@ RSpec.describe Post, type: :model do
   # Association test
 
  it { should belong_to(:category).dependent(:destroy) }
- it { should belong_to(:user)}
+
  it { should have_many(:comments)}
  it { should have_many(:votes)}
 
