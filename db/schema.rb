@@ -30,12 +30,15 @@ ActiveRecord::Schema.define(version: 20180723215019) do
 
   create_table "posts", force: :cascade do |t|
     t.string "post"
+    t.string "title"
+    t.string "description"
+    t.string "url"
+    t.string "urlToImage"
+    t.string "publishedAt"
     t.integer "category_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,8 +63,12 @@ ActiveRecord::Schema.define(version: 20180723215019) do
     t.integer "upvote"
     t.integer "downvote"
     t.boolean "likes"
+    t.integer "post_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_votes_on_post_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end
