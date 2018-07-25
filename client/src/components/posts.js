@@ -21,8 +21,14 @@ export default class Posts extends Component {
   renderPosts = () => {
     return this.state.posts.map(postss => {
       return(
-  <div>
-        <li key={postss.id}> {postss.post}</li>
+  <div key={postss.id} id="posts-list">
+        <h2> {postss.title}</h2>
+        <h2> {postss.description}</h2>
+        <h2> {postss.url}</h2>
+                <h2> {postss.publishedAt}</h2>
+
+        {postss.urlToImage}
+
       </div>
       )
     })
