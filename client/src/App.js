@@ -3,14 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import Categories from './components/categories';
 import Header from './components/header';
-
+import Posts from './components/posts';
 class App extends Component {
 
-  componentDidMount() {
-      fetch('/categories')
-          .then(response => response.json())
-          .then(categories => console.log(categories));
-  }
+
 
   render() {
     return (
@@ -20,7 +16,8 @@ class App extends Component {
 
 
             <Header />
-
+<Categories />
+<Posts />
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
