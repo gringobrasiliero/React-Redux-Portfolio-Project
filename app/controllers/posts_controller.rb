@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
+    @post.update!(post_params)
     head :no_content
   end
 
@@ -28,12 +28,11 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:post, :created_at, :category_id)
+    params.permit(:post, :created_at, :category_id, :title, :description, :url, :urlToImage, :publishedAt, :created_at, :publishedAt)
   end
   def set_post
     @post = Post.find(params[:id])
   end
-
-
+  
 
 end
