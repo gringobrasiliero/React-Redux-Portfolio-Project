@@ -2,12 +2,12 @@ class VotesController < ApplicationController
   before_action :set_vote, only: [:show, :update, :destroy]
 
   def index
-    @votes = Post.all
+    @votes = Vote.all
     json_response(@votes)
   end
 
   def create
-    @vote = Post.create!(vote_params)
+    @vote = Vote.create!(vote_params)
   json_response(@vote)
   end
 
@@ -28,7 +28,7 @@ class VotesController < ApplicationController
   private
 
   def vote_params
-    params.permit(:upvote, :downvote, :likes)
+    params.permit(:upvote, :downvote, :likes, :user_id)
   end
   def set_vote
     @vote = Post.find(params[:id])
