@@ -13,20 +13,6 @@ end
 user = User.create!(username: "nyanCat", id: 1, email: "buzz@lightyear.com", password: "password", created_at: Time.now)
 
 posts = 2.times do
-  Post.create!([{post: "post1",
-     category_id: 1,
-      title: "Title1",
-      description: "This is a description",
-       url: "www.google.com",
-        urlToImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png",
-         created_at: Time.now,
-          } ])
-  Post.create!([{post: "post1",
-      category_id: 2,
-      title: "Title2",
-      description: "This is another description",
-      url: "www.google.com",
-      urlToImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png",
-      created_at: Time.now,
-        } ])
+  Post.create!([{post: "post1", category_id: 1, created_at: Time.now } ])
+    Post.create!([{post: "post2", category_id: 2, created_at: Time.now } ])
 end
