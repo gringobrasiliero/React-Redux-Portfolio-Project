@@ -20,26 +20,22 @@ constructor(props) {
 
 searchPosts = (e) => {
   e.preventDefault();
+
   newsapi.v2.topHeadlines({
 
 
-  category: 'politics',
+  category: `${this.state.searchCat}`,
   language: 'en',
   country: 'us'
 }).then(response => {
   console.log(response);
-  /*
-    {
-      status: "ok",
-      articles: [...]
-    }
-  */
+
 });
 }
 
 handleChange =(e) => {
   this.setState({
-    value: e.target.value
+    searchCat: e.target.value
   })
 }
 
@@ -52,12 +48,6 @@ componentDidMount = () => {
 }).then(response => {
   console.log(response);
 
-  /*
-    {
-      status: "ok",
-      articles: [...]
-    }
-  */
 });
 }
 
@@ -65,8 +55,8 @@ render() {
   return(
     <div className='searchable-posts'>
 
-      <form>
-        <input type='text' value={this.state.value} onChange={this.handleChange} />
+      <form onSubmit={ event => this.handleSubmit(event)}>
+        <input type='text' value={this.state.searchCat} onChange={this.handleChange} />
         <button type='submit' onClick={this.searchPosts.bind(this)} >Click</button>
       </form>
         <PostLists posts={this.state.posts}/>
