@@ -16,14 +16,15 @@ constructor(props) {
     posts: [],
     searchCat: ''
   }
+  this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+
 }
 
 searchPosts = (e) => {
   e.preventDefault();
 
   newsapi.v2.topHeadlines({
-
-
   category: `${this.state.searchCat}`,
   language: 'en',
   country: 'us'
@@ -38,7 +39,18 @@ handleChange =(e) => {
     searchCat: e.target.value
   })
 }
+handleSubmit(event) {
+    alert(this.state.searchCat);
+    newsapi.v2.topHeadlines({
+    category: `${this.state.searchCat}`,
+    language: 'en',
+    country: 'us'
+  }).then(response => {
+    console.log(response);
 
+  });
+    event.preventDefault();
+  }
 componentDidMount = () => {
 
   newsapi.v2.topHeadlines({
@@ -55,13 +67,13 @@ render() {
   return(
     <div className='searchable-posts'>
 
-      <form onSubmit={ event => this.handleSubmit(event)}>
+     <form onSubmit={this.handleSubmit}>
         <input type='text' value={this.state.searchCat} onChange={this.handleChange} />
-        <button type='submit' onClick={this.searchPosts.bind(this)} >Click</button>
+        <input type='submit' value="Submit" />
       </form>
         <PostLists posts={this.state.posts}/>
       </div>
   )
 }
 
-}
+} //End of Class
