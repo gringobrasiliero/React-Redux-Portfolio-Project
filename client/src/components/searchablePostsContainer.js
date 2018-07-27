@@ -1,98 +1,77 @@
-import React from 'react';
-
-// import Articles from './articles';
-// import ArticleLists from './articles';
-import Vote from './votes';
+import React, { Component } from 'react';
+import Posts from './posts';
+import PostLists from './posts';
 
 const NewsAPI = require('newsapi');
 
 const newsapi = new NewsAPI(process.env.REACT_APP_NEWS_SECRET_KEY);
-const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
-
-const Article = ({ id, title, description, url, publishedAt, urlToImage}) => (
-  <div className="article" key={url}>
-<section className="articleContainer">
-<img src={urlToImage} alt="" />
-<div className="content">
-
-          <h2> <a href={url}>{title}</a></h2>
-        <p> {description}</p>
-
-              </div>
-
-</section>
-<br />
-      </div>
-)
-
-const ArticleList = ({ articles, index }) => (
-  <div className="article-list">
-{ articles.map(article => <Article key={article.url} id={article.id} title={article.title} description={article.description} url={article.url} publishedAt={article.publishedAt} urlToImage={article.urlToImage} />) }
-  </div>
-)
 
 
 
-
-export default class SearchableArticlesContainer extends React.Component {
+export default class SearchablePostsContainer extends React.Component {
 constructor(props) {
   super(props)
 
   this.state = {
-    articles: [],
-    searchCat: 'politics',
-
+    posts: [],
+    searchCat: ''
   }
-  this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-
 }
 
-searchArticles = (e) => {
+searchPosts = (e) => {
   e.preventDefault();
-
   newsapi.v2.topHeadlines({
-  category: `${this.state.searchCat}`,
+
+
+  category: 'politics',
   language: 'en',
   country: 'us'
 }).then(response => {
   console.log(response);
-
+  /*
+    {
+      status: "ok",
+      articles: [...]
+    }
+  */
 });
 }
 
 handleChange =(e) => {
   this.setState({
-    searchCat: e.target.value
+    value: e.target.value
   })
 }
-handleSubmit(event) {
-    event.preventDefault();
 
-fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
-.then(response => response.json())
-  .then(articles => this.setState({articles: articles.articles})).then(console.log(this.state.articles));
+componentDidMount = () => {
+
+  newsapi.v2.topHeadlines({
+  category: 'politics',
+  language: 'en',
+  country: 'us'
+}).then(response => {
+  console.log(response);
+
+  /*
+    {
+      status: "ok",
+      articles: [...]
+    }
+  */
+});
 }
-
-
-componentDidMount() {
-fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
-.then(response => response.json())
-.then(articles => this.setState({articles: articles.articles}));
-}
-
 
 render() {
   return(
-    <div className='searchable-articles'>
+    <div className='searchable-posts'>
 
-     <form onSubmit={this.handleSubmit}>
-        <input type='text' value={this.state.searchCat} onChange={this.handleChange} />
-        <input type='submit' value="Submit" />
+      <form>
+        <input type='text' value={this.state.value} onChange={this.handleChange} />
+        <button type='submit' onClick={this.searchPosts.bind(this)} >Click</button>
       </form>
- <ArticleList articles={this.state.articles} />
+        <PostLists posts={this.state.posts}/>
       </div>
   )
 }
 
-} //End of Class
+}
