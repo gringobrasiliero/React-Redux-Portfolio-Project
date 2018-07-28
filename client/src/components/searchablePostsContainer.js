@@ -48,6 +48,7 @@ handleSubmit(event) {
   }).then(response => {
     console.log(response);
 
+
   });
     event.preventDefault();
   }
@@ -71,7 +72,7 @@ render() {
         <input type='text' value={this.state.searchCat} onChange={this.handleChange} />
         <input type='submit' value="Submit" />
       </form>
-        <PostLists posts={this.state.posts}/>
+
       </div>
   )
 }

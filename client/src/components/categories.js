@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 
 export default class Categories extends Component {
   constructor(props) {
@@ -27,7 +29,7 @@ renderCategories = () => {
   return this.state.categories.map(cat => {
     return(
 <div>
-      <li key={cat.id}> {cat.category}</li>
+      <li><Link key={cat.id} to={`/categories/${cat.id}`}>{cat.category}</Link></li>
     </div>
     )
   })
