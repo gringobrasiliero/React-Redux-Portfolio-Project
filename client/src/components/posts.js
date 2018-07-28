@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Vote from './votes';
+import SearchablePostsContainer from './searchablePostsContainer';
+
 
 const Post = ({ id, title, description, url, publishedAt, urlToImage}) => (
   <div className="post" key={id} id="posts-list">
