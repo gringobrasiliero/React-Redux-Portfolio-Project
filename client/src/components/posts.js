@@ -13,7 +13,7 @@ const Post = ({ id, title, description, url, publishedAt, urlToImage}) => (
         <h2> {url}</h2>
                 <h2> {publishedAt}</h2>
 <Vote />
-        <img src="{postss.urlToImage}" />
+        <img src={urlToImage} />
 </section>
       </div>
 )
