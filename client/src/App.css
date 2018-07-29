@@ -1,3 +1,26 @@
+
+.content {
+margin-left: 250px;
+}
+.post img {
+  height: 150px;
+  width: 200px;
+  float: left;
+}
+
+.article img {
+  height: 150px;
+  width: 200px;
+  float: left;
+}
+
+
+.searchable-posts {
+  color: black
+}
+.searchable-articles {
+  color: black
+}
 .App {
   text-align: left;
 }
@@ -9,7 +32,7 @@
 
 .App-header {
   background-color: grey;
-  height: 80px;
+  height: 135px;
   padding: 20px;
   color: white;
 }
@@ -53,5 +76,10 @@ li a:hover {
 
 
 #posts-list {
+  border: solid;
+}
+
+
+.article {
   border: solid;
 }
