@@ -9,14 +9,11 @@ margin-left: 250px;
 }
 
 .article img {
-  height: 125px;
+  height: 150px;
   width: 200px;
   float: left;
 }
 
-.articleContainer {
-  height: 150px;
-}
 
 .searchable-posts {
   color: black
@@ -79,5 +76,10 @@ li a:hover {
 
 
 #posts-list {
+  border: solid;
+}
+
+
+.article {
   border: solid;
 }
