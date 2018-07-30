@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+
 import './App.css';
 import Categories from './components/categories';
 import Header from './components/header';
@@ -8,6 +9,9 @@ import Vote from './components/votes';
 
 import SearchablePostsContainer from './components/searchablePostsContainer';
 require('dotenv').config();
+
+
+
 class App extends Component {
 
 
@@ -23,7 +27,6 @@ class App extends Component {
         </header>
 
 
-        <Posts />
 
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
