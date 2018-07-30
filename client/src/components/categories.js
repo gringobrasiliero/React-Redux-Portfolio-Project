@@ -5,23 +5,23 @@ import Posts from './posts';
 
 
 
-const Category = (id, category) => {
+const Category = ({id, category}) => (
   <li><Link key={id} to={`/categories/${id}`}>{category}</Link></li>
-}
+)
 
 
-const renderCategories = ({categories}) => (
+const CategoriesList = ({categories}) => (
   <div id="nav-bar">
   <ul>
- { categories.map(cat => <Category id={cat.id} category={cat.category} />) }
+ { categories.map(category => <Category id={category.id} category={category.category} />) }
   </ul>
    </div>
   )
 
-  
 
 
-export default class Categories extends Component {
+
+export default class CategoriesContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -30,26 +30,25 @@ export default class Categories extends Component {
     };
   }
 
-  componentDidMount() {
-    this.fetchCategories()
-
-  }
-
-
-
   fetchCategories = () => {
     fetch('/categories')
       .then(response => response.json())
-      .then(categories => this.setState({ categories}))
+      .then(categories => this.setState({categories}))
+
   }
 
+  componentDidMount() {
+    this.fetchCategories();
+    console.log(this.fetchCategories())
 
-
+  }
 
 
 render() {
   return(
-<h1>This shouldnt be appearing anywhere</h1>
+    <div>
+<CategoriesList categories={this.state.categories} />
+</div>
   )
 }
 
