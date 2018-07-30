@@ -1,5 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Postlist from './posts';
+import Posts from './posts';
+
+
+
+const Category = (id, category) => {
+  <li><Link key={id} to={`/categories/${id}`}>{category}</Link></li>
+}
+
+
+const renderCategories = ({categories}) => (
+  <div id="nav-bar">
+  <ul>
+ { categories.map(cat => <Category id={cat.id} category={cat.category} />) }
+  </ul>
+   </div>
+  )
+
+  
 
 
 export default class Categories extends Component {
@@ -25,24 +44,12 @@ export default class Categories extends Component {
   }
 
 
-renderCategories = () => {
-  return this.state.categories.map(cat => {
-    return(
-<div>
-      <li><Link key={cat.id} to={`/categories/${cat.id}`}>{cat.category}</Link></li>
-    </div>
-    )
-  })
-}
+
 
 
 render() {
   return(
-<div id="nav-bar">
-<ul>
-{this.renderCategories()}
-</ul>
-</div>
+<h1>This shouldnt be appearing anywhere</h1>
   )
 }
 
