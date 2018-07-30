@@ -6,7 +6,7 @@ import Posts from './posts';
 
 
 const Category = ({id, category}) => (
-  <li><Link key={id} to={`/categories/${id}`}>{category}</Link></li>
+  <li><Link onClick={this.handleOnClick} key={id} to={`/categories/${id}`}>{category}</Link></li>
 )
 
 
