@@ -12,7 +12,7 @@ export default class PostsContainer extends Component {
     this.state = {
       posts: []
     };
-    this.handleClick = this.handleclick.bind();
+    this.handleClick = this.handleClick.bind();
   }
 
 
@@ -32,8 +32,9 @@ export default class PostsContainer extends Component {
 
 
 handleClick(event) {
-  alert("hiiiiiiiiiiiiiiiiiii");
+
     event.preventDefault();
+    alert("hiiiiiiiiiiiiiiiiiii");
     fetch(`categories/${event.target.id}/posts`)
       .then(response => response.json())
       .then(posts => this.setState({posts}));

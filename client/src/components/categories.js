@@ -30,7 +30,7 @@ export default class CategoriesContainer extends Component {
     this.state = {
       categories: []
     };
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
 
 
   }
@@ -52,11 +52,11 @@ export default class CategoriesContainer extends Component {
   }
 
 
-  handleClick(event) {
-      event.preventDefault();
-      this.fetchCatPosts();
-      alert("HI")
-  }
+  // handleClick(event) {
+  //     event.preventDefault();
+  //     this.fetchCatPosts();
+  //     alert("HI")
+  // }
 
 
 
