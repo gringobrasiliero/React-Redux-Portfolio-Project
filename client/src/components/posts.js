@@ -12,7 +12,7 @@ export default class PostsContainer extends Component {
     this.state = {
       posts: []
     };
-    // this.handleClick = this.handleclick.bind(this);
+    this.handleClick = this.handleclick.bind();
   }
 
 
@@ -25,18 +25,32 @@ export default class PostsContainer extends Component {
 
 //
 // fetchCatPosts = () => {
-//   fetch(`categories/${id}/posts`)
-//     .then(response => response.json())
-//     .then(posts => this.setState({posts}));
+  // fetch(`categories/${id}/posts`)
+  //   .then(response => response.json())
+  //   .then(posts => this.setState({posts}));
 // }
 
 
 handleClick(event) {
+  alert("hiiiiiiiiiiiiiiiiiii");
     event.preventDefault();
-    this.fetchCatPosts();
+    fetch(`categories/${event.target.id}/posts`)
+      .then(response => response.json())
+      .then(posts => this.setState({posts}));
+
 }
 
 
+
+componentWillMount() {
+    // add event listener for clicks
+    document.addEventListener('click', this.handleClick, false);
+  }
+
+  componentWillUnmount() {
+      // add event listener for clicks
+      document.removeEventListener('click', this.handleClick, false);
+    }
 
 
 
