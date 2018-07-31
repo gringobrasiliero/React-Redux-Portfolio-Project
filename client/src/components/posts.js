@@ -1,39 +1,21 @@
 import React, { Component } from 'react';
 import Vote from './votes';
-import SearchablePostsContainer from './searchablePostsContainer';
-
-
-const Post = ({ id, title, description, url, publishedAt, urlToImage}) => (
-  <div className="post" key={id} id="posts-list">
-<section>
-
-          <h2> {id}</h2>
-        <h2> {title}</h2>
-        <h2> {description}</h2>
-        <h2> {url}</h2>
-                <h2> {publishedAt}</h2>
-<Vote />
-        <img src={urlToImage} />
-</section>
-      </div>
-)
-
-const PostList = ({ posts }) => (
-  <div className="post-list">
-{ posts.map(post => <Post id={post.id} title={post.title} description={post.description} url={post.url} publishedAt={post.publishedAt} urlToImage={post.urlToImage} />) }
-  </div>
-)
+import Post from './postComponent'
+import PostList from './postList'
 
 
 
-export default class Posts extends Component {
-  constructor() {
-    super();
+export default class PostsContainer extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       posts: []
     };
+    // this.handleClick = this.handleclick.bind(this);
   }
+
+
 
   fetchPosts = () => {
     fetch('/posts')
@@ -41,12 +23,34 @@ export default class Posts extends Component {
       .then(posts => this.setState({posts}));
   }
 
+//
+// fetchCatPosts = () => {
+//   fetch(`categories/${id}/posts`)
+//     .then(response => response.json())
+//     .then(posts => this.setState({posts}));
+// }
+
+
+handleClick(event) {
+    event.preventDefault();
+    this.fetchCatPosts();
+}
+
+
+
+
+
     componentDidMount() {
       this.fetchPosts()
     }
 
   render() {
-    return <PostList posts={this.state.posts} />
+    return(
+
+<div className='searchable-articles'>
+       <PostList posts={this.state.posts} />
+       </div>
+     )
   }
 
   }
