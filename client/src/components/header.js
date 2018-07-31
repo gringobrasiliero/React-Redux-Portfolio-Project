@@ -14,8 +14,9 @@ export default class Header extends Component {
             <h1 className="App-Title">Neddit</h1>
             <ul>
               <li><Link to={'/'}>Home</Link></li>
+              <li><Link to={'/categories'}>Categories</Link></li>
             </ul>
-            
+
             <Categories />
           </header>
       </div>
