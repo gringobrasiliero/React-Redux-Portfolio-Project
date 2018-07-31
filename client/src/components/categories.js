@@ -6,14 +6,16 @@ import Posts from './posts';
 
 
 const Category = ({id, category}) => (
-  <li><Link onClick={this.handleClick} key={id} id={id} to={`/categories/${id}`}>{category}</Link></li>
+  <li><Link onClick={this.handleClick} key={id} id={id} to={`/categories/${id}/posts`}
+
+  >{category}</Link></li>
 )
 
 
 const CategoriesList = ({categories}) => (
   <div id="nav-bar">
   <ul>
- { categories.map(category => <Category id={category.id} category={category.category} key={category.id} />) }
+ { categories.map(category => <Category id={category.id}  category={category.category} key={category.id} />) }
   </ul>
    </div>
   )
@@ -28,7 +30,7 @@ export default class CategoriesContainer extends Component {
     this.state = {
       categories: []
     };
-    // this.handleClick = this.handleclick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
 
   }
@@ -46,22 +48,27 @@ export default class CategoriesContainer extends Component {
     fetch(`categories/${this.id}/posts`)
       .then(response => response.json())
       .then(posts => this.setState({posts}));
+
   }
 
 
   handleClick(event) {
       event.preventDefault();
       this.fetchCatPosts();
-      console.log("HI!")
+      alert("HI")
   }
 
 
 
   componentDidMount() {
     this.fetchCategories();
-    console.log(this.fetchCategories())
+
 
   }
+
+  componentWillUnmount() {
+      document.addEventListener('click', this.handleClick, true);
+    }
 
 
 render() {

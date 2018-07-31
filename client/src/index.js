@@ -7,7 +7,7 @@ import Header from './components/header';
 import Login from './login';
 import Categories from './components/categories';
 import Home from './Home';
-
+import PostsContainer from './components/posts'
 const Index = () => {
   return (
     <div>
@@ -27,6 +27,7 @@ ReactDOM.render(
   <Route path="/" component={Header} />
      <Route exact path="/" component={Home} />
    <Route exact path="/index" component={Index} />
+   <Route  path="/:id/posts" component={PostsContainer} />
 <Route exact path="/login" component={Login} />
 <Route exact path="/categories" component={Categories} />
 
