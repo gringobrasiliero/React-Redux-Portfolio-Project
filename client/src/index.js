@@ -10,7 +10,7 @@ import Categories from './components/categories';
 import Home from './Home';
 import PostsContainer from './components/posts'
 import createStore from './createStore'
-
+import voteReducer from './reducers/voteReducer'
 
 
 
@@ -23,10 +23,10 @@ const Index = () => {
   );
 };
 
+const store = createStore(voteReducer);
 
 
-
-
+export function render() {
 ReactDOM.render(
 <Router>
 <React.Fragment>
@@ -41,3 +41,6 @@ ReactDOM.render(
   </Router>,
    document.getElementById('root'));
 registerServiceWorker();
+};
+
+store.dispatch({ type: '@@INIT' });

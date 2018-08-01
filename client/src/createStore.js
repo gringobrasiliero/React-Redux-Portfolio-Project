@@ -1,11 +1,12 @@
-
+import { render } from './index.js';
 
 export default function createStore(reducer) {
   let state;
 
   function dispatch(action) {
     state = reducer(state, action)
-
+    console.log(`the state is ${state.count}`)
+       console.log(`the action is ${action.type}`)
     render();
 
   };
@@ -14,12 +15,10 @@ export default function createStore(reducer) {
     return state;
   };
 
+
+
   return{
     dispatch,
     getState
   };
-}
-
-function render() {
-  const container = document.getElementById('container');
 }
