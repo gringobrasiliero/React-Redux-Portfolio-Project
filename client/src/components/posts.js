@@ -4,6 +4,7 @@ import Post from './postComponent'
 import PostList from './postList'
 import CategoriesList from './categories'
 import ReactDOM from 'react-dom';
+import Category from './categories'
 
 
 export default class PostsContainer extends Component {
@@ -24,34 +25,18 @@ export default class PostsContainer extends Component {
   //     .then(posts => this.setState({posts}));
   // }
 
-//
-// fetchCatPosts = () => {
-  // fetch(`categories/${id}/posts`)
-  //   .then(response => response.json())
-  //   .then(posts => this.setState({posts}));
-// }
 
-
-// handleClick(event) {
-//
-//     event.preventDefault();
-//     alert("hiiiiiiiiiiiiiiiiiii");
-//     fetch(`categories/${event.target.id}/posts`)
-//       .then(response => response.json())
-//       .then(posts => this.setState({posts}));
-//
-// }
 componentWillMount() {
     // add event listener for clicks
-    document.addEventListener('click', this.handleClick, false);
+  document.getElementById("catPosts").onclick = this.handleClick
   };
 
   componentWillUnmount() {
       // add event listener for clicks
-      document.removeEventListener('click', this.handleClick, false);
+  document.getElementById("catPosts").onclick = this.handleClick
     };
 
-handleClick = e => {
+handleClick = (e) => {
 
     e.preventDefault();
     alert("hiiiiiiiiiiiiiiiiiii");
@@ -70,7 +55,8 @@ handleClick = e => {
 
     componentDidMount() {
       // this.fetchPosts()
-    }
+this.handleClick    
+}
 
   render() {
     return(
