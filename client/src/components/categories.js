@@ -5,7 +5,7 @@ import Posts from './posts';
 
 
 const Category = ({id, category}) => (
-  <li><Link key={id} id={id} to={`/categories/${id}/posts`}
+  <li><Link key={id} id={id} to={`/${id}/posts`}
 
   >{category}</Link></li>
 )
