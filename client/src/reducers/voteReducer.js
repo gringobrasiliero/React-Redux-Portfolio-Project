@@ -7,7 +7,7 @@ export default (state = initialState.votes, action) => {
 
     case 'UP_VOTE':
     return state + 1;
-  
+
     case 'DOWN_VOTE'
     return state - 1
 
@@ -16,4 +16,8 @@ export default (state = initialState.votes, action) => {
     default:
       return state
   }
+}
+
+function dispatch(action){
+    state = changeState(state, action)
 }
