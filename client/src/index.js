@@ -27,7 +27,7 @@ ReactDOM.render(
   <Route path="/" component={Header} />
      <Route exact path="/" component={Home} />
    <Route exact path="/index" component={Index} />
-   <Route  path="/:id/posts" component={PostsContainer} />
+   <Route exact path="/:id/posts" component={PostsContainer} />
 <Route exact path="/login" component={Login} />
 <Route exact path="/categories" component={Categories} />
 
