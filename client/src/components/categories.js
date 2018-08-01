@@ -4,16 +4,14 @@ import Postlist from './posts';
 import Posts from './posts';
 
 
-const Category = ({id, category}) => (
-  <li><Link key={id} id={id} to={`/${id}/posts`}
-
-  >{category}</Link></li>
+const Category = ({id, category, key}) => (
+  <li><Link key={key}  id={id} to={`/categories/${id}/posts`}>{category}</Link></li>
 )
 
 
 const CategoriesList = ({categories}) => (
   <div id="nav-bar">
-  <ul>
+  <ul id="catPosts">
  { categories.map(category => <Category id={category.id}  category={category.category} key={category.id} onClick={this.handleClick} />) }
   </ul>
    </div>
@@ -29,7 +27,7 @@ export default class CategoriesContainer extends Component {
     this.state = {
       categories: []
     };
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
 
 
   }
@@ -49,11 +47,11 @@ export default class CategoriesContainer extends Component {
   }
 
 
-  handleClick(event) {
-      event.preventDefault();
-      this.fetchCatPosts();
-      alert(event.target.getAttribute('id'));
-  }
+  // handleClick(event) {
+  //     event.preventDefault();
+  //     this.fetchCatPosts();
+  //     alert(event.target.getAttribute('id'));
+  // }
 
 
 
@@ -64,7 +62,7 @@ export default class CategoriesContainer extends Component {
   }
 
   componentWillUnmount() {
-      document.addEventListener('click', this.handleClick, true);
+      // document.addEventListener('click', this.handleClick, true);
     }
 
 
