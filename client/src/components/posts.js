@@ -17,12 +17,12 @@ export default class PostsContainer extends Component {
   }
 
 
-
-  fetchPosts = () => {
-    fetch('/posts')
-      .then(response => response.json())
-      .then(posts => this.setState({posts}));
-  }
+  //
+  // fetchPosts = () => {
+  //   fetch('/posts')
+  //     .then(response => response.json())
+  //     .then(posts => this.setState({posts}));
+  // }
 
 //
 // fetchCatPosts = () => {
@@ -55,10 +55,10 @@ handleClick = e => {
 
     e.preventDefault();
     alert("hiiiiiiiiiiiiiiiiiii");
-    fetch(`categories/${e.target.getAttribute('id')}/posts`)
+    fetch(`/categories/${e.target.getAttribute('id')}/posts`)
       .then(response => response.json())
       .then(posts => this.setState({posts}));
-    
+
 }
 
 
@@ -69,7 +69,7 @@ handleClick = e => {
 
 
     componentDidMount() {
-      this.fetchPosts()
+      // this.fetchPosts()
     }
 
   render() {
