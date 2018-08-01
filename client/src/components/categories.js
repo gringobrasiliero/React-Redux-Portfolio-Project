@@ -4,9 +4,8 @@ import Postlist from './posts';
 import Posts from './posts';
 
 
-
 const Category = ({id, category}) => (
-  <li><Link onClick={this.handleClick} key={id} id={id} to={`/categories/${id}/posts`}
+  <li><Link key={id} id={id} to={`/categories/${id}/posts`}
 
   >{category}</Link></li>
 )
@@ -15,7 +14,7 @@ const Category = ({id, category}) => (
 const CategoriesList = ({categories}) => (
   <div id="nav-bar">
   <ul>
- { categories.map(category => <Category id={category.id}  category={category.category} key={category.id} />) }
+ { categories.map(category => <Category id={category.id}  category={category.category} key={category.id} onClick={this.handleClick} />) }
   </ul>
    </div>
   )
@@ -30,7 +29,7 @@ export default class CategoriesContainer extends Component {
     this.state = {
       categories: []
     };
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
 
   }
@@ -42,8 +41,6 @@ export default class CategoriesContainer extends Component {
 
   }
 
-
-
   fetchCatPosts = () => {
     fetch(`categories/${this.id}/posts`)
       .then(response => response.json())
@@ -52,11 +49,11 @@ export default class CategoriesContainer extends Component {
   }
 
 
-  // handleClick(event) {
-  //     event.preventDefault();
-  //     this.fetchCatPosts();
-  //     alert("HI")
-  // }
+  handleClick(event) {
+      event.preventDefault();
+      this.fetchCatPosts();
+      alert(event.target.getAttribute('id'));
+  }
 
 
 
