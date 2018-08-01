@@ -9,7 +9,7 @@ import Categories from './components/categories';
 import Home from './Home';
 import PostsContainer from './components/posts'
 import createStore from './createStore'
-
+import voteReducer from './reducers/voteReducer'
 
 
 
@@ -22,10 +22,10 @@ const Index = () => {
   );
 };
 
+const store = createStore(voteReducer);
 
 
-
-
+export function render() {
 ReactDOM.render(
 <Router>
 <React.Fragment>
@@ -40,31 +40,6 @@ ReactDOM.render(
   </Router>,
    document.getElementById('root'));
 registerServiceWorker();
-
-
-const allStoreEnhancers = compose(applyMiddleware(logger, thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
-
-
-const store = createStore(rootReducer,
-{
-  categories: [],
-  votes: [],
-  posts: []
-}, allStoreEnhancers
- );
-
-
-
-// export function render() {
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
-  )
-
-
-
+};
 
 store.dispatch({ type: '@@INIT' });
