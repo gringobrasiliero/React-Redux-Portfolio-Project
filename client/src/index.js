@@ -9,6 +9,11 @@ import Login from './login';
 import Categories from './components/categories';
 import Home from './Home';
 import PostsContainer from './components/posts'
+import createStore from './createStore'
+
+
+
+
 const Index = () => {
   return (
     <div>
