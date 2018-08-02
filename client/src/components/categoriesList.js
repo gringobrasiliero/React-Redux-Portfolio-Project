@@ -7,13 +7,23 @@ import { connect } from 'react-redux';
 
 
 
-const CategoriesList = ({categories}) => (
-  <div id="nav-bar">
-  <ul id="catPosts">
- { categories.map(category => <Category id={category.id}  category={category.category} key={category.id} onClick={this.handleClick} />) }
-  </ul>
-   </div>
-  )
+
+const CategoriesList = ({categories}) => {
+  const renderCategories = categories.map(category =>
+  <li><Link key={category.id} id={category.id} to={`/categories/${category.id}/posts`} onClick={this.handleClick} >{category.category}</Link></li>
+);
+
+return (
+
+<div id="nav-bar">
+ <ul id="catPosts">
+      {renderCategories}
+       </ul>
+    </div>
+  );
+};
+
+
 
 const mapStateToProps = (state) => {
   return {categories: state.categories}

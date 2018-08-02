@@ -14,25 +14,8 @@ import voteReducer from './reducers/voteReducer'
 
 
 
-const Index = () => {
-  return (
-    <div>
 
 
-
-const store = createStore(voteReducer);
-
-
-export function render() {
-ReactDOM.render(
-<Router>
-<React.Fragment>
-  <Route path="/" component={Header} />
-     <Route exact path="/" component={Home} />
-   <Route exact path="/index" component={Index} />
-   <Route exact path="/categories/:id/posts" component={PostsContainer} />
-<Route exact path="/login" component={Login} />
-<Route exact path="/categories" component={Categories} />
 
    </React.Fragment>
   </Router>,
