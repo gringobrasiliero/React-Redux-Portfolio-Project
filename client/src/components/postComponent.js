@@ -1,5 +1,6 @@
 import React from 'react'
 import Vote from './votes';
+import { connect } from 'react-redux';
 
 const Post = ({ id, title, description, url, publishedAt, urlToImage, category_id}) => (
   <div className="post" key={id}>
@@ -19,5 +20,7 @@ const Post = ({ id, title, description, url, publishedAt, urlToImage, category_i
     <br />
       </div>
 )
-
-export default Post
+const mapStateToProps = (state) => {
+  return {posts: state.posts}
+}
+export default connect(mapStateToProps)(Post);
