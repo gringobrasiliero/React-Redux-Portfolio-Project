@@ -18,13 +18,6 @@ export default class PostsContainer extends Component {
   }
 
 
-  //
-  // fetchPosts = () => {
-  //   fetch('/posts')
-  //     .then(response => response.json())
-  //     .then(posts => this.setState({posts}));
-  // }
-
 
 componentWillMount() {
     // add event listener for clicks
@@ -37,25 +30,15 @@ componentWillMount() {
     };
 
 handleClick = (e) => {
-
     e.preventDefault();
-    alert("hiiiiiiiiiiiiiiiiiii");
     fetch(`/categories/${e.target.getAttribute('id')}/posts`)
       .then(response => response.json())
       .then(posts => this.setState({posts}));
-
 }
-
-
-
-
-
-
-
 
     componentDidMount() {
       // this.fetchPosts()
-this.handleClick    
+this.handleClick
 }
 
   render() {
