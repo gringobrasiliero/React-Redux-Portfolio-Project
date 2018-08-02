@@ -2,20 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Postlist from './posts';
 import Posts from './posts';
+import { connect } from 'react-redux';
+import CategoriesList from './categoriesList'
+import Category from './category'
 
-
-const Category = ({id, category, key}) => (
-  <li><Link key={key}  id={id} to={`/categories/${id}/posts`}>{category}</Link></li>
-)
-
-
-const CategoriesList = ({categories}) => (
-  <div id="nav-bar">
-  <ul id="catPosts">
- { categories.map(category => <Category id={category.id}  category={category.category} key={category.id} onClick={this.handleClick} />) }
-  </ul>
-   </div>
-  )
 
 
 
