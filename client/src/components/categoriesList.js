@@ -24,10 +24,4 @@ return (
 };
 
 
-
-const mapStateToProps = (state) => {
-  return {categories: state.categories}
-}
-
-
 export default CategoriesList;
