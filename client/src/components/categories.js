@@ -5,12 +5,14 @@ import Posts from './posts';
 import { connect } from 'react-redux';
 import CategoriesList from './categoriesList'
 import Category from './category'
+import {fetchCategories}  from '../actions/fetchCategories'
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/fetchCategories'
 
 
 
 
-
-export default class CategoriesContainer extends Component {
+class CategoriesContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -37,16 +39,12 @@ export default class CategoriesContainer extends Component {
   }
 
 
-  // handleClick(event) {
-  //     event.preventDefault();
-  //     this.fetchCatPosts();
-  //     alert(event.target.getAttribute('id'));
-  // }
 
 
 
-  componentDidMount() {
-    this.fetchCategories();
+  componentWillMount() {
+    console.log(this.props.actions)
+    this.props.actions.fetchCategories();
 
 
   }
@@ -59,10 +57,28 @@ export default class CategoriesContainer extends Component {
 render() {
   return(
     <div>
-<CategoriesList categories={this.state.categories} />
+<CategoriesList categories={this.props.categories} />
 </div>
-  )
+);
 }
 
 
+};
+
+function mapStateToProps(state) {
+  debugger
+  console.log('in map state to props')
+    console.log({categories: state.categories})
+  return {categories: state.categories};
+
+};
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)}
 }
+
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);

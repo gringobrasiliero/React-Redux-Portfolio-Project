@@ -17,7 +17,7 @@ export default class Header extends Component {
               <li><Link to={'/categories'}>Categories</Link></li>
             </ul>
 
-            <Categories />
+            <Categories categories={this.props.categories}/>
           </header>
       </div>
     )

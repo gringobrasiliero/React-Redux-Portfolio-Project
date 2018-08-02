@@ -9,15 +9,20 @@ import Login from './login';
 import Categories from './components/categories';
 import Home from './Home';
 import PostsContainer from './components/posts'
-import createStore from './createStore'
+// import createStore from './createStore'
 import voteReducer from './reducers/voteReducer'
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './configureStore';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/index'
 
 
 
-
+const store = createStore(rootReducer, compose(
+    applyMiddleware(thunk),
+     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+ export default store;
 
 
 
