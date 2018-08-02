@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
 import Header from './components/header';
 import Login from './login';
 import Categories from './components/categories';
@@ -18,9 +18,6 @@ const Index = () => {
     <div>
 
 
-    </div>
-  );
-};
 
 const store = createStore(voteReducer);
 
