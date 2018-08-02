@@ -6,6 +6,7 @@ import PostsContainer from './posts'
 import PostList from './posts'
 import CategoriesList from './categoriesList'
 import { connect } from 'react-redux';
+
 const Category = ({match, categories}) =>
   <div>
     <CategoriesList categories={categories} />
@@ -15,8 +16,10 @@ const Category = ({match, categories}) =>
     )}/>
 </div>
 
-const mapStateToProps = (state) => {
-  return {categories: state.categories}
+const mapStateToProps = (state, ownProps) => {
+  return {
+    id: ownProps.match.params.id,
+    categories: state.categories}
 }
 
 export default connect(mapStateToProps)(Category);
