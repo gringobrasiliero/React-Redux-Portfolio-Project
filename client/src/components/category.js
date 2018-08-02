@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PostsContainer from './posts'
 import PostList from './posts'
 import CategoriesList from './categoriesList'
-
+import { connect } from 'react-redux';
 const Category = ({match, categories}) =>
   <div>
     <CategoriesList categories={categories} />
@@ -15,6 +15,8 @@ const Category = ({match, categories}) =>
     )}/>
 </div>
 
+const mapStateToProps = (state) => {
+  return {categories: state.categories}
+}
 
-
-export default Category
+export default connect(mapStateToProps)(Category);
