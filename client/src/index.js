@@ -17,10 +17,8 @@ import store from './configureStore';
 
 
 
-const store = createStore(voteReducer);
 
 
-// const store = createStore(voteReducer);
 
 
 // export function render() {

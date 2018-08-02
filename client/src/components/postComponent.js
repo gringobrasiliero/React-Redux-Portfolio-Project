@@ -14,7 +14,7 @@ const Post = ({ id, title, description, url, publishedAt, urlToImage, category_i
 
 
   </section>
-    <Vote store={this.props.store} />
+    <Vote  />
   <br />
     <br />
       </div>
