@@ -20,10 +20,8 @@ store.dispatch({type: 'UP_VOTE'})
 }
 
 handleDownvote = () => {
-  this.setState({
-    upvotes: this.state.upvote -= 1,
-    score: this.state.score -=1
-  }, () => this.state.downvote)
+  store.dispatch({type: 'DOWN_VOTE'})
+
 }
 
 
