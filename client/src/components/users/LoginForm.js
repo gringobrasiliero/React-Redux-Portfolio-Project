@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
 
 export default class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      email: '',
+      password: ''
 
-  handleSignIn(e) {
-    e.preventDefault()
-    let username = this.refs.username.value
-    let password = this.refs.password.value
-    this.props.onSignIn(username, password)
+    };
   }
 
+  handleSignIn(e) {
+    e.preventDefault();
+     this.props.store.dispatch({
+       type: 'SIGNIN',
+       user: {
+         username: this.state.username,
+         email: this.state.email,
+         password: this.state.password,
 
+       }
+     })
 
-
+     this.setState({
+           username: '',
+           email: '',
+           password: '',
+           })
+       }
 
 
   render() {
