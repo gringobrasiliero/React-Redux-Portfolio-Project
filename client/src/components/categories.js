@@ -29,7 +29,8 @@ export default class CategoriesContainer extends Component {
 
   }
 
-  fetchCatPosts = () => {
+  fetchCatPosts = (e) => {
+    e.preventDefault()
     fetch(`categories/${this.id}/posts`)
       .then(response => response.json())
       .then(posts => this.setState({posts}));

@@ -8,7 +8,7 @@ import Posts from './components/posts';
 import Vote from './components/votes';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
-
+import usersContainer from './containers/usersContainer'
 import './index.css';
 
 
@@ -35,7 +35,7 @@ class App extends Component {
         <Route path="/" component={Header} />
            <Route exact path="/" component={Home} />
          <Route exact path="/categories/:id/posts" component={PostsContainer} />
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/login" component={usersContainer} />
       <Route exact path="/categories" component={Categories} />
 
          </React.Fragment>
