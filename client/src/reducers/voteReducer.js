@@ -1,4 +1,4 @@
-let state;
+export let state;
 
 export default function voteReducer(state={
   upvote: 0,
@@ -10,7 +10,7 @@ export default function voteReducer(state={
     return {upvote: state.upvote + 1};
 
     case 'DOWN_VOTE':
-    return state - 1
+    return {downvote: state.downvote + 1};
 
     default:
     return state;
@@ -23,7 +23,7 @@ function dispatch(action){
 
 
 function render(){
-    document.setInnerHTML = state.up_vote
+    document.setInnerHTML = state
 }
 
 // call the render function
