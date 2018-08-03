@@ -6,7 +6,7 @@ import usersReducer from './usersReducer'
 
 
 export default combineReducers({
-  // votes: votesReducer
+  votes: voteReducer,
 categories: categoriesReducer,
 posts: postsReducer,
 users: usersReducer

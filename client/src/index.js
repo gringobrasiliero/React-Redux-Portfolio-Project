@@ -24,3 +24,7 @@ registerServiceWorker();
 };
 
 store.dispatch({ type: '@@INIT' });
+
+
+
+store.dispatch({ type: '@@INIT' });
