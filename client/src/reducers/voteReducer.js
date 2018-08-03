@@ -1,22 +1,30 @@
-//
-//
-// export default function voteReducer(state=[
-//   up_vote: 0,
-//   down_vote: 0,
-//
-// ], action) {
-//   switch(action.type) {
-//     case 'UP_VOTE':
-//     return state + 1;
-//
-//     case 'DOWN_VOTE':
-//     return state - 1
-//
-//     default:
-//     return state;
-//   }
-// }
-//
-// function dispatch(action){
-//     state = changeState(state, action)
-// }
+let state;
+
+export default function voteReducer(state={
+  upvote: 0,
+  downvote: 0,
+
+}, action) {
+  switch(action.type) {
+    case 'UP_VOTE':
+    return {upvote: state.upvote + 1};
+
+    case 'DOWN_VOTE':
+    return state - 1
+
+    default:
+    return state;
+  }
+}
+
+function dispatch(action){
+    state = voteReducer(state, action)
+}
+
+
+function render(){
+    document.setInnerHTML = state.up_vote
+}
+
+// call the render function
+dispatch({ type: '@@INIT' })

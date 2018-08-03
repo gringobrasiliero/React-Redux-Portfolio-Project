@@ -28,3 +28,7 @@ import store from './configureStore';
     </Provider>,
     document.getElementById('root')
   )
+
+
+
+store.dispatch({ type: '@@INIT' });
