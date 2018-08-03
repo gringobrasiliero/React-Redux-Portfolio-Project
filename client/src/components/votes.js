@@ -32,7 +32,7 @@ handleDownvote = () => {
   fetchVotes = () => {
     fetch('/votes')
       .then(response => response.json())
-      .then(votes => console.log(votes));
+      .then(votes => this.setState({votes}))
   }
 
 render() {
