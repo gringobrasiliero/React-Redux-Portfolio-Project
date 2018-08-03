@@ -1,12 +1,13 @@
-import initialState from './initialState';
+export default function usersReducer(state = {
+  username: "",
+  password: "",
+  email: "",
 
+}, action) {
+  switch (action.type) {
 
-
-
-export default (state = initialState.users, action) => {
-  switch(action.type) {
 
     default:
-      return state
-  }
-}
+      return state;
+    }
+};

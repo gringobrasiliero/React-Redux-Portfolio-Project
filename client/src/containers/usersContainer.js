@@ -1,47 +1,42 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LoginForm from './components/users/LoginForm.js'
 
 
 
 
-export default class User extends Component {
+
+export default class UsersContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: null,
-      email: null,
-
+      username: "",
+      email: "",
+      password: "",
     };
-    this.handleSignIn = this.handleSignIn.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
   }
-    signIn(username, password) {
-     // This is where you would call Firebase, an API etc...
-     // calling setState will re-render the entire app (efficiently!)
-     this.setState({
-       user: {
-         username,
-         password,
-       }
-     })
-   }
 
 
 
-     handleSignIn(e) {
-       e.preventDefault();
-        this.props.store.dispatch({
-          type: 'SIGNIN',
-          user: {
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password,
 
-          }
-        })
+  handleChange =(e) => {
+    this.setState({
+      username: e.target.value,
+      password: e.target.value
+    })
+  }
+  handleSubmit(event) {
+      event.preventDefault();
+  alert("submit")
+  // fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
+  // .then(response => response.json())
+  //   .then(articles => this.setState({articles: articles.articles})).then(console.log(this.state.articles));
+  }
 
 
 
@@ -50,31 +45,33 @@ export default class User extends Component {
 
 
 
+  componentDidMount() {
 
-   signOut() {
-     // clear out user from state
-     this.setState({user: null})
-   }
 
-   render() {
+  }
 
-     return (
-       <div>
-         <h1>My cool App</h1>
-         {
-           (this.state.user) ?
-             <Welcome
-              user={this.state.user}
-              onSignOut={this.signOut.bind(this)}
-             />
-           :
-             <LoginForm
-              onSignIn={this.signIn.bind(this)}
-             />
-         }
-       </div>
-     )
+  componentWillUnmount() {
+      // document.addEventListener('click', this.handleClick, true);
+    }
 
-   }
 
- }
+render() {
+  return(
+    <div>
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <input type="text" value={this.state.username} onChange={this.handleChange}name="username" placeholder="Username" />
+          <label htmlFor="username">Username</label>
+        </div>
+        <div>
+          <input type="password" value={this.state.password} onChange={this.handleChange} name="password" placeholder="Password" />
+          <label htmlFor="password">Password</label>
+        </div>
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+  )
+}
+
+
+}
