@@ -26,9 +26,9 @@ const Article = ({ id, title, description, url, publishedAt, urlToImage}) => (
       </div>
 )
 
-const ArticleList = ({ articles }) => (
+const ArticleList = ({ articles, index }) => (
   <div className="article-list">
-{ articles.map(article => <Article id={article.id} title={article.title} description={article.description} url={article.url} publishedAt={article.publishedAt} urlToImage={article.urlToImage} />) }
+{ articles.map(article => <Article key={article.url} id={article.id} title={article.title} description={article.description} url={article.url} publishedAt={article.publishedAt} urlToImage={article.urlToImage} />) }
   </div>
 )
 
