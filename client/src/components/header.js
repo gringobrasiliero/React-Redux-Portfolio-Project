@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+<<<<<<< master
 import CategoriesList from '../containers/categories';
+=======
+import Categories from '../containers/categories';
+>>>>>>> Organized all files
 import SearchablePostsContainer from './searchablePostsContainer';
 import { Link } from 'react-router-dom';
 

@@ -6,23 +6,22 @@ import Category from './category'
 import { connect } from 'react-redux';
 
 
-// let catList = this.props.categories.map( category => <li key={category.id}>{category.category}</li>)
 
 
-let CategoriesList = (props) => {
+const CategoriesList = ({categories}) => {
+  const renderCategories = categories.map(category =>
+  <li><Link key={category.id} id={category.id} to={`/categories/${category.id}/posts`} onClick={this.handleClick} >{category.category}</Link></li>
+);
 
- return props.categories.map((category) => {
-    return (
+return (
 
-  <li key={category.id}><Link  id="catPosts" onClick={this.handleClick} to={`/categories/${category.id}`} >{category.category}</Link></li>
-
-)
-})
-}
-
-
-
-
+<div id="nav-bar">
+ <ul id="catPosts" >
+      {renderCategories}
+       </ul>
+    </div>
+  );
+};
 
 
 export default CategoriesList;
