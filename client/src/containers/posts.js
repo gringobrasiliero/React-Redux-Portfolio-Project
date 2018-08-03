@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Vote from './votes';
-import Post from './postComponent'
-import PostList from './postList'
-import CategoriesList from './categories'
+import Vote from '../components/votes';
+import Post from '../components/posts/postComponent'
+import PostList from '../components/posts/postList'
+import CategoriesList from '../components/categories/categoriesList'
 import ReactDOM from 'react-dom';
 import Category from './categories'
 

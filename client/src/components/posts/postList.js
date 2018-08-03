@@ -1,5 +1,5 @@
 import React from 'react'
-import Vote from './votes';
+import Vote from '../votes';
 import Post from './postComponent'
 
 const PostList = ({ posts }) => (

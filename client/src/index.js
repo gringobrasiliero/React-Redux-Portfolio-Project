@@ -6,9 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
 import Header from './components/header';
 import Login from './login';
-import Categories from './components/categories';
+import Categories from './containers/categories';
 import Home from './Home';
-import PostsContainer from './components/posts'
+import PostsContainer from './containers/posts'
 import createStore from './createStore'
 import voteReducer from './reducers/voteReducer'
 import { render } from 'react-dom';

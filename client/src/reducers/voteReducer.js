@@ -1,6 +1,10 @@
 //
 //
-// export default function voteReducer(state=[], action) {
+// export default function voteReducer(state=[
+//   up_vote: 0,
+//   down_vote: 0,
+//
+// ], action) {
 //   switch(action.type) {
 //     case 'UP_VOTE':
 //     return state + 1;
