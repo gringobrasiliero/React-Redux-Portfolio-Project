@@ -11,9 +11,10 @@ const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
 const Article = ({ id, title, description, url, publishedAt, urlToImage}) => (
   <div className="article" key={url}>
-<section>
+<section className="articleContainer">
 <img src={urlToImage} alt="" />
 <div className="content">
+
           <h2> <a href={url}>{title}</a></h2>
         <p> {description}</p>
 
