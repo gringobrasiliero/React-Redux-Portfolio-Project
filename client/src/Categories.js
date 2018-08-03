@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import CategoriesContainer from './components/categories'
 import SearchablePostsContainer from './components/searchablePostsContainer';
-import PostsContainer from './components/posts'
+import PostsContainer from './containers/posts'
 require('dotenv').config();
 
 

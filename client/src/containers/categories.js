@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Postlist from './posts';
-import Posts from './posts';
+import Postlist from '../components/posts/postList';
+import Posts from '../components/posts/postComponent';
 import { connect } from 'react-redux';
-import CategoriesList from './categoriesList'
-import Category from './category'
+import CategoriesList from '../components/categories/categoriesList'
+import Category from '../components/categories/category'
 
 
 

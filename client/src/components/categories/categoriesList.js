@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Postlist from './posts';
-import Posts from './posts';
+import Postlist from '../posts/postList';
+import Posts from '../posts/postComponent';
 import Category from './category'
 import { connect } from 'react-redux';
 
@@ -16,7 +16,7 @@ const CategoriesList = ({categories}) => {
 return (
 
 <div id="nav-bar">
- <ul id="catPosts">
+ <ul id="catPosts" >
       {renderCategories}
        </ul>
     </div>

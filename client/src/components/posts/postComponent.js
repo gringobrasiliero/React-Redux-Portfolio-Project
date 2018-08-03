@@ -1,5 +1,5 @@
 import React from 'react'
-import Vote from './votes';
+import Vote from '../votes';
 import { connect } from 'react-redux';
 
 const Post = ({ id, title, description, url, publishedAt, urlToImage, category_id}) => (

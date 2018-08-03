@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Categories from './categories';
+import Categories from '../containers/categories';
 import SearchablePostsContainer from './searchablePostsContainer';
 import { Link } from 'react-router-dom';
 
