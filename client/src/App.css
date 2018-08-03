@@ -9,11 +9,14 @@ margin-left: 250px;
 }
 
 .article img {
-  height: 150px;
+  height: 125px;
   width: 200px;
   float: left;
 }
 
+.articleContainer {
+  height: 150px;
+}
 
 .searchable-posts {
   color: black
