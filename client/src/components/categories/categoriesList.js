@@ -11,9 +11,12 @@ import { connect } from 'react-redux';
 
 const CategoriesList = (props) => {
 function listCategories() {
-  return props.categories.map(category => {
+
+return props.categories.map((category, index) => {
     return (
+      <div key={index}>
   <li><Link key={category.id} to={`/categories/${category.id}`} >{category.category}</Link></li>
+  </div>
 )
 })
 }

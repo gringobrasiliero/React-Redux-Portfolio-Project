@@ -13,7 +13,7 @@ import {LOADING_CATEGORIES, FETCH_CATEGORIES} from '../actions/categoryActions'
 
 export default function categoriesReducer(state = {
   loading: false,
-  categories: [],
+  categories: [{category: "ALL" }]
 
 }, action) {
 
