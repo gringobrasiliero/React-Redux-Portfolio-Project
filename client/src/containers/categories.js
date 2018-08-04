@@ -5,7 +5,7 @@ import Posts from '../components/posts/postComponent';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories/categoriesList'
 import {fetchCategories} from '../actions/categoryActions';
-
+import {bindActionCreators} from 'redux'
 
 
 
@@ -17,7 +17,7 @@ class CategoriesContainer extends Component {
     this.onLoadCategories = this.onLoadCategories.bind(this)
 
     this.state = {
-      categories: []
+    categories: []
     };
     // this.handleClick = this.handleClick.bind(this);
 
@@ -55,12 +55,13 @@ onLoadCategories() {
   // }
 
 
-
   componentDidMount() {
-    this.props.onFetchCategories();
+
+       console.log('in component did mount')
+       this.props.onFetchCategories();
 
 
-  }
+   }
 
 
 
@@ -81,15 +82,25 @@ render() {
 
 
 
+// function mapDispatchToProps(dispatch) {
+//   return {actions: bindActionCreators(actions, dispatch)}
+// }
 
-const mapStateToProps = state => ({
+
+const mapStateToProps = (state) => {
+  console.log('in map state to props')
+return{
   categories: state.categories,
-  users: state.users,
-  votes: state.votes,
-})
+  // users: state.users,
+  // votes: state.votes,
+}
+}
 
-const mapActionsToProps = {
+const mapActionsToProps = (dispatch, props) => {
+console.log("Mapping actions to props")
+return bindActionCreators({
   onFetchCategories: fetchCategories,
+}, dispatch);
 };
 
 

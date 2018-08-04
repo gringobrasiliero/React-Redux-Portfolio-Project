@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Categories from '../containers/categories';
+import CategoriesList from '../containers/categories';
 import SearchablePostsContainer from './searchablePostsContainer';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,6 @@ export default class Header extends Component {
 
             </ul>
 
-            <Categories />
           </header>
       </div>
     )
