@@ -25,7 +25,7 @@ require('dotenv').config();
 
 
 
-class App extends Component {
+export default class App extends Component {
 
 
 
@@ -45,18 +45,18 @@ class App extends Component {
   }
 }
 
-
-const mapStateToProps = state => ({
-  categories: state.categories,
-  users: state.users,
-  votes: state.votes,
-})
-
-const mapActionsToProps = {
-  onFetchCategories: fetchCategories
-};
-
-
-
-
-export default connect(mapStateToProps, mapActionsToProps)(App);
+//
+// const mapStateToProps = state => ({
+//   categories: state.categories,
+//   users: state.users,
+//   votes: state.votes,
+// })
+//
+// const mapActionsToProps = {
+//   onFetchCategories: fetchCategories
+// };
+//
+//
+//
+//
+// export default connect(mapStateToProps, mapActionsToProps)(App);
