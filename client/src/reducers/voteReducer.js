@@ -27,4 +27,3 @@ function render(){
 }
 
 // call the render function
-dispatch({ type: '@@INIT' })

@@ -9,15 +9,26 @@ import Login from './login';
 import Categories from './containers/categories';
 import Home from './Home';
 import PostsContainer from './containers/posts'
-import createStore from './createStore'
 import voteReducer from './reducers/voteReducer'
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './configureStore';
+import Upvote from './components/votes/Upvote'
+import {applyMiddleware, compose, combineReducers, createStore} from 'redux'
+import thunk from 'redux-thunk';
+
+import rootReducer from './reducers';
+
+
+const allStoreEnhancers = compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 
 
+const store = createStore(rootReducer,
+{
+  categories: [{category: "ALL" }],
 
+}, allStoreEnhancers
+ );
 
 
 
@@ -28,6 +39,7 @@ import store from './configureStore';
     </Provider>,
     document.getElementById('root')
   )
+
 
 
 

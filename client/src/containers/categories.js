@@ -4,13 +4,13 @@ import Postlist from '../components/posts/postList';
 import Posts from '../components/posts/postComponent';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories/categoriesList'
-import Category from '../components/categories/category'
+import {fetchCategories} from '../actions/categoryActions';
 
 
 
 
 
-export default class CategoriesContainer extends Component {
+class CategoriesContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -22,12 +22,12 @@ export default class CategoriesContainer extends Component {
 
   }
 
-  fetchCategories = () => {
-    fetch('/categories')
-      .then(response => response.json())
-      .then(categories => this.setState({categories}))
-
-  }
+  // fetchCategories = () => {
+  //   fetch('/categories')
+  //     .then(response => response.json())
+  //     .then(categories => this.setState({categories}))
+  //
+  // }
 
   fetchCatPosts = (e) => {
     e.preventDefault()
@@ -47,14 +47,15 @@ export default class CategoriesContainer extends Component {
 
 
   componentDidMount() {
-    this.fetchCategories();
+    this.props.onFetchCategories();
 
 
   }
 
-  componentWillUnmount() {
-      // document.addEventListener('click', this.handleClick, true);
-    }
+
+
+
+
 
 
 render() {
@@ -67,3 +68,25 @@ render() {
 
 
 }
+
+
+
+
+const mapStateToProps = state => ({
+  categories: state.categories,
+  users: state.users,
+  votes: state.votes,
+})
+
+const mapActionsToProps = {
+  onFetchCategories: fetchCategories
+};
+
+
+
+
+
+
+
+
+export default connect(mapStateToProps, mapActionsToProps)(CategoriesContainer);
