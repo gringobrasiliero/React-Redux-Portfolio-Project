@@ -24,7 +24,8 @@ const allStoreEnhancers = compose(applyMiddleware(thunk), window.__REDUX_DEVTOOL
 
 const store = createStore(rootReducer,
 {
-  categories: [{category: "ALL" }],
+  categories: [{category: "all", id: 0}],
+  votes: [],
 
 }, allStoreEnhancers
  );

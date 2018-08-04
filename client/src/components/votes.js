@@ -37,7 +37,7 @@ render() {
 <div id="votes">
 
 <button onClick={this.handleUpvote} bsstyle="primary" bssize="large">
-     Up Vote {store.getState().upvote}
+     Up Vote {store.state.upvote}
    </button>
    <button  bsstyle="primary" bssize="large">
         {this.state.score}
