@@ -76,11 +76,11 @@ fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiK
 }
 
 
-componentDidMount() {
-fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
-.then(response => response.json())
-.then(articles => this.setState({articles: articles.articles}));
-}
+// componentDidMount() {
+// fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
+// .then(response => response.json())
+// .then(articles => this.setState({articles: articles.articles}));
+// }
 
 
 render() {
