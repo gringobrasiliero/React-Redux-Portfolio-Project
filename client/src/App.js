@@ -10,12 +10,13 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
 import LoginForm from './components/users/LoginForm'
 import './index.css';
-
-
+import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux';
+import {applyMiddleware, compose, combineReducers, createStore} from 'redux'
 import Login from './login';
 import Home from './Home';
 import PostsContainer from './containers/posts'
-
+import {fetchCategories} from './actions/categoryActions';
 
 
 
@@ -44,4 +45,18 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapStateToProps = state => ({
+  categories: state.categories,
+  users: state.users,
+  votes: state.votes,
+})
+
+const mapActionsToProps = {
+  onFetchCategories: fetchCategories
+};
+
+
+
+
+export default connect(mapStateToProps, mapActionsToProps)(App);

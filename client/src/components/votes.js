@@ -14,8 +14,6 @@ export default class Vote extends Component {
   }
 
 handleUpvote = () => {
-
-// voteReducer(this, {type: 'UP_VOTE'})
 store.dispatch({type: 'UP_VOTE'})
 }
 
