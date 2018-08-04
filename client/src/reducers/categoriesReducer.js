@@ -16,15 +16,16 @@ export default function categoriesReducer(state = {
   categories: [],
 
 }, action) {
-  console.log(action)
+
   switch (action.type) {
     case 'LOADING_CATEGORIES':
+    console.log(action.type)
       return Object.assign({}, state, {loading: true})
 
 
     case 'FETCH_CATEGORIES':
-      return {loading: false, category: action.payload}
->>>>>>> tutorials in redux
+    console.log(action.payload)
+      return {loading: false, categories: action.payload}
 
     if(index == -1) {
       return [...state, ...action.payload]

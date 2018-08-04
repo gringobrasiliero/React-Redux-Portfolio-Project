@@ -8,20 +8,41 @@ import { connect } from 'react-redux';
 
 
 
-const CategoriesList = ({categories}) => {
-  const renderCategories = categories.map(category =>
-  <li><Link key={category.id} id={category.id} to={`/categories/${category.id}/posts`} onClick={this.handleClick} >{category.category}</Link></li>
-);
 
+const CategoriesList = (props) => {
+function listCategories() {
+  return props.categories.map(category => {
+    return (
+  <li><Link key={category.id} to={`/categories/${category.id}`} >{category.category}</Link></li>
+)
+})
+}
 return (
+    <div>
 
-<div id="nav-bar">
- <ul id="catPosts" >
-      {renderCategories}
-       </ul>
+      {listCategories()}
     </div>
-  );
-};
+  )
+}
+
+//
+// const CategoriesList = ({categories}) => {
+//   const renderCategories = categories.map(category =>
+//   <li><Link key={category.id} id={category.id} to={`/categories/${category.id}/posts`} onClick={this.handleClick} >{category.category}</Link></li>
+// );
+//
+// return (
+//
+// <div id="nav-bar">
+//  <ul id="catPosts" >
+//       {renderCategories}
+//        </ul>
+//     </div>
+//   );
+// };
+
+
+
 
 
 export default CategoriesList;
