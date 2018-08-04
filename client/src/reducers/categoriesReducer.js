@@ -6,14 +6,16 @@ export default function categoriesReducer(state = {
   categories: [],
 
 }, action) {
-  console.log(action)
+
   switch (action.type) {
     case 'LOADING_CATEGORIES':
+    console.log(action.type)
       return Object.assign({}, state, {loading: true})
 
 
     case 'FETCH_CATEGORIES':
-      return {loading: false, category: action.payload}
+    console.log(action.payload)
+      return {loading: false, categories: action.payload}
 
     default:
       return state;

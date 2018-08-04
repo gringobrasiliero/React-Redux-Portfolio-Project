@@ -4,8 +4,8 @@ export default function voteReducer(state={
   upvote: 0,
   downvote: 0,
 
-}, action) {
-  switch(action.type) {
+}, {type, payload}) {
+  switch(type) {
     case 'UP_VOTE':
     return {upvote: state.upvote + 1};
 
