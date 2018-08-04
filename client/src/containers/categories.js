@@ -13,6 +13,8 @@ import {fetchCategories} from '../actions/categoryActions';
 class CategoriesContainer extends Component {
   constructor(props) {
     super(props);
+    this.onFetchCategories = this.onFetchCategories.bind(this)
+    this.onLoadCategories = this.onLoadCategories.bind(this)
 
     this.state = {
       categories: []
@@ -22,6 +24,14 @@ class CategoriesContainer extends Component {
 
   }
 
+
+onFetchCategories() {
+  this.props.onFetchCategories();
+}
+
+onLoadCategories() {
+  this.props.onLoadCategories();
+}
   // fetchCategories = () => {
   //   fetch('/categories')
   //     .then(response => response.json())
@@ -61,7 +71,7 @@ class CategoriesContainer extends Component {
 render() {
   return(
     <div>
-<CategoriesList categories={this.state.categories} />
+<CategoriesList categories={this.props.categories} />
 </div>
   )
 }
@@ -79,7 +89,7 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
-  onFetchCategories: fetchCategories
+  onFetchCategories: fetchCategories,
 };
 
 
