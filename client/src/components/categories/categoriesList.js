@@ -14,7 +14,7 @@ let CategoriesList = (props, index) => {
  return props.categories.map((category) => {
     return (
 
-  <li><Link key={index} to={`/categories/{category.id}`} >{category.category}</Link></li>
+  <li><Link key={index} onClick={this.handleClick} to={`/categories/${category.id}`} >{category.category}</Link></li>
 
 )
 })
