@@ -15,7 +15,9 @@ export default class User extends Component {
       email: null,
 
     };
+    this.handleSignIn = this.handleSignIn.bind(this);
 
+  }
     signIn(username, password) {
      // This is where you would call Firebase, an API etc...
      // calling setState will re-render the entire app (efficiently!)
@@ -26,6 +28,28 @@ export default class User extends Component {
        }
      })
    }
+
+
+
+     handleSignIn(e) {
+       e.preventDefault();
+        this.props.store.dispatch({
+          type: 'SIGNIN',
+          user: {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+
+          }
+        })
+
+
+
+
+
+
+
+
 
    signOut() {
      // clear out user from state
