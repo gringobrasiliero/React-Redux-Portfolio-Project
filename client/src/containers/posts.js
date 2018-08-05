@@ -17,20 +17,39 @@ class PostsContainer extends Component {
     super(props);
 
     this.state = {
-      posts: []
+      status: 0,
+
+
     };
-    this.handleClick = this.handleClick.bind(this);
+    setTimeout(() => {
+      this.setState({
+        status: 1
+      });
+    },3000);
   }
+
+
+
+
   componentDidMount() {
-    console.log('in component did mount')
+    console.log('POST in component did mount')
     this.props.fetchPosts();
 
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("Should Component Update:", nextProps, nextState)
+    if (nextState.status === 1) {
+      return false;
+    }
+    return true;
+    }
+
+
 
 componentWillMount() {
     // add event listener for clicks
-  document.getElementById("catPosts").onclick = this.handleClick
+
   };
 
   componentWillUnmount() {
@@ -49,7 +68,7 @@ handleClick = (e) => {
     return(
 
 <div className='searchable-articles'>
-       <PostList posts={this.state.posts} />
+       <PostList posts={this.props.posts} />
        </div>
      )
   }

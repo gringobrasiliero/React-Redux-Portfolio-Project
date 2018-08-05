@@ -4,9 +4,8 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 
 export const fetchPosts = () => {
   return (dispatch) => {
-alert("HI!");
-    console.log(fetch('categories/1/posts'))
-    fetch('categories/1/posts')
+    console.log(fetch('/posts'))
+    fetch('/posts')
       .then(res => res.json())
       .then(posts => {
         dispatch({

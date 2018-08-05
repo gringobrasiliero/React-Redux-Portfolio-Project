@@ -15,7 +15,6 @@ const Post = ({ id, title, description, url, publishedAt, urlToImage, category_i
 
 
   </section>
-    <Vote  />
   <br />
     <br />
       </div>

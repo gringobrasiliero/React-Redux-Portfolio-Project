@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
 
   def index
-    @posts =  Category.find(params[:category_id]).posts
+    @posts =  Post.all
     json_response(@posts)
   end
 

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Categories from './containers/categories';
+import Category from './components/categories/category';
 import Header from './components/header';
 import Posts from './containers/posts';
 import Vote from './components/votes';
@@ -35,9 +36,11 @@ export default class App extends Component {
       <React.Fragment>
         <Route path="/" component={Header} />
            <Route exact path="/" component={Home} />
-         <Route exact path="/categories/:id/posts" component={PostsContainer} />
+              <Route exact path="/posts" component={PostsContainer} />
+           <Route exact path="/categories" component={Categories} />
+         <Route exact path="/categories/:id/posts" component={Category} />
       <Route exact path="/login" component={LoginForm} />
-      <Route exact path="/categories" component={Categories} />
+
 
          </React.Fragment>
         </Router>
