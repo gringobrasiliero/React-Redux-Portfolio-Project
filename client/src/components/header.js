@@ -18,7 +18,9 @@ export default class Header extends Component {
               <li><Link to={'/login'}>Log In</Link></li>
 
             </ul>
-
+            <ul id="nav-bar">
+            <CategoriesList categories={this.props.categories} />
+            </ul>
           </header>
       </div>
     )

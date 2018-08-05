@@ -14,19 +14,20 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import Upvote from './components/votes/Upvote'
 import {applyMiddleware, compose, combineReducers, createStore} from 'redux'
-import thunk from 'redux-thunk';
+import thunkMiddleware from 'redux-thunk';
+import logger from 'redux-logger';
 
 import rootReducer from './reducers';
 
 
-const allStoreEnhancers = compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const allStoreEnhancers = compose(applyMiddleware(logger, thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 
 
 const store = createStore(rootReducer,
 {
-  categories: [{category: "all", id: 0}],
-  votes: [],
+  categories: [{category: "ALL", id: 0 }],
+  votes: []
 
 }, allStoreEnhancers
  );

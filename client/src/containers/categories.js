@@ -11,27 +11,27 @@ import {bindActionCreators} from 'redux'
 
 
 class CategoriesContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.onFetchCategories = this.onFetchCategories.bind(this)
-    this.onLoadCategories = this.onLoadCategories.bind(this)
+  // constructor(props) {
+  //   super(props);
+  //   // this.onFetchCategories = this.onFetchCategories.bind(this)
+  //   // this.onLoadCategories = this.onLoadCategories.bind(this)
+  //
+  //   this.state = {
+  //   categories: []
+  //   };
+  //   // this.handleClick = this.handleClick.bind(this);
+  //
+  //
+  // }
 
-    this.state = {
-    categories: []
-    };
-    // this.handleClick = this.handleClick.bind(this);
-
-
-  }
-
-
-onFetchCategories() {
-  this.props.onFetchCategories();
-}
-
-onLoadCategories() {
-  this.props.onLoadCategories();
-}
+//
+// onFetchCategories() {
+//   this.props.onFetchCategories();
+// }
+//
+// onLoadCategories() {
+//   this.props.onLoadCategories();
+// }
   // fetchCategories = () => {
   //   fetch('/categories')
   //     .then(response => response.json())
@@ -58,14 +58,14 @@ onLoadCategories() {
   componentDidMount() {
 
        console.log('in component did mount')
-       this.props.onFetchCategories();
+       this.props.fetchCategories();
 
 
    }
 
 
 
-
+// let catList = this.props.categories.map( category => <li key={category.id}>{category.category}</li>)
 
 
 
@@ -96,12 +96,19 @@ return{
 }
 }
 
-const mapActionsToProps = (dispatch, props) => {
-console.log("Mapping actions to props")
-return bindActionCreators({
-  onFetchCategories: fetchCategories,
-}, dispatch);
-};
+function mapDispatchToProps(dispatch) {
+console.log("Mapped dispatch to props")
+  return {
+    fetchCategories: bindActionCreators(fetchCategories, dispatch),
+  }
+}
+
+// const mapActionsToProps = (dispatch, props) => {
+// console.log("Mapping actions to props")
+// return bindActionCreators({
+//   onFetchCategories: fetchCategories,
+// }, dispatch);
+// };
 
 
 
@@ -110,4 +117,4 @@ return bindActionCreators({
 
 
 
-export default connect(mapStateToProps, mapActionsToProps)(CategoriesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);
