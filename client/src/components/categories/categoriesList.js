@@ -20,21 +20,6 @@ let CategoriesList = (props, index) => {
 })
 }
 
-//
-// const CategoriesList = ({categories}) => {
-//   const renderCategories = categories.map(category =>
-//   <li><Link key={category.id} id={category.id} to={`/categories/${category.id}/posts`} onClick={this.handleClick} >{category.category}</Link></li>
-// );
-//
-// return (
-//
-// <div id="nav-bar">
-//  <ul id="catPosts" >
-//       {renderCategories}
-//        </ul>
-//     </div>
-//   );
-// };
 
 
 
