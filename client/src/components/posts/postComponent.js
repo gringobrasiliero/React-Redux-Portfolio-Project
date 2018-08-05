@@ -1,16 +1,16 @@
 import React from 'react'
 import Vote from '../votes';
-import { connect } from 'react-redux';
 
-const Post = ({ id, title, description, url, publishedAt, urlToImage, category_id}) => (
-  <div className="post" key={id}>
-<img src={urlToImage} alt="" />
+
+const Post = (props) => (
+  <div className="post" key={props.id}>
+<img src={props.urlToImage} alt="" />
   <section>
 
   <div className="content">
-            <h2> <a href={url}>{title}</a></h2>
-          <p> {description}</p>
-<h1>{category_id}</h1>
+            <h2> <a href={props.url}>{props.title}</a></h2>
+          <p> {props.description}</p>
+<h1>{props.category_id}</h1>
                 </div>
 
 
@@ -19,7 +19,4 @@ const Post = ({ id, title, description, url, publishedAt, urlToImage, category_i
     <br />
       </div>
 )
-const mapStateToProps = (state) => {
-  return {posts: state.posts}
-}
-export default connect(mapStateToProps)(Post);
+export default Post;
