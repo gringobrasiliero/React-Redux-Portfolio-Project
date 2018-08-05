@@ -27,8 +27,8 @@ const allStoreEnhancers = compose(applyMiddleware(logger, thunkMiddleware), wind
 const store = createStore(rootReducer,
 {
   categories: [],
-  votes: []
-
+  votes: [],
+  posts: []
 }, allStoreEnhancers
  );
 
