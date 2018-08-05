@@ -1,4 +1,7 @@
 <<<<<<< master
+<<<<<<< master
+=======
+>>>>>>> Login form turned to stateless
 import React from 'react';
 
 const LoginForm = (props) => (
@@ -11,6 +14,7 @@ const LoginForm = (props) => (
 )
 
 export default LoginForm;
+<<<<<<< master
 =======
 import React, { Component } from 'react';
 
@@ -58,3 +62,5 @@ export default class LoginForm extends React.Component {
 
 }
 >>>>>>> Organized all files
+=======
+>>>>>>> Login form turned to stateless
