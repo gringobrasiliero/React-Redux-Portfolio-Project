@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< master
-<<<<<<< master
-=======
+
 import { Link } from 'react-router-dom';
 import Postlist from '../posts/postList';
 import Posts from '../posts/postComponent';
@@ -99,6 +97,3 @@ function mapDispatchToProps(dispatch) {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Category);
->>>>>>> Posts and Categories loaded from redux store
-=======
->>>>>>> This needs to be stateless
