@@ -1,10 +1,12 @@
-export const FETCH_POSTS = 'posts:fetchPosts';
+export const FETCH_POSTS = 'FETCH_POSTS';
 
 
 
 export const fetchPosts = () => {
   return (dispatch) => {
-    fetch(`/categories/${e.target.getAttribute('id')}/posts`)
+alert("HI!");
+    console.log(fetch('categories/1/posts'))
+    fetch('categories/1/posts')
       .then(res => res.json())
       .then(posts => {
         dispatch({

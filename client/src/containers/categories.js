@@ -74,6 +74,8 @@ componentWillUnmount() {
           <ul id="nav-bar">
           <CategoriesList categories={this.props.categories} />
           </ul>
+
+        
        </div>
      )
    }
