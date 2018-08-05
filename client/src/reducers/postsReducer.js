@@ -1,8 +1,8 @@
 import { FETCH_POSTS} from '../actions/posts-actions'
+import initialState from './initialState';
 
-let initialState = []
 
-export default (state = initialState, action) => {
+export default (state = initialState.posts, action) => {
   switch(action.type) {
 
     case FETCH_POSTS:
