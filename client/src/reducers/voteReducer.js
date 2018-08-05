@@ -7,13 +7,13 @@ export default function voteReducer(state={
 }, {type, payload}) {
   switch(type) {
     case 'UP_VOTE':
-    return {upvote: state.upvote + 1};
+      return {upvote: state.upvote + 1};
 
     case 'DOWN_VOTE':
-    return {downvote: state.downvote + 1};
+      return {downvote: state.downvote + 1};
 
     default:
-    return state;
+      return state;
   }
 }
 
@@ -25,5 +25,3 @@ function dispatch(action){
 function render(){
     document.setInnerHTML = state
 }
-
-// call the render function
