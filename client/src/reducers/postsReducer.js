@@ -1,3 +1,4 @@
+<<<<<<< master
 import { FETCH_POSTS} from '../actions/posts-actions'
 import initialState from './initialState';
 
@@ -15,3 +16,5 @@ export default (state = initialState.posts, action) => {
       return state
   }
 }
+=======
+>>>>>>> Component will update.
