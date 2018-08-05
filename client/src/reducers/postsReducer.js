@@ -22,9 +22,15 @@ export default (state = initialState.posts, action) => {
   switch(action.type) {
 
     case FETCH_POSTS:
-      return [...state, ...action.payload]
+    let index = state.findIndex(el => el.post_id === action.payload.post_id);
 
+<<<<<<< master
 >>>>>>> Categories will no longer duplicate.
+=======
+    if(index === -1) {
+      return [...state, ...action.payload];
+}
+>>>>>>> Prevent repeated posts from showing on page
     default:
       return state
   }
