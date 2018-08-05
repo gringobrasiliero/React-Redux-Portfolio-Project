@@ -12,11 +12,14 @@ export default (state = initialState.categories, action) => {
 import {LOADING_CATEGORIES, FETCH_CATEGORIES} from '../actions/categoryActions'
 =======
 import {LOAD_CATEGORIES, FETCH_CATEGORIES} from '../actions/categoryActions'
+<<<<<<< master
 >>>>>>> Component will update.
+=======
+import initialState from './initialState';
+>>>>>>> Put initial state into one file.
 
-let initialState = []
 
-export default (state = initialState, action) => {
+export default (state = initialState.categories, action) => {
   switch(action.type) {
     case FETCH_CATEGORIES:
     let index = state.findIndex(el => el.category_id == action.payload.category_id);
