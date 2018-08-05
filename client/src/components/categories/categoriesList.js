@@ -6,25 +6,18 @@ import Category from './category'
 import { connect } from 'react-redux';
 
 
+// let catList = this.props.categories.map( category => <li key={category.id}>{category.category}</li>)
 
 
-const CategoriesList = (props, index) => {
-function listCategories() {
-return props.categories.map((category) => {
+let CategoriesList = (props, index) => {
+
+ return props.categories.map((category) => {
     return (
 
-      <div key={index}>
-  <li><Link key={category.id} to={`/categories/${category.id}`} >{category.category}</Link></li>
-  </div>
+  <li><Link key={index} to={`/categories/{category.id}`} >{category.category}</Link></li>
+
 )
 })
-}
-return (
-    <div>
-
-      {listCategories()}
-    </div>
-  )
 }
 
 //

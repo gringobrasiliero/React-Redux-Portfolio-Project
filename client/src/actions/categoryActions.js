@@ -1,7 +1,5 @@
-<<<<<<< master
-
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
-export const FETCH_CATPOSTS = 'FETCH_CATPOSTS';
+
 
 
 
@@ -18,18 +16,14 @@ export const fetchCategories = () => {
   }
 }
 
-export const fetchCatPosts = () => {
-  return (dispatch) => {
-    fetch(`/categories/:id/posts`)
-      .then(res => res.json())
-      .then(catPosts => {
-        dispatch({
-          type: FETCH_CATPOSTS,
-          payload: catPosts
-        })
-      })
-=======
-export const FETCH_CATEGORIES = 'categories:fetchCategories';
+
+
+
+
+
+
+
+
 
 // export function fetchCategories() {
 // console.log("Fetching Categories")
@@ -42,19 +36,22 @@ export const FETCH_CATEGORIES = 'categories:fetchCategories';
 // }
 
 
-
-export function fetchCategories() {
-console.log("Fetching Categories")
-  return function(dispatch){
-    dispatch({type: 'LOADING_CATEGORIES'})
-    return fetch('/categories.json')
-      .then(res => res.json())
-      .then(responseJson => dispatch({type: 'FETCH_CATEGORIES', payload: responseJson})
-    )
-
-  }
-}
-
+//
+// export function fetchCategories() {
+// console.log("Fetching Categories")
+//   return function(dispatch){
+//     dispatch({type: 'LOADING_CATEGORIES'})
+//     return fetch('/categories')
+//       .then(res => {
+// console.log(res.json());
+//       return res.json()
+//       }).then(responseJson => {
+//         dispatch({type: 'FETCH_CATEGORIES', payload: responseJson.categories})
+//     })
+//
+//   }
+// }
+//
 
 
 // export function fetchCategories() {
