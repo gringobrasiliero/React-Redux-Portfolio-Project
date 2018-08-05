@@ -6,6 +6,7 @@ export const fetchPosts = () => {
   return (dispatch) => {
 <<<<<<< master
 <<<<<<< master
+<<<<<<< master
     console.log(fetch('/posts'))
     fetch('/posts')
 =======
@@ -16,6 +17,10 @@ alert("HI!");
     console.log(fetch('categories/1/posts'))
     fetch('categories/1/posts')
 >>>>>>> Categories will no longer duplicate.
+=======
+    console.log(fetch('/posts'))
+    fetch('/posts')
+>>>>>>> Posts and Categories loaded from redux store
       .then(res => res.json())
       .then(posts => {
         dispatch({
