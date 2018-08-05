@@ -5,9 +5,14 @@ import PostList from '../components/posts/postList'
 import CategoriesList from '../components/categories/categoriesList'
 import ReactDOM from 'react-dom';
 import Category from './categories'
+import {fetchPosts} from '../actions/posts-actions';
+import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux';
 
 
-export default class PostsContainer extends Component {
+
+
+class PostsContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -16,7 +21,11 @@ export default class PostsContainer extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
+  componentDidMount() {
+    console.log('in component did mount')
+    this.props.fetchPosts();
 
+  }
 
 
 componentWillMount() {
@@ -31,15 +40,10 @@ componentWillMount() {
 
 handleClick = (e) => {
     e.preventDefault();
-    fetch(`/categories/${e.target.getAttribute('id')}/posts`)
-      .then(response => response.json())
-      .then(posts => this.setState({posts}));
+
 }
 
-    componentDidMount() {
-      // this.fetchPosts()
-this.handleClick
-}
+
 
   render() {
     return(
@@ -51,3 +55,22 @@ this.handleClick
   }
 
   }
+
+  const mapStateToProps = (state) => {
+    console.log('in map state to props')
+    return{
+      categories: state.categories,
+      posts: state.posts
+    // users: state.users,
+    // votes: state.votes,
+    }
+  }
+  function mapDispatchToProps(dispatch) {
+    console.log("Mapped dispatch to props")
+    return {
+      fetchPosts: bindActionCreators(fetchPosts, dispatch),
+    }
+  }
+
+
+  export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
