@@ -24,7 +24,7 @@ import {fetchCategories} from './actions/categoryActions';
 import SearchablePostsContainer from './components/searchablePostsContainer';
 require('dotenv').config();
 
-
+  
 
 export default class App extends Component {
 
