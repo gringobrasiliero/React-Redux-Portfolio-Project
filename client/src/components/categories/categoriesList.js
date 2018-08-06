@@ -10,7 +10,7 @@ const CategoriesList = (props) => {
  return props.categories.map((category) => {
     return (
 
-  <li key={category.id}><Link  id="catPosts" onClick={this.handleClick} to={`/categories/${category.id}`} >{category.category}</Link></li>
+  <li id="catPosts" key={category.id}><Link  id={category.id} onClick={this.handleClick} to={`#`} >{category.category}</Link></li>
 
 )
 })

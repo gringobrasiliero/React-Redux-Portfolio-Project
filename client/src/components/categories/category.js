@@ -6,7 +6,6 @@ import Posts from '../posts/postComponent';
 
 import { connect } from 'react-redux';
 
-import {bindActionCreators} from 'redux';
 
 import CategoriesList from './categoriesList';
 

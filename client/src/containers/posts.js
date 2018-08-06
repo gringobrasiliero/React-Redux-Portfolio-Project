@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 class PostsContainer extends Component {
   constructor(props) {
     super(props);
-
+  this.handleClick = this.handleClick.bind(this);
     this.state = {
       status: 0,
 
@@ -28,12 +28,16 @@ class PostsContainer extends Component {
     },3000);
   }
 
+  // document.getElementById("catPosts").onclick = this.handleClick
 
 
 
   componentDidMount() {
     console.log('POST in component did mount')
     this.props.fetchPosts();
+    document.getElementById("catPosts").onclick = this.handleClick
+
+    document.addEventListener('onClick', this.handleClick, false);
 
   }
 
@@ -49,13 +53,18 @@ class PostsContainer extends Component {
 
   componentWillUnmount() {
       // add event listener for clicks
-  document.getElementById("catPosts").onclick = this.handleClick
+      document.getElementById("catPosts").onclick = this.handleClick
+        document.addEventListener('onClick', this.handleClick, false);
     };
 
-handleClick = (e) => {
-    e.preventDefault();
+    handleClick(event) {
+        event.preventDefault();
+        alert("hiiiiiiiiiiiiiiiiiii");
+        fetch(`categories/${event.target.id}/posts`)
+          .then(response => response.json())
+          .then(posts => this.setState({posts}));
 
-}
+    }
 
 
 
