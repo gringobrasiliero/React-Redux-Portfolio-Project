@@ -1,5 +1,7 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux'
+import {newCategory} from '../actions/categoryActions'
 // import Articles from './articles';
 // import ArticleLists from './articles';
 import Vote from './votes';
@@ -34,7 +36,7 @@ const ArticleList = ({ articles, index }) => (
 
 
 
-export default class SearchableArticlesContainer extends React.Component {
+ class SearchableArticlesContainer extends React.Component {
 constructor(props) {
   super(props)
 
@@ -95,4 +97,19 @@ render() {
   )
 }
 
+
 } //End of Class
+
+function mapDispatchToProps(dispatch) {
+console.log("Mapped dispatch to props")
+  return {
+    newCategory: bindActionCreators(newCategory, dispatch),
+
+
+  }
+}
+
+
+
+
+export default connect(null, mapDispatchToProps)(SearchableArticlesContainer);
