@@ -18,6 +18,7 @@ import Login from './login';
 import Home from './Home';
 import PostsContainer from './containers/posts'
 import {fetchCategories} from './actions/categoryActions';
+import CategoriesContainer from './containers/categories';
 
 
 
@@ -37,8 +38,8 @@ export default class App extends Component {
         <Route path="/" component={Header} />
            <Route exact path="/" component={Home} />
               <Route exact path="/posts" component={PostsContainer} />
-           <Route exact path="/categories" component={Categories} />
-         <Route exact path="/categories/:id/posts" component={Category} />
+           <Route exact path="/categories" component={CategoriesContainer} />
+         <Route exact path="/categories/:id" component={Category} />
       <Route exact path="/login" component={LoginForm} />
 
 

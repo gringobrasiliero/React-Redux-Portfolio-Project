@@ -47,11 +47,6 @@ class PostsContainer extends Component {
 
 
 
-componentWillMount() {
-    // add event listener for clicks
-
-  };
-
   componentWillUnmount() {
       // add event listener for clicks
   document.getElementById("catPosts").onclick = this.handleClick
@@ -78,7 +73,6 @@ handleClick = (e) => {
   const mapStateToProps = (state) => {
     console.log('in map state to props')
     return{
-      categories: state.categories,
       posts: state.posts
     // users: state.users,
     // votes: state.votes,

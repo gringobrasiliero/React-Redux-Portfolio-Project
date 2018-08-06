@@ -4,34 +4,40 @@ import Postlist from '../components/posts/postList';
 import Posts from '../components/posts/postComponent';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories/categoriesList'
-import {fetchCategories} from '../actions/categoryActions';
+import {fetchCategories, fetchCatPosts} from '../actions/categoryActions';
 import {bindActionCreators} from 'redux'
+import Category from '../components/categories/category'
 
 
 
 
 class CategoriesContainer extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   // this.onFetchCategories = this.onFetchCategories.bind(this)
-  //   // this.onLoadCategories = this.onLoadCategories.bind(this)
-  //
-  //   this.state = {
-  //   categories: []
-  //   };
-  //   // this.handleClick = this.handleClick.bind(this);
-  //
-  //
-  // }
+  constructor(props) {
+    super(props);
+    // this.onFetchCategories = this.onFetchCategories.bind(this)
+    // this.onLoadCategories = this.onLoadCategories.bind(this)
+
+    this.state = {
+    categories: []
+    };
+
+
+  }
 
 //
 // onFetchCategories() {
 //   this.props.onFetchCategories();
 // }
 //
+// onFetchCatPosts() {
+//   this.props.onFetchCatPosts();
+// }
+//
 // onLoadCategories() {
 //   this.props.onLoadCategories();
 // }
+
+  //
   // fetchCategories = () => {
   //   fetch('/categories')
   //     .then(response => response.json())
@@ -39,13 +45,13 @@ class CategoriesContainer extends Component {
   //
   // }
 
-  fetchCatPosts = (e) => {
-    e.preventDefault()
-    fetch(`categories/${this.id}/posts`)
-      .then(response => response.json())
-      .then(posts => this.setState({posts}));
-
-  }
+  // fetchCatPosts = (e) => {
+  //   e.preventDefault()
+  //   fetch(`categories/${this.id}/posts`)
+  //     .then(response => response.json())
+  //     .then(posts => this.setState({posts}));
+  //
+  // }
 
 
   // handleClick(event) {
@@ -56,16 +62,42 @@ class CategoriesContainer extends Component {
 
 
   componentDidMount() {
-
        console.log('in component did mount')
        this.props.fetchCategories();
+   }
 
+   // componentDidMount() {
+   //   console.log('in component did mount')
+   //   this.props.fetchCatPosts();
+   //
+   // }
+
+   componentWillReceiveProps(nextProps) {
+     console.log("Component will recieve props", nextProps)
+   }
+
+   shouldComponentUpdate(nextProps, nextState) {
+     console.log("Should Component Update:", nextProps, nextState)
+     if (nextState.status === 1) {
+       return false;
+     }
+     return true;
+     }
+
+   componentWillUpdate(nextProps, nextState) {
+     console.log("Component Will Update:", nextProps, nextState)
+   }
+
+   componentDidUpdate(prevProps, prevState) {
+   console.log("Component Did Update:", prevProps, prevState)
 
    }
 
+   componentWillUnmount() {
+   console.log("Component will unmount")
+   }
 
 
-// let catList = this.props.categories.map( category => <li key={category.id}>{category.category}</li>)
 
 
 
@@ -82,11 +114,6 @@ render() {
 
 
 
-// function mapDispatchToProps(dispatch) {
-//   return {actions: bindActionCreators(actions, dispatch)}
-// }
-
-
 const mapStateToProps = (state) => {
   console.log('in map state to props')
 return{
@@ -100,15 +127,11 @@ function mapDispatchToProps(dispatch) {
 console.log("Mapped dispatch to props")
   return {
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
+    fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
+
   }
 }
 
-// const mapActionsToProps = (dispatch, props) => {
-// console.log("Mapping actions to props")
-// return bindActionCreators({
-//   onFetchCategories: fetchCategories,
-// }, dispatch);
-// };
 
 
 

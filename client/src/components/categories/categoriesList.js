@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Postlist from '../posts/postList';
-import Posts from '../posts/postComponent';
-import Category from './category'
-import { connect } from 'react-redux';
 
 
 // let catList = this.props.categories.map( category => <li key={category.id}>{category.category}</li>)
