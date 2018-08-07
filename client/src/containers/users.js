@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LoginForm from './components/users/LoginForm.js'
+import LoginForm from '../components/users/LoginForm.js'
 
 
 
@@ -18,6 +18,14 @@ export default class User extends Component {
     this.handleSignIn = this.handleSignIn.bind(this);
 
   }
+
+
+
+
+
+
+
+
     signIn(username, password) {
      // This is where you would call Firebase, an API etc...
      // calling setState will re-render the entire app (efficiently!)
@@ -42,6 +50,7 @@ export default class User extends Component {
 
           }
         })
+      }
 
 
 
@@ -50,28 +59,18 @@ export default class User extends Component {
 
 
 
-
-   signOut() {
-     // clear out user from state
-     this.setState({user: null})
-   }
+   // signOut() {
+   //   // clear out user from state
+   //   this.setState({user: null})
+   // }
 
    render() {
 
      return (
        <div>
          <h1>My cool App</h1>
-         {
-           (this.state.user) ?
-             <Welcome
-              user={this.state.user}
-              onSignOut={this.signOut.bind(this)}
-             />
-           :
-             <LoginForm
-              onSignIn={this.signIn.bind(this)}
-             />
-         }
+
+
        </div>
      )
 
