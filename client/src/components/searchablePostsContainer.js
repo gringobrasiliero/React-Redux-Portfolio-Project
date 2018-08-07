@@ -29,7 +29,7 @@ const Article = ({ id, title, description, url, publishedAt, urlToImage, categor
       <input type="hidden" name="urlToImage" value={urlToImage} />
       <input type="hidden" name="category_id" value={category} />
 
-      <input type="submit" />
+      <input type="submit" value="Neddit" />
 
     </form>
 
