@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
-import {newCategory} from '../actions/categoryActions'
+import {newCategory} from '../actions/category-actions'
 // import Articles from './articles';
 // import ArticleLists from './articles';
 import Vote from './votes';
@@ -71,6 +71,8 @@ handleChange =(e) => {
 handleSubmit(event) {
     event.preventDefault();
 
+    this.props.newCategory("/categories", {category: this.state.searchCat});
+
 fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
 .then(response => response.json())
   .then(articles => this.setState({articles: articles.articles})).then(console.log(this.state.articles));
@@ -83,13 +85,14 @@ fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiK
 .then(articles => this.setState({articles: articles.articles}));
 }
 
+// <input type='text' value={this.state.searchCat} onChange={this.handleChange} />
 
 render() {
   return(
     <div className='searchable-articles'>
 
-     <form onSubmit={this.handleSubmit}>
-        <input type='text' value={this.state.searchCat} onChange={this.handleChange} />
+    <form onSubmit={ (event) => this.handleSubmit(event) }>
+        <input type="text" onChange={(event) => this.handleChange(event)} value={this.state.text} />
         <input type='submit' value="Submit" />
       </form>
  <ArticleList articles={this.state.articles} />

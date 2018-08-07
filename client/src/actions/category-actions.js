@@ -33,9 +33,9 @@ export const fetchCatPosts = () => {
 }
 
 
-export const newCategory = (url = "", data = {}) => {
+export const newCategory = (url = "/categories", data = {}) => {
   return (dispatch) => {
-    fetch(`/categories/:id/posts`, {
+    fetch(url, {
       method: "POST",
       headers: {
           "Content-Type": "application/json; charset=utf-8",
