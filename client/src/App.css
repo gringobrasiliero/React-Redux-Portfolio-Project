@@ -82,6 +82,9 @@ li a:hover {
   border: solid;
 }
 
+#catForm {
+  text-transform: capitalize;
+}
 
 .article {
   border: solid;

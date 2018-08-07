@@ -17,7 +17,7 @@ import {applyMiddleware, compose, combineReducers, createStore} from 'redux'
 import Login from './login';
 import Home from './Home';
 import PostsContainer from './containers/posts'
-import {fetchCategories} from './actions/categoryActions';
+import {fetchCategories} from './actions/category-actions';
 import CategoriesContainer from './containers/categories';
 
 
@@ -39,7 +39,7 @@ export default class App extends Component {
            <Route exact path="/" component={Home} />
               <Route exact path="/posts" component={PostsContainer} />
            <Route exact path="/categories" component={CategoriesContainer} />
-         <Route exact path="/categories/:id" component={Category} />
+         <Route exact path="/categories/:id" component={CategoriesContainer} />
       <Route exact path="/login" component={LoginForm} />
 
 

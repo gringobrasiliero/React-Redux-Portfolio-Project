@@ -91,10 +91,12 @@ render() {
   return(
     <div className='searchable-articles'>
 
+<h3><strong> Search for new Posts </strong>
     <form onSubmit={ (event) => this.handleSubmit(event) }>
-        <input type="text" onChange={(event) => this.handleChange(event)} value={this.state.text} />
+        <input type="text" id="catForm" onChange={(event) => this.handleChange(event)} value={this.state.text} />
         <input type='submit' value="Submit" />
       </form>
+      </h3>
  <ArticleList articles={this.state.articles} />
       </div>
   )
