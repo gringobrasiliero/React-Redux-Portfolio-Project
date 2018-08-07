@@ -11,7 +11,7 @@ const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(process.env.REACT_APP_NEWS_SECRET_KEY);
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
-const Article = ({ id, title, description, url, publishedAt, urlToImage}) => (
+const Article = ({ id, title, description, url, publishedAt, urlToImage, category}) => (
   <div className="article" key={url}>
 <section className="articleContainer">
 <img src={urlToImage} alt="" />
@@ -22,10 +22,24 @@ const Article = ({ id, title, description, url, publishedAt, urlToImage}) => (
 
               </div>
 
+    <form onSubmit={ (event) => this.handleNeddit(event)}>
+      <input type="hidden" name="title" value={title} />
+      <input type="hidden" name="description" value={description} />
+      <input type="hidden" name="url" value={url} />
+      <input type="hidden" name="urlToImage" value={urlToImage} />
+      <input type="hidden" name="category_id" value={category} />
+
+      <input type="submit" />
+
+    </form>
+
 </section>
 <br />
       </div>
 )
+
+
+
 
 const ArticleList = ({ articles, index }) => (
   <div className="article-list">
@@ -47,6 +61,7 @@ constructor(props) {
   }
   this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+            this.handleNeddit = this.handleNeddit.bind(this);
 
 }
 
@@ -77,6 +92,15 @@ fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiK
 .then(response => response.json())
   .then(articles => this.setState({articles: articles.articles})).then(console.log(this.state.articles));
 }
+
+handleNeddit(event) {
+    event.preventDefault();
+
+    this.props.newPost("/posts", {post: this.state.post});
+
+
+}
+
 
 
 componentDidMount() {
