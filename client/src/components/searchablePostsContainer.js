@@ -4,17 +4,18 @@ import {bindActionCreators} from 'redux'
 import {newCategory} from '../actions/category-actions'
 // import Articles from './articles';
 // import ArticleLists from './articles';
-import Vote from './votes';
+// import Vote from './votes';
+import {newPost} from '../actions/posts-actions'
 
 const NewsAPI = require('newsapi');
 
 const newsapi = new NewsAPI(process.env.REACT_APP_NEWS_SECRET_KEY);
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
-const Article = ({ id, title, description, url, publishedAt, urlToImage, category}) => (
+const Article = ({ id, title, description, url, publishedAt, urlToImage,}) => (
   <div className="article" key={url}>
 <section className="articleContainer">
-<img src={urlToImage} alt="" />
+<img src={urlToImage} alt={title} />
 <div className="content">
 
           <h2> <a href={url}>{title}</a></h2>
@@ -23,13 +24,13 @@ const Article = ({ id, title, description, url, publishedAt, urlToImage, categor
               </div>
 
     <form onSubmit={ (event) => this.handleNeddit(event)}>
-      <input type="hidden" name="title" value={title} />
-      <input type="hidden" name="description" value={description} />
-      <input type="hidden" name="url" value={url} />
-      <input type="hidden" name="urlToImage" value={urlToImage} />
-      <input type="hidden" name="category_id" value={category} />
+      <input type="hidden" id="title" name="title" value={title} />
+      <input type="hidden" id="description" name="description" value={description} />
+      <input type="hidden" id="url" name="url" value={url} />
+      <input type="hidden" name="urlToImage" id="urlToImage" value={urlToImage} />
 
-      <input type="submit" value="Neddit" />
+
+      <input type="submit" value="Submit" />
 
     </form>
 
@@ -37,6 +38,7 @@ const Article = ({ id, title, description, url, publishedAt, urlToImage, categor
 <br />
       </div>
 )
+
 
 
 
@@ -63,6 +65,7 @@ constructor(props) {
       this.handleSubmit = this.handleSubmit.bind(this);
             this.handleNeddit = this.handleNeddit.bind(this);
 
+
 }
 
 searchArticles = (e) => {
@@ -83,11 +86,12 @@ handleChange =(e) => {
     searchCat: e.target.value
   })
 }
+
+
 handleSubmit(event) {
     event.preventDefault();
 
     this.props.newCategory("/categories", {category: this.state.searchCat});
-
 fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
 .then(response => response.json())
   .then(articles => this.setState({articles: articles.articles})).then(console.log(this.state.articles));
@@ -95,10 +99,8 @@ fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiK
 
 handleNeddit(event) {
     event.preventDefault();
-
-    this.props.newPost("/posts", {post: this.state.post});
-
-
+    alert("Neddit");
+    this.props.newPost("/posts/new", {post: this.state.post});
 }
 
 
@@ -132,6 +134,7 @@ render() {
 function mapDispatchToProps(dispatch) {
 console.log("Mapped dispatch to props")
   return {
+    newPost: bindActionCreators(newPost, dispatch),
     newCategory: bindActionCreators(newCategory, dispatch),
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import voteReducer from '../reducers/index'
+// import voteReducer from '../reducers/index'
 import { store } from '../createStore'
 
 export default class Vote extends Component {

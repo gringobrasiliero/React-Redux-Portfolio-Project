@@ -1,12 +1,12 @@
 import React from 'react';
 import './index.css';
 import App from './App';
-import Header from './components/header';
-import Login from './login';
-import Home from './Home';
+// import Header from './components/header';
+// import Login from './login';
+// import Home from './Home';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import {applyMiddleware, compose, combineReducers, createStore} from 'redux'
+import {applyMiddleware, compose, createStore} from 'redux'
 import thunkMiddleware from 'redux-thunk';
 import logger from 'redux-logger';
 

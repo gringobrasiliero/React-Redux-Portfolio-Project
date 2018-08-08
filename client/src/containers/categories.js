@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Postlist from '../components/posts/postList';
-import Posts from '../components/posts/postComponent';
+// import { Link } from 'react-router-dom';
+// import Postlist from '../components/posts/postList';
+// import Posts from '../components/posts/postComponent';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories/categoriesList'
-import {fetchCategories, fetchCatPosts} from '../actions/categoryActions';
+import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {bindActionCreators} from 'redux'
-import Category from '../components/categories/category'
+// import Category from '../components/categories/category'
 
 
 
@@ -16,6 +16,7 @@ class CategoriesContainer extends Component {
     super(props);
     // this.onFetchCategories = this.onFetchCategories.bind(this)
     // this.onLoadCategories = this.onLoadCategories.bind(this)
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
     categories: []
@@ -24,34 +25,17 @@ class CategoriesContainer extends Component {
 
   }
 
-//
-// onFetchCategories() {
-//   this.props.onFetchCategories();
-// }
-//
-// onFetchCatPosts() {
-//   this.props.onFetchCatPosts();
-// }
-//
-// onLoadCategories() {
-//   this.props.onLoadCategories();
-// }
+  handleClick(event) {
+      event.preventDefault();
+      alert("Cat hiiiiiiiiiiiiiiiiiii");
+      this.setState({status: 0})
+      this.props.fetchCatPosts();
 
-  //
-  // fetchCategories = () => {
-  //   fetch('/categories')
-  //     .then(response => response.json())
-  //     .then(categories => this.setState({categories}))
-  //
-  // }
+      fetch(`categories/${event.target.id}/posts`)
+        .then(response => response.json())
+        .then(posts => this.setState({posts}));
 
-  // fetchCatPosts = (e) => {
-  //   e.preventDefault()
-  //   fetch(`categories/${this.id}/posts`)
-  //     .then(response => response.json())
-  //     .then(posts => this.setState({posts}));
-  //
-  // }
+  }
 
 
   // handleClick(event) {
@@ -61,9 +45,18 @@ class CategoriesContainer extends Component {
   // }
 
 
+
+
+
+
+
+
+
   componentDidMount() {
        console.log('in component did mount')
        this.props.fetchCategories();
+
+
    }
 
    // componentDidMount() {
@@ -74,6 +67,7 @@ class CategoriesContainer extends Component {
 
    componentWillReceiveProps(nextProps) {
      console.log("Component will recieve props", nextProps)
+
    }
 
    shouldComponentUpdate(nextProps, nextState) {
@@ -118,6 +112,7 @@ const mapStateToProps = (state) => {
   console.log('in map state to props')
 return{
   categories: state.categories,
+  posts: state.posts
   // users: state.users,
   // votes: state.votes,
 }

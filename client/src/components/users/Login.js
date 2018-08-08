@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const LoginForm = (props) => (
+const Login = (props) => (
   <div>
      <h2>Login</h2>
      <form>
@@ -13,4 +13,4 @@ const LoginForm = (props) => (
     </div>
 )
 
-export default LoginForm;
+export default Login;

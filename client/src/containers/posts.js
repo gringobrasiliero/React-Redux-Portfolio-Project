@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Vote from '../components/votes';
-import Post from '../components/posts/postComponent'
+// import Vote from '../components/votes';
+// import Post from '../components/posts/postComponent'
 import PostList from '../components/posts/postList'
-import CategoriesList from '../components/categories/categoriesList'
-import ReactDOM from 'react-dom';
-import Category from './categories'
+// import CategoriesList from '../components/categories/categoriesList'
+// import ReactDOM from 'react-dom';
+// import Category from './categories'
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';

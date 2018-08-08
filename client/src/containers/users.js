@@ -1,29 +1,39 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LoginForm from '../components/users/LoginForm.js'
+// import Login from '../components/users/Login.js';
+import signup from '../components/users/Signup.js';
+
+import {bindActionCreators} from 'redux'
 
 
-
-
-export default class User extends Component {
+class User extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: null,
-      email: null,
-
+      user: '',
+      email: '',
+      password: ''
     };
     this.handleSignIn = this.handleSignIn.bind(this);
+    this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
 
   }
 
+  handleSignupSubmit(event) {
+    event.preventDefault();
+    alert("CLICKED")
+      this.props.signup("/users/sign_up", {user: this.state});
+
+}
 
 
+componentDidMount() {
+     console.log('in component did mount')
+     this.props.signup();
 
-
-
+ }
 
 
     signIn(username, password) {
@@ -52,13 +62,6 @@ export default class User extends Component {
         })
       }
 
-
-
-
-
-
-
-
    // signOut() {
    //   // clear out user from state
    //   this.setState({user: null})
@@ -68,12 +71,39 @@ export default class User extends Component {
 
      return (
        <div>
-         <h1>My cool App</h1>
+          <h2>Sign Up</h2>
+          <form>
+              <input onChange={text => this.setState({ username: text })} id='username' placeholder='Username'/>
+           <input onChange={text => this.setState({ email: text })} id='email' placeholder='Email'/>
+           <input onChange={text => this.setState({ password: text })} id='password' placeholder='Password'/>
+           <button onClick={this.handleSignupSubmit}>Submit</button>
+          </form>
 
-
-       </div>
+         </div>
      )
 
    }
 
  }
+
+
+ const mapStateToProps = (state) => {
+   console.log('in map state to props')
+ return{
+   users: state.categories,
+
+   // users: state.users,
+   // votes: state.votes,
+ }
+ }
+
+ function mapDispatchToProps(dispatch) {
+ console.log("Mapped dispatch to props")
+   return {
+    signup: bindActionCreators(signup, dispatch),
+
+
+   }
+ }
+
+ export default connect(mapStateToProps, mapDispatchToProps)(User);
