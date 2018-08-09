@@ -12,7 +12,7 @@ const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(process.env.REACT_APP_NEWS_SECRET_KEY);
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
-const Article = ({ id, title, description, url, publishedAt, urlToImage,}) => (
+const Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit}) => (
   <div className="article" key={url}>
 <section className="articleContainer">
 <img src={urlToImage} alt={title} />
@@ -23,12 +23,11 @@ const Article = ({ id, title, description, url, publishedAt, urlToImage,}) => (
 
               </div>
 
-    <form onSubmit={ (event) => this.handleNeddit(event)}>
+    <form onSubmit={handleNeddit}>
       <input type="hidden" id="title" name="title" value={title} />
-      <input type="hidden" id="description" name="description" value={description} />
       <input type="hidden" id="url" name="url" value={url} />
       <input type="hidden" name="urlToImage" id="urlToImage" value={urlToImage} />
-
+      <input type="hidden" id="description" name="description" value={description} />
 
       <input type="submit" value="Submit" />
 
@@ -43,9 +42,9 @@ const Article = ({ id, title, description, url, publishedAt, urlToImage,}) => (
 
 
 
-const ArticleList = ({ articles, index }) => (
+const ArticleList = ({ articles, index, onHandleNeddit }) => (
   <div className="article-list">
-{ articles.map(article => <Article key={article.url} id={article.id} title={article.title} description={article.description} url={article.url} publishedAt={article.publishedAt} urlToImage={article.urlToImage} />) }
+{ articles.map(article =>  <Article handleNeddit={onHandleNeddit} key={article.url} id={article.id} title={article.title} description={article.description} url={article.url} publishedAt={article.publishedAt} urlToImage={article.urlToImage} />) }
   </div>
 )
 
@@ -99,8 +98,8 @@ fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiK
 
 handleNeddit(event) {
     event.preventDefault();
+
     alert("Neddit");
-    this.props.newPost("/posts/new", {post: this.state.post});
 }
 
 
@@ -123,7 +122,7 @@ render() {
         <input type='submit' value="Submit" />
       </form>
       </h3>
- <ArticleList articles={this.state.articles} />
+ <ArticleList articles={this.state.articles} onHandleNeddit={this.handleNeddit}  />
       </div>
   )
 }
