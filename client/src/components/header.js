@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CategoriesList from '../containers/categories';
-// import SearchablePostsContainer from './searchablePostsContainer';
+// import ArticlesContainer from './articlesContainer';
 import { Link } from 'react-router-dom';
 import CategoriesContainer from '../containers/categories'
 
@@ -19,7 +19,7 @@ export default class Header extends Component {
               <li><Link to={'/users/login'} onClick={()=>this.props.changePage('login')}>Log In</Link></li>
               <li><Link to={'/posts'}>Posts</Link></li>
             </ul>
-          
+
           </header>
       </div>
     )

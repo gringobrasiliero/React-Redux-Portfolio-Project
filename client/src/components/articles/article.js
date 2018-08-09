@@ -1,31 +1,29 @@
 import React from 'react'
 
 
- const Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit}) => (
+const Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit}) => (
   <div className="article" key={url}>
-<section className="articleContainer">
-<img src={urlToImage} alt={title} />
-<div className="content">
+    <section className="articleContainer">
+      <img src={urlToImage} alt={title} />
+      <div className="content">
 
-          <h2> <a href={url}>{title}</a></h2>
+        <h2> <a href={url}>{title}</a></h2>
         <p> {description}</p>
 
-              </div>
-
-    <form onSubmit={handleNeddit}>
-      <input type="text" id="title" name="title" onChange={(e) => this.handleChange(e)} value={title} style={{display: 'none'}} />
-      <input type="text" id="url" name="url" onChange={(e) => this.handleChange(e)} value={url} style={{display: 'none'}} />
-      <input type="text" name="urlToImage" id="urlToImage" onChange={(e) => this.handleChange(e)} value={urlToImage} style={{display: 'none'}} />
-      <input type="text" id="description" name="description" onChange={(e) => this.handleChange(e)} value={description} style={{display: 'none'}} />
-
-
-      <input type="submit" value="Submit" />
-
-    </form>
-
-</section>
-<br />
       </div>
+
+      <form onSubmit={handleNeddit}>
+        <input type="text" id="title" name="title" onChange={(e) => this.handleChange(e)} value={title} style={{display: 'none'}} />
+        <input type="text" id="url" name="url" onChange={(e) => this.handleChange(e)} value={url} style={{display: 'none'}} />
+        <input type="text" name="urlToImage" id="urlToImage" onChange={(e) => this.handleChange(e)} value={urlToImage} style={{display: 'none'}} />
+        <input type="text" id="description" name="description" onChange={(e) => this.handleChange(e)} value={description} style={{display: 'none'}} />
+        <input type="submit" value="Submit" />
+
+      </form>
+
+    </section>
+    <br />
+  </div>
 )
 
 export default Article

@@ -25,7 +25,7 @@ import CategoriesContainer from './containers/categories';
 import Category from './components/categories/category'
 
 
-// import SearchablePostsContainer from './components/searchablePostsContainer';
+// import ArticlesContainer from './components/articlesContainer';
 require('dotenv').config();
 
 

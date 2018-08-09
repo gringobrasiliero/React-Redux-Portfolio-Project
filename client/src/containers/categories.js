@@ -95,13 +95,13 @@ class CategoriesContainer extends Component {
 
 
 
-render() {
-  return(
-    <div>
-<CategoriesList categories={this.props.categories} onHandleChange={this.state.handleChange}  />
-</div>
-  )
-}
+  render() {
+    return(
+      <div>
+        <CategoriesList categories={this.props.categories} onHandleChange={this.state.handleChange}  />
+      </div>
+    )
+  }
 
 
 }

@@ -2,7 +2,7 @@
 import React from 'react';
 import './App.css';
 
-import SearchablePostsContainer from './components/searchablePostsContainer';
+import ArticlesContainer from './components/articlesContainer';
 require('dotenv').config();
 
 
@@ -18,7 +18,7 @@ const Home = () => (
       <div className="App">
 
 
-      <SearchablePostsContainer />
+      <ArticlesContainer />
 
 
 

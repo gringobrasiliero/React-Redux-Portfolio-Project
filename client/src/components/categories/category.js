@@ -8,7 +8,6 @@ class Category extends Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
     };
 
@@ -45,31 +44,14 @@ class Category extends Component {
      return true;
      }
 
-   // componentWillUpdate(nextProps, nextState) {
-   //   console.log("Component Will Update:", nextProps, nextState)
-   // }
-   //
-   // componentDidUpdate(prevProps, prevState) {
-   // console.log("Component Did Update:", prevProps, prevState)
-   //
-   // }
-   //
-   // componentWillUnmount() {
-   // console.log("Component will unmount")
-   // }
+  render() {
 
-render() {
-
-  return(
-    <div>
-       <h1>Category page </h1>
-
-
-    </div>
-  )
-
-}
-
+    return(
+      <div>
+         <h1>Category page </h1>
+      </div>
+    )
+  }
 
 }
 
@@ -77,29 +59,21 @@ render() {
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')
-return{
-  categories: state.categories,
-  posts: state.posts
-  // users: state.users,
-  // votes: state.votes,
-}
+  return{
+    categories: state.categories,
+    posts: state.posts
+    // users: state.users,
+    // votes: state.votes,
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-console.log("Mapped dispatch to props")
+  console.log("Mapped dispatch to props")
   return {
     // fetchCategories: bindActionCreators(fetchCategories, dispatch),
     // fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
 
   }
 }
-
-
-
-
-
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Category);
