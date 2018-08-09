@@ -16,16 +16,16 @@ class CategoriesContainer extends Component {
     super(props);
     // this.onFetchCategories = this.onFetchCategories.bind(this)
     // this.onLoadCategories = this.onLoadCategories.bind(this)
-    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-    categories: []
+    // categories: []
     };
 
 
   }
 
-  handleClick(event) {
+  handleChange(event) {
       event.preventDefault();
       alert("Cat hiiiiiiiiiiiiiiiiiii");
       this.setState({status: 0})
@@ -98,7 +98,7 @@ class CategoriesContainer extends Component {
 render() {
   return(
     <div>
-<CategoriesList categories={this.props.categories} />
+<CategoriesList categories={this.props.categories} onHandleChange={this.state.handleChange}  />
 </div>
   )
 }

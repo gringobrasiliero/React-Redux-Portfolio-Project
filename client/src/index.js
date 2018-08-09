@@ -21,7 +21,8 @@ const store = createStore(rootReducer,
 {
   categories: [],
   votes: [],
-  posts: []
+  posts: [],
+  articles: []
 }, allStoreEnhancers
  );
 

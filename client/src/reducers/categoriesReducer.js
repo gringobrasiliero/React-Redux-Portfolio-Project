@@ -13,7 +13,7 @@ export default (state = initialState.categories, action) => {
       if(index === -1) {
         return [...state, ...action.payload]
       }
-    break
+    
 
     case FETCH_CATPOSTS:
       let indexOfPosts = state.findIndex(el => el.category_id === action.payload.category_id);
@@ -21,7 +21,7 @@ export default (state = initialState.categories, action) => {
       if(indexOfPosts === -1) {
         return [...state, ...action.payload]
       }
-      break
+
 
     case NEW_CATEGORY:
       return [...state, ...action.payload]

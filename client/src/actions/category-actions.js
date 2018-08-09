@@ -46,9 +46,11 @@ export const newCategory = (url = "/categories", data = {}) => {
   })
   .then(res => res.json())
   .then(category => {
+
     dispatch({
       type: NEW_CATEGORY,
-      payload: category
+      payload: category,
+
     }
 
         )

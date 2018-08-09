@@ -8,15 +8,18 @@ import PostList from '../components/posts/postList'
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
-
+import CategoriesList from '../components/categories/categoriesList'
+import CategoriesContainer from './categories'
 
 
 
 class PostsContainer extends Component {
   constructor(props) {
     super(props);
-  this.handleClick = this.handleClick.bind(this);
+  this.handleOnChange = this.handleOnChange.bind(this);
+
     this.state = {
+      currentFilter: null,
       status: 0,
     };
     setTimeout(() => {
@@ -27,14 +30,25 @@ class PostsContainer extends Component {
   }
 
 
+  handleOnChange(event) {
+      event.preventDefault();
+      alert("hiiiiiiiiiiiiiiiiiii");
+      this.setState({status: 0})
+      this.props.fetchCatPosts();
+
+      fetch(`categories/${event.target.id}/posts`)
+        .then(response => response.json())
+        .then(posts => this.setState({posts}));
+
+  }
+
+
 
 
   componentDidMount() {
     console.log('POST in component did mount')
     this.props.fetchPosts();
-    // document.getElementById("catPosts").onclick = this.handleClick
-    //
-    // document.addEventListener('onClick', this.handleClick, false);
+
 
   }
 
@@ -50,21 +64,9 @@ class PostsContainer extends Component {
 
   componentWillUnmount() {
       // add event listener for clicks
-      document.getElementById("catPosts").onclick = this.handleClick
-        document.addEventListener('onClick', this.handleClick, false);
+
     };
 
-    handleClick(event) {
-        event.preventDefault();
-        alert("hiiiiiiiiiiiiiiiiiii");
-        this.setState({status: 0})
-        this.props.fetchCatPosts();
-
-        fetch(`categories/${event.target.id}/posts`)
-          .then(response => response.json())
-          .then(posts => this.setState({posts}));
-
-    }
 
 
 
@@ -72,6 +74,12 @@ class PostsContainer extends Component {
     return(
 
 <div className='searchable-articles'>
+
+<ul id="nav-bar">
+<CategoriesContainer />
+</ul>
+
+
        <PostList posts={this.props.posts} />
        </div>
      )

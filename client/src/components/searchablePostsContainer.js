@@ -5,10 +5,13 @@ import {newCategory} from '../actions/category-actions'
 import {newPost} from '../actions/posts-actions'
 import ArticleList from '../components/articles/articleList'
 import Article from '../components/articles/article'
+import {fetchArticles} from '../actions/article-actions';
 const NewsAPI = require('newsapi');
-
 const newsapi = new NewsAPI(process.env.REACT_APP_NEWS_SECRET_KEY);
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
+
+
+
 
  class SearchableArticlesContainer extends React.Component {
 constructor(props) {
@@ -29,14 +32,14 @@ constructor(props) {
 searchArticles = (e) => {
   e.preventDefault();
 
-  newsapi.v2.topHeadlines({
-  category: `${this.state.searchCat}`,
-  language: 'en',
-  country: 'us'
-}).then(response => {
-  console.log(response);
-
-});
+//   newsapi.v2.topHeadlines({
+//   category: `${this.state.searchCat}`,
+//   language: 'en',
+//   country: 'us'
+// }).then(response => {
+//   console.log(response);
+//
+// });
 }
 
 handleChange =(e) => {
@@ -51,9 +54,9 @@ handleChange =(e) => {
 handleSubmit = (e) => {
     e.preventDefault();
 
-fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
-.then(response => response.json())
-  .then(articles => this.setState({articles: articles.articles})).then(console.log(this.state.articles));
+// fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
+// .then(response => response.json())
+//   .then(articles => this.setState({articles: articles.articles})).then(console.log(this.state.articles));
 }
 
 handleNeddit = (e) => {
@@ -69,9 +72,11 @@ handleNeddit = (e) => {
 
 
 componentDidMount() {
-fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
-.then(response => response.json())
-.then(articles => this.setState({articles: articles.articles}));
+  this.props.fetchArticles(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`);
+
+// fetch(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`)
+// .then(response => response.json())
+// .then(articles => this.setState({articles: articles.articles}));
 }
 
 // <input type='text' value={this.state.searchCat} onChange={this.handleChange} />
@@ -86,7 +91,7 @@ render() {
         <input type='submit' value="Submit" />
       </form>
       </h3>
- <ArticleList articles={this.state.articles} onHandleNeddit={this.handleNeddit}  />
+ <ArticleList articles={this.props.articles} onHandleNeddit={this.handleNeddit}  />
       </div>
   )
 }
@@ -94,11 +99,23 @@ render() {
 
 } //End of Class
 
+
+const mapStateToProps = (state) => {
+  console.log('in map state to props')
+return{
+  categories: state.categories,
+  posts: state.posts,
+  articles: state.articles
+  // users: state.users,
+  // votes: state.votes,
+}
+}
+
+
 function mapDispatchToProps(dispatch) {
 console.log("Mapped dispatch to props")
   return {
-    newPost: bindActionCreators(newPost, dispatch),
-    newCategory: bindActionCreators(newCategory, dispatch),
+    fetchArticles: bindActionCreators(fetchArticles, dispatch),
 
 
   }
@@ -107,4 +124,4 @@ console.log("Mapped dispatch to props")
 
 
 
-export default connect(null, mapDispatchToProps)(SearchableArticlesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchableArticlesContainer);

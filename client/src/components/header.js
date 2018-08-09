@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CategoriesList from '../containers/categories';
 // import SearchablePostsContainer from './searchablePostsContainer';
 import { Link } from 'react-router-dom';
-
+import CategoriesContainer from '../containers/categories'
 
 export default class Header extends Component {
   render() {
@@ -19,9 +19,7 @@ export default class Header extends Component {
               <li><Link to={'/users/login'} onClick={()=>this.props.changePage('login')}>Log In</Link></li>
               <li><Link to={'/posts'}>Posts</Link></li>
             </ul>
-            <ul id="nav-bar">
-            <CategoriesList categories={this.props.categories} />
-            </ul>
+          
           </header>
       </div>
     )

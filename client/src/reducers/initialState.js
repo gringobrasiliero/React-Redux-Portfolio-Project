@@ -2,5 +2,6 @@ export default {
   categories: [],
   posts: [],
   users: [],
-  votes: []
+  votes: [],
+  articles: [],
 }

@@ -15,27 +15,26 @@ export default class CategoriesContainer extends Component {
     super(props);
 
     this.state = {
-      categories: []
     };
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
 
   }
 
-  fetchCategories = () => {
-    fetch('/categories')
-      .then(response => response.json())
-      .then(categories => this.setState({categories}))
-
-  }
-
-  fetchCatPosts = (e) => {
-    e.preventDefault()
-    fetch(`categories/${this.id}/posts`)
-      .then(response => response.json())
-      .then(posts => this.setState({posts}));
-
-  }
+  // fetchCategories = () => {
+  //   fetch('/categories')
+  //     .then(response => response.json())
+  //     .then(categories => this.setState({categories}))
+  //
+  // }
+  //
+  // fetchCatPosts = (e) => {
+  //   e.preventDefault()
+  //   fetch(`categories/${this.id}/posts`)
+  //     .then(response => response.json())
+  //     .then(posts => this.setState({posts}));
+  //
+  // }
 
 
   // handleClick(event) {
@@ -45,16 +44,17 @@ export default class CategoriesContainer extends Component {
   // }
 
 
-
-  componentDidMount() {
-    this.fetchCategories();
-
-
-  }
-
-  componentWillUnmount() {
-      // document.addEventListener('click', this.handleClick, true);
-    }
+  //
+  // componentDidMount() {
+  //   this.fetchCategories();
+  //   document.addEventListener('click', this.handleClick, false);
+  //
+  //
+  // }
+  //
+  // componentWillUnmount() {
+  //     document.addEventListener('click', this.handleClick, true);
+  //   }
 
 
 render() {

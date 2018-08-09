@@ -22,7 +22,7 @@ import Home from './Home';
 import PostsContainer from './containers/posts'
 // import {fetchCategories} from './actions/category-actions';
 import CategoriesContainer from './containers/categories';
-
+import Category from './components/categories/category'
 
 
 // import SearchablePostsContainer from './components/searchablePostsContainer';
@@ -42,7 +42,7 @@ export default class App extends Component {
            <Route exact path="/" component={Home} />
               <Route exact path="/posts" component={PostsContainer} />
            <Route exact path="/categories" component={CategoriesContainer} />
-         <Route exact path="/categories/:id" component={CategoriesContainer} />
+         <Route exact path="/categories/:id" component={Category} />
       <Route exact path="/users/login" component={User} />
       <Route exact path="/users/sign_up" component={User} />
 
