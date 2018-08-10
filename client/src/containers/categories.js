@@ -8,9 +8,6 @@ import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {bindActionCreators} from 'redux'
 // import Category from '../components/categories/category'
 
-
-
-
 class CategoriesContainer extends Component {
   constructor(props) {
     super(props);
@@ -37,37 +34,13 @@ class CategoriesContainer extends Component {
 
   }
 
-
-  // handleClick(event) {
-  //     event.preventDefault();
-  //     this.fetchCatPosts();
-  //     alert(event.target.getAttribute('id'));
-  // }
-
-
-
-
-
-
-
-
-
   componentDidMount() {
-       console.log('in component did mount')
-       this.props.fetchCategories();
-
-
+    console.log('in component did mount')
+    this.props.fetchCategories();
    }
-
-   // componentDidMount() {
-   //   console.log('in component did mount')
-   //   this.props.fetchCatPosts();
-   //
-   // }
 
    componentWillReceiveProps(nextProps) {
      console.log("Component will recieve props", nextProps)
-
    }
 
    shouldComponentUpdate(nextProps, nextState) {
@@ -76,24 +49,19 @@ class CategoriesContainer extends Component {
        return false;
      }
      return true;
-     }
+   }
 
    componentWillUpdate(nextProps, nextState) {
      console.log("Component Will Update:", nextProps, nextState)
    }
 
    componentDidUpdate(prevProps, prevState) {
-   console.log("Component Did Update:", prevProps, prevState)
-
+     console.log("Component Did Update:", prevProps, prevState)
    }
 
    componentWillUnmount() {
-   console.log("Component will unmount")
+     console.log("Component will unmount")
    }
-
-
-
-
 
   render() {
     return(
@@ -102,37 +70,22 @@ class CategoriesContainer extends Component {
       </div>
     )
   }
-
-
 }
-
-
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')
-return{
-  categories: state.categories,
-  posts: state.posts
-  // users: state.users,
-  // votes: state.votes,
-}
-}
-
-function mapDispatchToProps(dispatch) {
-console.log("Mapped dispatch to props")
-  return {
-    fetchCategories: bindActionCreators(fetchCategories, dispatch),
-    fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
-
+  return{
+    categories: state.categories,
+    posts: state.posts
   }
 }
 
-
-
-
-
-
-
-
+function mapDispatchToProps(dispatch) {
+  console.log("Mapped dispatch to props")
+  return {
+    fetchCategories: bindActionCreators(fetchCategories, dispatch),
+    fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);
