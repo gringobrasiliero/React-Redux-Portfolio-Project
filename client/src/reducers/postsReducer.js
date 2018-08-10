@@ -13,7 +13,7 @@ export default (state = initialState.posts, action) => {
 
 
       if(index === -1) {
-        return [...state, ...action.payload];
+        return [ ...action.payload];
 
       }
       break

@@ -11,9 +11,9 @@ export default (state = initialState.categories, action) => {
       let index = state.findIndex(el => el.category_id === action.payload.category_id);
 
       if(index === -1) {
-        return [...state, ...action.payload]
+        return [ ...action.payload]
       }
-    
+
 
     case FETCH_CATPOSTS:
       let indexOfPosts = state.findIndex(el => el.category_id === action.payload.category_id);
