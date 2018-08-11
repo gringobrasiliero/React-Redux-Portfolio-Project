@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import CategoriesList from '../containers/categories';
 // import ArticlesContainer from './articlesContainer';
 import { Link } from 'react-router-dom';
-import CategoriesContainer from '../containers/categories'
 
 export default class Header extends Component {
   render() {

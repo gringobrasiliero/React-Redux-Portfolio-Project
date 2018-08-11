@@ -2,7 +2,7 @@
 import React from 'react';
 import './App.css';
 
-import ArticlesContainer from './components/articlesContainer';
+import Articles from './containers/articles';
 require('dotenv').config();
 
 
@@ -18,7 +18,7 @@ const Home = () => (
       <div className="App">
 
 
-      <ArticlesContainer />
+      <Articles />
 
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
 import {newCategory} from '../actions/category-actions'
@@ -10,12 +10,11 @@ const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(process.env.REACT_APP_NEWS_SECRET_KEY);
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
-class SearchableArticlesContainer extends React.Component {
+class Articles extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      articles: [],
       searchCat: 'politics',
       title: '',
       description: '',
@@ -23,6 +22,8 @@ class SearchableArticlesContainer extends React.Component {
       urlToImage: '',
 
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
   }
 
@@ -35,6 +36,12 @@ class SearchableArticlesContainer extends React.Component {
       searchCat: e.target.value,
     })
   }
+
+// handleFormChange = (e) => {
+//   this.setState){
+//
+//   }
+// }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -64,6 +71,9 @@ class SearchableArticlesContainer extends React.Component {
         </h3>
         <ArticleList articles={this.props.articles} onHandleNeddit={this.handleNeddit}  />
       </div>
+
+
+
     )
   }
 
@@ -81,12 +91,14 @@ const mapStateToProps = (state) => {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   console.log("Mapped dispatch to props")
   return {
     fetchArticles: bindActionCreators(fetchArticles, dispatch),
+    newCategory: bindActionCreators(newCategory, dispatch),
+    newPost: bindActionCreators(newPost, dispatch),
+
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchableArticlesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Articles);

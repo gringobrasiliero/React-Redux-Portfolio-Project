@@ -8,7 +8,6 @@ import PostList from '../components/posts/postList'
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
-import CategoriesList from '../components/categories/categoriesList'
 import CategoriesContainer from './categories'
 
 
