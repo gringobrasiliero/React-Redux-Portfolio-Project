@@ -44,10 +44,10 @@ export const newPost = (url = "/posts", data = {}) => {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
   })
   .then(res => res.json())
-  .then(post => {
+  .then(posts => {
     dispatch({
       type: NEW_POST,
-      payload: post
+      payload: posts
     }
 
         )

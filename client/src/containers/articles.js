@@ -35,13 +35,9 @@ class Articles extends React.Component {
     this.setState({
       searchCat: e.target.value,
     })
-  }
+  };
 
-// handleFormChange = (e) => {
-//   this.setState){
-//
-//   }
-// }
+
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +47,7 @@ class Articles extends React.Component {
   handleNeddit = (e) => {
     e.preventDefault();
     this.props.newCategory("/categories", {category: this.state.searchCat});
-    this.props.newPost("/posts", {title: this.state.title, description: this.state.description, url: this.state.url, urlToImage: this.state.urlToImage});
+    this.props.newPost("/posts", {post: {title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value}});
     alert("Neddit");
   }
 
