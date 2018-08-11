@@ -11,7 +11,7 @@ const CategoriesList = ({ categories, onHandleChange }) => (
   <select onChange={onHandleChange} defaultValue='all'>
     <option value='all'>All</option>
     {categories.map(category =>
-      <option key={category.id} value={category.id}>{category.category}</option>
+      <option key={category.id} id={category.category} value={category.id}>{category.category}</option>
     )}
   </select>
 

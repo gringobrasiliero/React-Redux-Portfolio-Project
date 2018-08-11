@@ -47,7 +47,8 @@ class Articles extends React.Component {
   handleNeddit = (e) => {
     e.preventDefault();
     this.props.newCategory("/categories", {category: this.state.searchCat});
-    this.props.newPost("/posts", {post: {title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value}});
+    let theId = parseInt(document.getElementById(this.state.searchCat).value);
+    this.props.newPost("/posts", { category_id: theId, title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value});
     alert("Neddit");
   }
 
@@ -58,7 +59,6 @@ class Articles extends React.Component {
   render() {
     return(
       <div className='searchable-articles'>
-
         <h3><strong> Search for new Posts </strong>
           <form onSubmit={ (e) => this.handleSubmit(e) }>
             <input type="text" id="catForm" onChange={(e) => this.handleChange(e)} value={this.state.text} />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import ArticlesContainer from './articlesContainer';
 import { Link } from 'react-router-dom';
-
+import CategoriesList from '../containers/categories'
 export default class Header extends Component {
   render() {
     return(
@@ -17,6 +17,7 @@ export default class Header extends Component {
               <li><Link to={'/users/login'} onClick={()=>this.props.changePage('login')}>Log In</Link></li>
               <li><Link to={'/posts'}>Posts</Link></li>
             </ul>
+            <CategoriesList categories={this.props.categories} />
 
           </header>
       </div>
