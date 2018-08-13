@@ -12,7 +12,7 @@ class CategoriesContainer extends Component {
     this.handleClick = this.handleClick.bind(this);
 
     this.state = {
-      catId: 0,
+      catId: "",
     };
     setTimeout(() => {
       this.setState({
@@ -21,16 +21,21 @@ class CategoriesContainer extends Component {
     },3000);
   }
 
+  handleChange = (e) => {
+    this.setState({catId: e.target.value});
+  }
+
 
 
   handleClick = (e) => {
-      e.preventDefault();
+    e.preventDefault();
+    this.setState({
+      status: 0,
+      posts: [],
+
+    });
       alert("Cat hiiiiiiiiiiiiiiiiiii");
-      this.setState({
-        status: 0,
-        posts: [],
-        catId: e.target.value,
-      })
+      alert(`${this.state.catId}`)
       this.props.fetchCatPosts(`/categories/${this.state.catId}/posts`);
 
   }
@@ -71,7 +76,7 @@ class CategoriesContainer extends Component {
 
     return(
       <div>
-        <CategoriesList categories={this.props.categories} onHandleClick={this.handleClick}  />
+        <CategoriesList categories={this.props.categories} onHandleChange={this.handleChange} onHandleClick={this.handleClick}  />
       </div>
     )
   }

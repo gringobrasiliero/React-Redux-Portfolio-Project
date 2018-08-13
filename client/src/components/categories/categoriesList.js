@@ -6,14 +6,16 @@ import React from 'react';
 
 
 
-const CategoriesList = ({ categories, onHandleClick }) => (
-
-  <select onChange={onHandleClick}  >
-
+const CategoriesList = ({ categories, onHandleClick, onHandleChange }) => (
+<form onSubmit={onHandleClick}>
+  <select onChange={onHandleChange} value={this.value}  >
+    <option>Select a Category</option>
     {categories.map(category =>
-      <option  onClick={onHandleClick} key={category.id} id={category.category} value={category.id}>{category.category}</option>
+      <option  key={category.id} id={category.category} value={category.id}>{category.category}</option>
     )}
   </select>
+  <input type="submit" value="Submit" />
+  </form>
 
 )
 
