@@ -39,8 +39,6 @@ class CategoriesContainer extends Component {
     if (this.state.catId == 0) {
       this.props.fetchPosts();
     }else{
-      alert("Cat hiiiiiiiiiiiiiiiiiii");
-      alert(`${this.state.catId}`)
       this.props.fetchCatPosts(`/categories/${this.state.catId}/posts`);
 };
   }
