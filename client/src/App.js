@@ -1,33 +1,16 @@
-
 import React, { Component } from 'react';
-
 import './App.css';
-// import Categories from './containers/categories';
-// import Category from './components/categories/category';
 import Header from './components/header';
-// import Posts from './containers/posts';
-// import Vote from './components/votes';
 import User from './containers/users';
-
-// import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route , Switch} from 'react-router-dom';
-// import Login from './components/users/Login'
-// import Signup from './components/users/Signup'
-
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './index.css';
-// import {bindActionCreators} from 'redux'
-// import { connect } from 'react-redux';
-// import {compose, createStore} from 'redux'
 import Home from './Home';
 import PostsContainer from './containers/posts'
-// import {fetchCategories} from './actions/category-actions';
 import CategoriesContainer from './containers/categories';
-import Category from './components/categories/category'
 import CategoriesShow from './containers/categoriesShow'
 import PostsShow from './components/posts/postsShow'
 import {fetchCategories} from './actions/category-actions';
 import {fetchPosts} from './actions/posts-actions';
-
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
 

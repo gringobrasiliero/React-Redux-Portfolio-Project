@@ -4,15 +4,9 @@ import {bindActionCreators} from 'redux'
 import {newCategory} from '../actions/category-actions'
 import {newPost} from '../actions/posts-actions'
 import ArticleList from '../components/articles/articleList'
-import Article from '../components/articles/article'
 import {fetchArticles} from '../actions/article-actions';
 import {fetchCategories} from '../actions/category-actions';
-import _ from 'lodash';
 
-
-
-const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI(process.env.REACT_APP_NEWS_SECRET_KEY);
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
 class Articles extends React.Component {
@@ -53,10 +47,8 @@ class Articles extends React.Component {
   handleNeddit = (e) => {
     e.preventDefault();
     this.props.newCategory("/categories", {category: this.state.searchCat});
-    const category = this.props.categories.find(category => category.category == this.state.searchCat);
+    const category = this.props.categories.find(category => category.category === this.state.searchCat);
     const theId = category.id;
-    // let theId = (this.state.searchCat);
-alert(theId);
     this.props.newPost("/posts", { category_id: theId, title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value});
   }
 

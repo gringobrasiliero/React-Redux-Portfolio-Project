@@ -30,7 +30,6 @@ const PostsShow = ({post})=>
 
 const mapStateToProps = (state, ownProps) => {
   const post = state.posts.find(post => post.id == ownProps.match.params.postId);
-console.log(post);
   if (post) {
     return { post }
   } else {
