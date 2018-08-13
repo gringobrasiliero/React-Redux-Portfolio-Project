@@ -21,6 +21,26 @@ class User extends Component {
 
   }
 
+  handleUsernameChange(event) {
+    this.setState({
+      username: event.target.value
+    });
+  };
+
+  handleEmailChange(event) {
+    this.setState({
+      email: event.target.value
+    });
+  };
+
+  handlePasswordChange(event) {
+    this.setState({
+      password: event.target.value
+    });
+  };
+
+
+
   handleSignupSubmit(event) {
     event.preventDefault();
     alert("CLICKED")
