@@ -1,45 +1,42 @@
 import React, { Component } from 'react';
-
+// import { Link } from 'react-router-dom';
+// import Postlist from '../components/posts/postList';
+// import Posts from '../components/posts/postComponent';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories/categoriesList'
 import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {bindActionCreators} from 'redux'
+// import Category from '../components/categories/category'
 import { Route, Switch } from 'react-router-dom';
 
-class CategoriesContainer extends Component {
+class Comments extends Component {
   constructor(props) {
     super(props);
+    // this.onFetchCategories = this.onFetchCategories.bind(this)
+    // this.onLoadCategories = this.onLoadCategories.bind(this)
     this.handleClick = this.handleClick.bind(this);
 
     this.state = {
-      catId: 0,
+    // categories: []
     };
-    setTimeout(() => {
-      this.setState({
-        status: 0
-      });
-    },3000);
+
+
   }
 
-
-
-  handleClick = (e) => {
-      e.preventDefault();
+  handleClick(event) {
+      event.preventDefault();
       alert("Cat hiiiiiiiiiiiiiiiiiii");
-      this.setState({
-        status: 0,
-        posts: [],
-        catId: e.target.value,
-      })
-      this.props.fetchCatPosts(`/categories/${this.state.catId}/posts`);
+      this.setState({status: 0})
+      this.props.fetchCatPosts();
+
+      fetch(`categories/${event.target.id}/posts`)
+        .then(response => response.json())
+        .then(posts => this.setState({posts}));
 
   }
-
-
 
   componentDidMount() {
     console.log('in component did mount')
-    this.props.fetchCategories();
    }
 
    componentWillReceiveProps(nextProps) {
@@ -71,7 +68,7 @@ class CategoriesContainer extends Component {
 
     return(
       <div>
-        <CategoriesList categories={this.props.categories} onHandleClick={this.handleClick}  />
+        <CategoriesList categories={categories} onHandleClick={this.state.handleClick}  />
       </div>
     )
   }

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Postlist from '../posts/postList';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-
+import {fetchCatPosts} from '../../actions/posts-actions'
 class Category extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +27,7 @@ class Category extends Component {
 
   componentDidMount() {
        console.log('in component did mount')
+       this.props.fetchCatPosts(`/categories/`);
 
 
    }
@@ -57,11 +58,12 @@ class Category extends Component {
 
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   console.log('in map state to props')
   return{
     categories: state.categories,
-    posts: state.posts
+    posts: state.posts,
+    categoryId: ownProps.match.params.categoryId
     // users: state.users,
     // votes: state.votes,
   }
@@ -71,7 +73,7 @@ function mapDispatchToProps(dispatch) {
   console.log("Mapped dispatch to props")
   return {
     // fetchCategories: bindActionCreators(fetchCategories, dispatch),
-    // fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
+    fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
 
   }
 }

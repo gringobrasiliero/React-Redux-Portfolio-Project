@@ -6,12 +6,12 @@ import React from 'react';
 
 
 
-const CategoriesList = ({ categories, onHandleChange }) => (
+const CategoriesList = ({ categories, onHandleClick }) => (
 
-  <select onChange={onHandleChange} defaultValue='all'>
-    <option value='all'>All</option>
+  <select onChange={onHandleClick}  >
+
     {categories.map(category =>
-      <option key={category.id} id={category.category} value={category.id}>{category.category}</option>
+      <option  onClick={onHandleClick} key={category.id} id={category.category} value={category.id}>{category.category}</option>
     )}
   </select>
 

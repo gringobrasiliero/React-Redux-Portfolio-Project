@@ -2,7 +2,14 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
 
   def index
+
+    if params[:category_id]
+      @posts = Category.find(params[:category_id]).posts
+    else
+
     @posts =  Post.all
+  end
+  
     json_response(@posts)
   end
 

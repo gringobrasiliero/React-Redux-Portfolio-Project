@@ -10,7 +10,7 @@ import Header from './components/header';
 import User from './containers/users';
 
 // import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route , Switch} from 'react-router-dom';
 // import Login from './components/users/Login'
 // import Signup from './components/users/Signup'
 
@@ -23,8 +23,8 @@ import PostsContainer from './containers/posts'
 // import {fetchCategories} from './actions/category-actions';
 import CategoriesContainer from './containers/categories';
 import Category from './components/categories/category'
-
-
+import CategoriesShow from './containers/categoriesShow'
+import PostsShow from './components/posts/postsShow'
 // import ArticlesContainer from './components/articlesContainer';
 require('dotenv').config();
 
@@ -41,11 +41,11 @@ export default class App extends Component {
         <Route path="/" component={Header} />
            <Route exact path="/" component={Home} />
               <Route exact path="/posts" component={PostsContainer} />
+              <Route exact path="/posts/:postId"  component={PostsShow} />
            <Route exact path="/categories" component={CategoriesContainer} />
-         <Route exact path="/categories/:id" component={Category} />
+         <Route exact path="/categories/:categoryId"  component={CategoriesShow} />
       <Route exact path="/users/login" component={User} />
       <Route exact path="/users/sign_up" component={User} />
-
 
          </React.Fragment>
         </Router>

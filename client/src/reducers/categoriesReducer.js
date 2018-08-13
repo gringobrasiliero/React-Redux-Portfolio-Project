@@ -1,5 +1,5 @@
 
-import {FETCH_CATEGORIES, FETCH_CATPOSTS, NEW_CATEGORY} from '../actions/category-actions'
+import {FETCH_CATEGORIES, NEW_CATEGORY} from '../actions/category-actions'
 
 
 import initialState from './initialState';
@@ -15,12 +15,12 @@ export default (state = initialState.categories, action) => {
       }
 
 
-    case FETCH_CATPOSTS:
-      let indexOfPosts = state.findIndex(el => el.category_id === action.payload.category_id);
-
-      if(indexOfPosts === -1) {
-        return [...state, ...action.payload]
-      }
+    // case FETCH_CATPOSTS:
+    //   let indexOfPosts = state.findIndex(el => el.category_id === action.payload.category_id);
+    //
+    //   if(indexOfPosts === -1) {
+    //     return [...state, ...action.payload]
+    //   }
 
 
     case NEW_CATEGORY:

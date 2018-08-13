@@ -6,6 +6,11 @@ import {newPost} from '../actions/posts-actions'
 import ArticleList from '../components/articles/articleList'
 import Article from '../components/articles/article'
 import {fetchArticles} from '../actions/article-actions';
+import {fetchCategories} from '../actions/category-actions';
+import _ from 'lodash';
+
+
+
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(process.env.REACT_APP_NEWS_SECRET_KEY);
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
@@ -47,9 +52,10 @@ class Articles extends React.Component {
   handleNeddit = (e) => {
     e.preventDefault();
     this.props.newCategory("/categories", {category: this.state.searchCat});
+
     let theId = parseInt(document.getElementById(this.state.searchCat).value);
+
     this.props.newPost("/posts", { category_id: theId, title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value});
-    alert("Neddit");
   }
 
   componentDidMount() {
@@ -77,13 +83,13 @@ class Articles extends React.Component {
 } //End of Class
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   console.log('in map state to props')
+
   return{
     categories: state.categories,
     posts: state.posts,
     articles: state.articles,
-
   }
 }
 
@@ -93,7 +99,7 @@ function mapDispatchToProps(dispatch) {
     fetchArticles: bindActionCreators(fetchArticles, dispatch),
     newCategory: bindActionCreators(newCategory, dispatch),
     newPost: bindActionCreators(newPost, dispatch),
-
+    fetchCategories: bindActionCreators(fetchCategories, dispatch),
   }
 }
 

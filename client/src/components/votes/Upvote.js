@@ -1,7 +1,4 @@
-<<<<<<< master
-<<<<<<< master
-=======
->>>>>>> Turned Votes Stateful and Vote Stateless
+
 import React from 'react'
 
 
@@ -19,8 +16,7 @@ export default const Vote (props) => (
        </button>
 <div/>
   )
-<<<<<<< master
-=======
+
 // import React from 'react'
 //
 //
@@ -38,6 +34,3 @@ export default const Vote (props) => (
 //     </div>
 //   )
 // };
->>>>>>> tutorials in redux
-=======
->>>>>>> Turned Votes Stateful and Vote Stateless

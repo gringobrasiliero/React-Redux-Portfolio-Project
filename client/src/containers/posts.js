@@ -23,7 +23,7 @@ class PostsContainer extends Component {
     };
     setTimeout(() => {
       this.setState({
-        status: 1
+        status: 0
       });
     },3000);
   }

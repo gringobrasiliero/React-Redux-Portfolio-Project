@@ -18,18 +18,19 @@ export const fetchPosts = () => {
   }
 }
 
-export const fetchCatPosts = () => {
+export const fetchCatPosts = (url) => {
   return (dispatch) => {
-    fetch(`/categories/:id/posts`)
-      .then(res => res.json())
+    fetch(url)
+    .then(response => response.json())
       .then(posts => {
         dispatch({
-          type: FETCH_CATPOSTS,
-          payload: posts
-        })
+        type: FETCH_CATPOSTS,
+        payload: posts
       })
-  }
-}
+    })
+
+    }
+    }
 
 
 export const newPost = (url = "/posts", data = {}) => {

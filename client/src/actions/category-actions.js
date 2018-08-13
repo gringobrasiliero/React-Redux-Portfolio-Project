@@ -19,9 +19,35 @@ export const fetchCategories = () => {
 }
 
 
-export const fetchCatPosts = () => {
+// export const fetchCatPosts = (url = "/categories", data = {}) => {
+//   return (dispatch) => {
+//     fetch(url, {
+//       method: "GET",
+//       headers: {
+//           "Content-Type": "application/json; charset=utf-8",
+//           // "Content-Type": "application/x-www-form-urlencoded",
+//       },
+//       redirect: "follow", // manual, *follow, error
+//       body: JSON.stringify(data), // body data type must match "Content-Type" header
+//   })
+//   .then(res => res.json())
+//   .then(posts => {
+//
+//     dispatch({
+//       type: FETCH_CATPOSTS,
+//       payload: posts,
+//
+//     }
+//
+//         )
+//       })
+// }
+// }
+
+
+export const fetchCatPosts = (url = "") => {
   return (dispatch) => {
-    fetch(`/categories/:id/posts`)
+    fetch(url)
       .then(res => res.json())
       .then(posts => {
         dispatch({

@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import {applyMiddleware, compose, createStore} from 'redux'
 import thunkMiddleware from 'redux-thunk';
 import logger from 'redux-logger';
+import { BrowserRouter } from 'react-router-dom';
 
 import rootReducer from './reducers';
 
@@ -23,6 +24,7 @@ const store = createStore(rootReducer,
   votes: [],
   posts: [],
   articles: [],
+
 }, allStoreEnhancers
  );
 
@@ -30,7 +32,11 @@ const store = createStore(rootReducer,
 
   render(
     <Provider store={store}>
+    <BrowserRouter>
+
       <App />
+      </BrowserRouter>
+
     </Provider>,
     document.getElementById('root')
   )
