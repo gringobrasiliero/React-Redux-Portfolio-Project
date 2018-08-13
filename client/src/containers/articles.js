@@ -20,6 +20,7 @@ class Articles extends React.Component {
     super(props)
 
     this.state = {
+      categories: [],
       searchCat: 'politics',
       title: '',
       description: '',
@@ -52,11 +53,11 @@ class Articles extends React.Component {
   handleNeddit = (e) => {
     e.preventDefault();
     this.props.newCategory("/categories", {category: this.state.searchCat});
-    const theId = this.state.categories.find(category => category.category == this.state.searchCat);
-
+    const category = this.props.categories.find(category => category.category == this.state.searchCat);
+    const theId = category.id;
     // let theId = (this.state.searchCat);
 alert(theId);
-    // this.props.newPost("/posts", { category_id: theId, title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value});
+    this.props.newPost("/posts", { category_id: theId, title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value});
   }
 
   componentDidMount() {
