@@ -25,7 +25,9 @@ import CategoriesContainer from './containers/categories';
 import Category from './components/categories/category'
 import CategoriesShow from './containers/categoriesShow'
 import PostsShow from './components/posts/postsShow'
-import {fetchCategories, fetchCatPosts} from './actions/category-actions';
+import {fetchCategories} from './actions/category-actions';
+import {fetchPosts} from './actions/posts-actions';
+
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
 
@@ -53,6 +55,7 @@ class App extends Component {
     componentDidMount() {
       console.log('in component did mount')
       this.props.fetchCategories();
+      this.props.fetchPosts();
      }
 
 
@@ -86,6 +89,7 @@ function mapDispatchToProps(dispatch) {
   console.log("Mapped dispatch to props")
   return {
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
+    fetchPosts: bindActionCreators(fetchPosts, dispatch),
   }
 }
 

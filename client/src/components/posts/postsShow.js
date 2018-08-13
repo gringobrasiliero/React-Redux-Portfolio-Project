@@ -1,21 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PostList from './postList'
+import Post from './postComponent'
+import CommentForm from '../comments/CommentForm'
+import { Link } from 'react-router-dom';
 
 const PostsShow = ({post})=>
 
   <div className="col-md-8">
 
-    <h2>{post.title}</h2>
+  <div className="post" key={post.id}>
+    <img src={post.urlToImage} alt="" />
+    <section>
+
+    <div className="content">
+      <h2> <a href={post.url}>{post.title}</a></h2>
+      <p> {post.description}</p>
+
+    </div>
 
 
-<h1>Post Show </h1>
+    </section>
+    <br />
+    <br />
+    <CommentForm />
+  </div>
   </div>;
 
 
 const mapStateToProps = (state, ownProps) => {
   const post = state.posts.find(post => post.id == ownProps.match.params.postId);
-
+console.log(post);
   if (post) {
     return { post }
   } else {

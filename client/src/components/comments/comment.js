@@ -11,6 +11,7 @@ import { Field, reduxForm } from 'redux-form'
       </div>
 
       <form onSubmit={handleNewComment}>
+      <label>New Comment</label>
         <input type="text" id="comment" name="comment" />
 
       </form>
