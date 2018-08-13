@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import CategoriesList from '../components/categories/categoriesList'
+import CommentList from '../components/comments/commentsList'
 import {bindActionCreators} from 'redux'
-
+import {fetchComments, newComment} from '../actions/comment-actions';
 import { Route, Switch } from 'react-router-dom';
 
 class Comments extends Component {
@@ -28,6 +28,8 @@ class Comments extends Component {
 
   componentDidMount() {
     console.log('in component did mount')
+    this.props.fetchComments();
+
    }
 
    componentWillReceiveProps(nextProps) {
@@ -59,6 +61,7 @@ class Comments extends Component {
 
     return(
       <div>
+      <CommentList comments={this.props.comments} />
       </div>
     )
   }
@@ -75,7 +78,7 @@ const mapStateToProps = (state) => {
 function mapDispatchToProps(dispatch) {
   console.log("Mapped dispatch to props")
   return {
-    // fetchComments: bindActionCreators(fetchComments, dispatch),
+    fetchComments: bindActionCreators(fetchComments, dispatch),
 
   }
 }

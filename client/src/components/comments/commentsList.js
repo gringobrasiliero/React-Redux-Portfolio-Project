@@ -1,6 +1,6 @@
 import React from 'react'
 // import Vote from '../votes';
-import Post from './commentComponent'
+import Comment from './comment'
 
 const CommentList = ({ comments }) => (
   <div className="vote-list">

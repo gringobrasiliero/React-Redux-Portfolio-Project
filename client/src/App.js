@@ -13,6 +13,7 @@ import {fetchCategories} from './actions/category-actions';
 import {fetchPosts} from './actions/posts-actions';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
+import {fetchComments, newComment} from './actions/comment-actions';
 
 
 // import ArticlesContainer from './components/articlesContainer';
@@ -39,6 +40,7 @@ class App extends Component {
       console.log('in component did mount')
       this.props.fetchCategories();
       this.props.fetchPosts();
+      this.props.fetchComments();
      }
 
 
@@ -73,6 +75,8 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
     fetchPosts: bindActionCreators(fetchPosts, dispatch),
+    fetchComments: bindActionCreators(fetchComments, dispatch),
+
   }
 }
 

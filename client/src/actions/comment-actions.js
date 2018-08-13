@@ -2,7 +2,7 @@ export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 export const NEW_COMMENT = 'NEW_COMMENT';
 
 
-export const fetchComments = (url = "") => {
+export const fetchComments = (url = "/comments") => {
   return (dispatch) => {
 
     console.log(fetch(url))

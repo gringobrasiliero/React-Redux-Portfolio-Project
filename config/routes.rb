@@ -6,6 +6,7 @@ resources :votes
 resources :categories
 resources :posts
 resources :users
+resources :comments
 
 resources :posts do
   resources :comments

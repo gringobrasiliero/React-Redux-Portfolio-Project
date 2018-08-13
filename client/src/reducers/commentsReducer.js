@@ -1,5 +1,6 @@
-
 import initialState from './initialState';
+import {FETCH_COMMENTS, NEW_COMMENT} from '../actions/comment-actions'
+
 
 
 export default (state = initialState.comments, action) => {
