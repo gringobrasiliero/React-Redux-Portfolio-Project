@@ -17,7 +17,6 @@ export default class Header extends Component {
               <li><Link to={'/users/login'} onClick={()=>this.props.changePage('login')}>Log In</Link></li>
               <li><Link to={'/posts'}>Posts</Link></li>
             </ul>
-            <CategoriesList categories={this.props.categories} />
 
           </header>
       </div>

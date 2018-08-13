@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories/categoriesList'
 import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
+import {fetchPosts} from '../actions/posts-actions';
+
 import {bindActionCreators} from 'redux'
 import { Route, Switch } from 'react-router-dom';
 
@@ -34,10 +36,13 @@ class CategoriesContainer extends Component {
       posts: [],
 
     });
+    if (this.state.catId == 0) {
+      this.props.fetchPosts();
+    }else{
       alert("Cat hiiiiiiiiiiiiiiiiiii");
       alert(`${this.state.catId}`)
       this.props.fetchCatPosts(`/categories/${this.state.catId}/posts`);
-
+};
   }
 
 
@@ -95,6 +100,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
     fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
+    fetchPosts: bindActionCreators(fetchPosts, dispatch),
   }
 }
 
