@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-// import Postlist from '../components/posts/postList';
-// import Posts from '../components/posts/postComponent';
+
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories/categoriesList'
-import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {bindActionCreators} from 'redux'
-// import Category from '../components/categories/category'
+
 import { Route, Switch } from 'react-router-dom';
 
 class Comments extends Component {
   constructor(props) {
     super(props);
-    // this.onFetchCategories = this.onFetchCategories.bind(this)
-    // this.onLoadCategories = this.onLoadCategories.bind(this)
-    this.handleClick = this.handleClick.bind(this);
+      this.handleClick = this.handleClick.bind(this);
 
     this.state = {
-    // categories: []
+
     };
 
 
@@ -25,13 +20,9 @@ class Comments extends Component {
 
   handleClick(event) {
       event.preventDefault();
-      alert("Cat hiiiiiiiiiiiiiiiiiii");
-      this.setState({status: 0})
-      this.props.fetchCatPosts();
+      alert("Comment hiiiiiiiiiiiiiiiiiii");
 
-      fetch(`categories/${event.target.id}/posts`)
-        .then(response => response.json())
-        .then(posts => this.setState({posts}));
+
 
   }
 
@@ -68,7 +59,6 @@ class Comments extends Component {
 
     return(
       <div>
-        <CategoriesList categories={categories} onHandleClick={this.state.handleClick}  />
       </div>
     )
   }
@@ -77,17 +67,17 @@ class Comments extends Component {
 const mapStateToProps = (state) => {
   console.log('in map state to props')
   return{
-    categories: state.categories,
-    posts: state.posts
+    comments: state.comments
+
   }
 }
 
 function mapDispatchToProps(dispatch) {
   console.log("Mapped dispatch to props")
   return {
-    fetchCategories: bindActionCreators(fetchCategories, dispatch),
-    fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
+    // fetchComments: bindActionCreators(fetchComments, dispatch),
+
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);
