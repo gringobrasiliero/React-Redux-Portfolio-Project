@@ -1,5 +1,6 @@
 import React from 'react'
-// import Vote from '../votes';
+import Vote from '../votes';
+import { Link } from 'react-router-dom';
 
 
 const Post = (props) => (
@@ -11,6 +12,7 @@ const Post = (props) => (
       <h2> <a href={props.url}>{props.title}</a></h2>
       <p> {props.description}</p>
       <h1>{props.category_id}</h1>
+      <Link to={`/posts/${props.id}`}>Comments</Link>
     </div>
 
 
@@ -18,5 +20,11 @@ const Post = (props) => (
     <br />
     <br />
   </div>
+
+
 )
+
+
+
+
 export default Post;
