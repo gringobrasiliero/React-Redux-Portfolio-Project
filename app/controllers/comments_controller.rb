@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
 before_action :set_comment, only: [:show, :update, :destroy]
 def index
-  @comments = Category.all
+  @comments = Comment.all
   json_response(@comments)
 end
 
 def create
-  @comment = Category.create!(comment_params)
+  @comment = Comment.create!(comment_params)
 json_response(@comment, :created)
 end
 
@@ -26,6 +26,6 @@ def comment_params
 end
 
 def set_comment
-  @comment = Category.find(params[:id])
+  @comment = Comment.find(params[:id])
 end
 end
