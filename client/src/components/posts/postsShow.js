@@ -14,7 +14,7 @@ const PostsShow = ({post})=>
     <section>
 
     <div className="content">
-      <h2> <a href={post.url}>{post.title}</a></h2>
+      <h2> <a href={post.url} target="_blank">{post.title}</a></h2>
       <p> {post.description}</p>
 
     </div>
