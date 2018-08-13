@@ -25,13 +25,35 @@ import CategoriesContainer from './containers/categories';
 import Category from './components/categories/category'
 import CategoriesShow from './containers/categoriesShow'
 import PostsShow from './components/posts/postsShow'
+import {fetchCategories, fetchCatPosts} from './actions/category-actions';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux'
+
+
 // import ArticlesContainer from './components/articlesContainer';
 require('dotenv').config();
 
 
 
-export default class App extends Component {
+class App extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+
+    };
+    setTimeout(() => {
+      this.setState({
+        status: 0
+      });
+    },3000);
+  }
+
+
+    componentDidMount() {
+      console.log('in component did mount')
+      this.props.fetchCategories();
+     }
 
 
   render() {
@@ -53,18 +75,20 @@ export default class App extends Component {
   }
 }
 
-//
-// const mapStateToProps = state => ({
-//   categories: state.categories,
-//   users: state.users,
-//   votes: state.votes,
-// })
-//
-// const mapActionsToProps = {
-//   onFetchCategories: fetchCategories
-// };
-//
-//
-//
-//
-// export default connect(mapStateToProps, mapActionsToProps)(App);
+
+const mapStateToProps = state => ({
+  categories: state.categories,
+  users: state.users,
+  votes: state.votes,
+})
+
+function mapDispatchToProps(dispatch) {
+  console.log("Mapped dispatch to props")
+  return {
+    fetchCategories: bindActionCreators(fetchCategories, dispatch),
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
