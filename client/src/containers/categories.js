@@ -6,7 +6,7 @@ import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';
 
 import {bindActionCreators} from 'redux'
-import { Route, Switch } from 'react-router-dom';
+
 
 class CategoriesContainer extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class CategoriesContainer extends Component {
       posts: [],
 
     });
-    if (this.state.catId == 0) {
+    if (this.state.catId === 0) {
       this.props.fetchPosts();
     }else{
       this.props.fetchCatPosts(`/categories/${this.state.catId}/posts`);
@@ -75,7 +75,7 @@ class CategoriesContainer extends Component {
    }
 
   render() {
-    const { match, categories } = this.props;
+    // const { match, categories } = this.props;
 
     return(
       <div>

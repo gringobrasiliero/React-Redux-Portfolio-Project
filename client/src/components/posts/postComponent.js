@@ -1,5 +1,4 @@
 import React from 'react'
-import Vote from '../votes';
 import { Link } from 'react-router-dom';
 
 

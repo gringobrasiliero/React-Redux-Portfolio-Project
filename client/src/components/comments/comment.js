@@ -1,13 +1,13 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
 
 
- let Comment = ({ id, comment, user_id, handleNewComment, handleChange}) => (
+ let Comment = ({ id, comment, user_id, post_id}) => (
   <div className="comment" key={id}>
     <section className="commentContainer">
       <div className="content">
       <h1>{user_id}</h1>
       <h2>{comment}</h2>
+      <h2>{post_id}</h2>
 
       </div>
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import ArticlesContainer from './articlesContainer';
 import { Link } from 'react-router-dom';
-import CategoriesList from '../containers/categories'
 export default class Header extends Component {
   render() {
     return(
@@ -12,10 +11,10 @@ export default class Header extends Component {
             <h1 className="App-Title">Neddit</h1>
             <ul>
               <li><Link to={'/'}>Home</Link></li>
-              <li><Link to={'/categories'}>Categories</Link></li>
-              <li><Link to={'users/sign_up'}  onClick={()=>this.props.changePage('signup')}>Sign Up</Link></li>
-              <li><Link to={'/users/login'} onClick={()=>this.props.changePage('login')}>Log In</Link></li>
               <li><Link to={'/posts'}>Posts</Link></li>
+              <li><Link to={'/users/login'} onClick={()=>this.props.changePage('login')}>Log In</Link></li>
+              <li><Link to={'users/sign_up'}  onClick={()=>this.props.changePage('signup')}>Sign Up</Link></li>
+
             </ul>
 
           </header>

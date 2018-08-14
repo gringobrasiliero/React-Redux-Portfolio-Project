@@ -13,7 +13,7 @@ import {fetchCategories} from './actions/category-actions';
 import {fetchPosts} from './actions/posts-actions';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
-import {fetchComments, newComment} from './actions/comment-actions';
+import {fetchComments} from './actions/comment-actions';
 
 
 // import ArticlesContainer from './components/articlesContainer';

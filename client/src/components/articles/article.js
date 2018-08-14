@@ -18,7 +18,7 @@ import { Field, reduxForm } from 'redux-form'
         <input type="text" id="description" name="description" defaultValue={description} style={{display: 'none'}} />
         <input type="text" id="url" name="url"  defaultValue={url} style={{display: 'none'}} />
         <input type="text" name="urlToImage" id="urlToImage"  defaultValue={urlToImage} style={{display: 'none'}} />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Neddit!" />
 
       </form>
 
@@ -27,11 +27,4 @@ import { Field, reduxForm } from 'redux-form'
   </div>
 )
 
-Article.defaultProps = {
-  title: "",
-  description: "",
-  url: "",
-  urlToImage: "",
-
-}
 export default Article

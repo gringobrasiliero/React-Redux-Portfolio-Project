@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CommentList from '../components/comments/commentsList'
 import {bindActionCreators} from 'redux'
 import {fetchComments, newComment} from '../actions/comment-actions';
-import { Route, Switch } from 'react-router-dom';
+
 
 class Comments extends Component {
   constructor(props) {
@@ -57,11 +57,11 @@ class Comments extends Component {
    }
 
   render() {
-    const { match, categories } = this.props;
+    // const { match, categories } = this.props;
 
     return(
       <div>
-      <CommentList comments={this.props.comments} />
+      <CommentList comments={this.props.comments} onHandleClick={this.handleClick} />
       </div>
     )
   }
