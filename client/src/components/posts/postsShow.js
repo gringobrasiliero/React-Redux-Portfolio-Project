@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CommentForm from '../comments/CommentForm'
 import Comments from '../../containers/comments'
-const PostsShow = ({post, comment})=>
+import CommentList from '../comments/commentsList'
+const PostsShow = ({post, comments})=>
 
   <div className="col-md-8">
 
@@ -21,21 +22,19 @@ const PostsShow = ({post, comment})=>
     <br />
     <br />
     <CommentForm />
-    <Comments comment={comment} />
+    <CommentList comments={comments} />
   </div>
   </div>;
 
 
 const mapStateToProps = (state, ownProps) => {
-  const post = state.posts.find(post => post.id === ownProps.match.params.postId);
-  const comment = state.comments.find(comment => comment.post_id === ownProps.match.params.postId);
-console.log(comment);
-  if (post && comment) {
-    return { post, comment }
-  } else if (post) {
-    return { post, comment: {} }
-  } else {
-    return{ post: {}, comment: {}}
+  const post = state.posts.find(post => post.id == ownProps.match.params.postId);
+  const comments = state.comments.filter(comment => comment.post_id == ownProps.match.params.postId);
+console.log(comments);
+  if (post && comments) {
+    return { post, comments}
+  }else {
+    return{ post: {} }
   }
 };
 
