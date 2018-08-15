@@ -40,13 +40,14 @@ class Comments extends Component {
   handleSubmit = (e) => {
       e.preventDefault();
       alert(this.state.comment)
-      this.props.newComment('/comments', {comment: this.state.comment, post_id: parseInt(e.target.children[2].value), created_at: new Date() });
+      this.props.newComment('/comments', {comment: this.state.comment, post_id: this.props.post_id, created_at: new Date() });
 
   }
 
   componentDidMount() {
     console.log('in component did mount')
-    this.props.fetchComments();
+    this.props.fetchComments(`/posts/${this.props.post_id}/comments`);
+    console.log(this.props.post_id)
 
    }
 
@@ -83,7 +84,7 @@ class Comments extends Component {
       <Switch>
       <Route exact path="/posts/:postId" render={(post_id) => {
         return <div>
-        <CommentForm post_id={Object.values(post_id.match.params)} onHandleSubmit={this.handleSubmit} onHandleChange={this.handleChange} onHandleIdChange={this.handleIdChange} />
+        <CommentForm post_id={this.props.post_id} onHandleSubmit={this.handleSubmit} onHandleChange={this.handleChange} onHandleIdChange={this.handleIdChange} />
           <CommentList comments={this.props.comments} onHandleClick={this.handleClick} />
         </div>
       }}

@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
 before_action :set_comment, only: [:show, :update, :destroy]
 def index
-  @comments = Comment.all
+
+  if params[:post_id]
+    @comments = Post.find(params[:post_id]).comments
+  else
+    @comments = Comment.all
+end
   json_response(@comments)
 end
 
@@ -22,7 +27,7 @@ end
 private
 
 def comment_params
-  params.permit(:comment, :created_at)
+  params.permit(:comment, :created_at, :post_id)
 end
 
 def set_comment
