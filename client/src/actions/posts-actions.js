@@ -39,7 +39,6 @@ export const newPost = (url = "/posts", data = {}) => {
       method: "POST",
       headers: {
           "Content-Type": "application/json; charset=utf-8",
-          // "Content-Type": "application/x-www-form-urlencoded",
       },
       redirect: "follow", // manual, *follow, error
       body: JSON.stringify(data), // body data type must match "Content-Type" header
