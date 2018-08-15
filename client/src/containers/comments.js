@@ -4,25 +4,30 @@ import { connect } from 'react-redux';
 import CommentList from '../components/comments/commentsList'
 import {bindActionCreators} from 'redux'
 import {fetchComments, newComment} from '../actions/comment-actions';
+import { Route, Switch } from 'react-router-dom';
+import CommentForm from '../components/comments/CommentForm'
 
 
 class Comments extends Component {
   constructor(props) {
     super(props);
-      this.handleClick = this.handleClick.bind(this);
+      // this.handleClick = this.handleClick.bind(this);
 
     this.state = {
 
     };
-
+    setTimeout(() => {
+      this.setState({
+        status: 1
+      });
+    },3000);
 
   }
 
-  handleClick(event) {
-      event.preventDefault();
+  handleSubmit = (e) => {
+      e.preventDefault();
       alert("Comment hiiiiiiiiiiiiiiiiiii");
-
-
+      this.props.newComment('/comments', {comment: e.target.children[0]});
 
   }
 
@@ -54,15 +59,26 @@ class Comments extends Component {
 
    componentWillUnmount() {
      console.log("Component will unmount")
+     this.props.fetchComments();
+
    }
 
   render() {
     // const { match, categories } = this.props;
 
     return(
-      <div>
-      <CommentList comments={this.props.comments} onHandleClick={this.handleClick} />
-      </div>
+
+      <Switch>
+      <Route exact path="/posts/:postId" render={() => {
+        return <div>
+        <CommentForm onHandleSubmit={this.handleSubmit} />
+          <CommentList comments={this.props.comments} onHandleClick={this.handleClick} />
+        </div>
+      }}
+      />
+      </Switch>
+
+
     )
   }
 }
@@ -79,6 +95,7 @@ function mapDispatchToProps(dispatch) {
   console.log("Mapped dispatch to props")
   return {
     fetchComments: bindActionCreators(fetchComments, dispatch),
+    newComment: bindActionCreators(newComment, dispatch),
 
   }
 }
