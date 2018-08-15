@@ -14,7 +14,8 @@ class Comments extends Component {
       // this.handleClick = this.handleClick.bind(this);
 
     this.state = {
-
+      comment: "",
+      post_id: 0,
     };
     setTimeout(() => {
       this.setState({
@@ -24,10 +25,22 @@ class Comments extends Component {
 
   }
 
+
+  handleChange =(e) => {
+      this.setState({[e.target.name]: e.target.value})
+  };
+
+  handleIdChange =(e) => {
+    this.setState({
+      post_id: e.target.value,
+    })
+  };
+
+
   handleSubmit = (e) => {
       e.preventDefault();
-      alert("Comment hiiiiiiiiiiiiiiiiiii");
-      this.props.newComment('/comments', {comment: e.target.children[0]});
+      alert(this.state.comment)
+      this.props.newComment('/comments', {comment: this.state.comment, post_id: parseInt(e.target.children[2].value), created_at: new Date() });
 
   }
 
@@ -64,14 +77,13 @@ class Comments extends Component {
    }
 
   render() {
-    // const { match, categories } = this.props;
 
     return(
 
       <Switch>
-      <Route exact path="/posts/:postId" render={() => {
+      <Route exact path="/posts/:postId" render={(post_id) => {
         return <div>
-        <CommentForm onHandleSubmit={this.handleSubmit} />
+        <CommentForm post_id={Object.values(post_id.match.params)} onHandleSubmit={this.handleSubmit} onHandleChange={this.handleChange} onHandleIdChange={this.handleIdChange} />
           <CommentList comments={this.props.comments} onHandleClick={this.handleClick} />
         </div>
       }}
@@ -85,8 +97,10 @@ class Comments extends Component {
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')
+
   return{
     comments: state.comments
+
 
   }
 }
