@@ -41,12 +41,12 @@ class Articles extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.newCategory("/categories", {category: this.state.searchCat});
     this.props.fetchArticles(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`);
   }
 
   handleNeddit = (e) => {
     e.preventDefault();
-    this.props.newCategory("/categories", {category: this.state.searchCat});
     const category = this.props.categories.find(category => category.category === this.state.searchCat);
     const theId = category.id;
     this.props.newPost("/posts", { category_id: theId, title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value});

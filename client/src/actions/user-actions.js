@@ -5,7 +5,7 @@ export const SIGN_UP = 'SIGN_UP';
     // calling setState will re-render the entire app (efficiently!)
 
 
-    export const signup = (url = "/users/sign_up", data = {}) => {
+    export const signup = (url = "/users", data = {}) => {
 
       return (dispatch) => {
         fetch(url, {

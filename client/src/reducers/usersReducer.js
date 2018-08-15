@@ -1,5 +1,5 @@
 import initialState from './initialState';
-// import { SIGN_UP} from '../actions/user-actions'
+import { SIGN_UP} from '../actions/user-actions'
 
 
 

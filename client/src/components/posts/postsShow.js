@@ -25,12 +25,11 @@ const PostsShow = ({post, comments})=>
 
 
 const mapStateToProps = (state, ownProps) => {
-  // const postId = ownProps.match.params.postId;
+  const postId = ownProps.match.params.postId;
   const post = state.posts.find(post => post.id == ownProps.match.params.postId);
   const comments = state.comments.filter(comment => comment.post_id == ownProps.match.params.postId);
-console.log(comments);
   if (post && comments) {
-    return { post, comments, }
+    return { post, comments, postId }
   }else {
     return{ post: {} }
   }

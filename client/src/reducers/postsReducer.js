@@ -6,10 +6,10 @@ import initialState from './initialState';
 
 
 export default (state = initialState.posts, action) => {
-  let index = state.findIndex(el => el.id === action.payload.id);
   switch(action.type) {
 
     case FETCH_POSTS:
+    let index = state.findIndex(el => el.id === action.payload.id);
       if(index === -1) {
         return [ ...action.payload];
       }

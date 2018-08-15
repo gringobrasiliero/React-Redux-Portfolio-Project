@@ -26,7 +26,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-
     };
     setTimeout(() => {
       this.setState({
@@ -40,7 +39,6 @@ class App extends Component {
       console.log('in component did mount')
       this.props.fetchCategories();
       this.props.fetchPosts();
-      this.props.fetchComments();
      }
 
 
@@ -52,10 +50,9 @@ class App extends Component {
            <Route exact path="/" component={Home} />
               <Route exact path="/posts" component={PostsContainer} />
               <Route exact path="/posts/:postId"  component={PostsShow} />
-           <Route exact path="/categories" component={CategoriesContainer} />
-         <Route exact path="/categories/:categoryId"  component={CategoriesShow} />
-      <Route exact path="/users/login" component={User} />
-      <Route exact path="/users/sign_up" component={User} />
+         //   <Route exact path="/categories" component={CategoriesContainer} />
+         // <Route exact path="/categories/:categoryId"  component={CategoriesShow} />
+
 
          </React.Fragment>
         </Router>

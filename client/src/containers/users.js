@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import Login from '../components/users/Login.js';
-import signup from '../components/users/Signup.js';
+import signupForm from '../components/users/Signup.js';
 
 import {bindActionCreators} from 'redux'
-
+import {signup} from '../actions/user-actions'
 
 class User extends Component {
   constructor(props) {
@@ -21,37 +21,38 @@ class User extends Component {
 
   }
 
-  handleUsernameChange(event) {
+
+  handleUsernameChange = (e) => {
     this.setState({
-      username: event.target.value
+      username: e.target.value
     });
   };
 
-  handleEmailChange(event) {
+  handleEmailChange = (e) => {
     this.setState({
-      email: event.target.value
+      email: e.target.value
     });
   };
 
-  handlePasswordChange(event) {
+  handlePasswordChange = (e) => {
     this.setState({
-      password: event.target.value
+      password: e.target.value
     });
   };
 
 
 
-  handleSignupSubmit(event) {
-    event.preventDefault();
+  handleSignupSubmit(e) {
+console.log(this.state);
+    e.preventDefault();
     alert("CLICKED")
-      this.props.signup("/users/sign_up", {user: this.state});
+      this.props.signup("/users", {user: {username: this.state.username, email: this.state.email, password: this.state.password}});
 
 }
 
 
 componentDidMount() {
      console.log('in component did mount')
-     this.props.signup();
 
  }
 
@@ -91,13 +92,17 @@ componentDidMount() {
 
      return (
        <div>
-          <h2>Sign Up</h2>
-          <form>
-              <input onChange={text => this.setState({ username: text })} id='username' placeholder='Username'/>
-           <input onChange={text => this.setState({ email: text })} id='email' placeholder='Email'/>
-           <input onChange={text => this.setState({ password: text })} id='password' placeholder='Password'/>
-           <button onClick={this.handleSignupSubmit}>Submit</button>
+          <h2>Login</h2>
+          <form onSubmit={this.handleSignupSubmit}>
+          <label>Username</label>
+             <input type="text" onChange={(e) => this.handleUsernameChange(e)}/>
+         <label>Email</label>
+           <input type="text" onChange={(e) => this.handleEmailChange(e)}/>
+         <label>Password</label>
+           <input type="password" onChange={(e) => this.handlePasswordChange(e)}/>
+           <input type="submit" value="Submit" />
           </form>
+
 
          </div>
      )
@@ -110,7 +115,7 @@ componentDidMount() {
  const mapStateToProps = (state) => {
    console.log('in map state to props')
  return{
-   users: state.categories,
+   users: state.users,
 
    // users: state.users,
    // votes: state.votes,

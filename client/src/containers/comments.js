@@ -73,7 +73,7 @@ class Comments extends Component {
 
    componentWillUnmount() {
      console.log("Component will unmount")
-     this.props.fetchComments();
+     this.props.fetchComments(`/posts/${this.props.post_id}/comments`);
 
    }
 

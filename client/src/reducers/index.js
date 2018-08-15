@@ -12,5 +12,5 @@ categories: categoriesReducer,
 posts: postsReducer,
 users: usersReducer,
 articles: articlesReducer,
-comments: commentsReducer
+comments: commentsReducer,
 });

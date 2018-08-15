@@ -13,10 +13,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import rootReducer from './reducers';
 
-
 const allStoreEnhancers = compose(applyMiddleware(logger, thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
-
 
 const store = createStore(rootReducer,
 {
@@ -25,6 +22,7 @@ const store = createStore(rootReducer,
   posts: [],
   articles: [],
   comments: [],
+  users: []
 
 }, allStoreEnhancers
  );
