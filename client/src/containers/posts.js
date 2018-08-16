@@ -6,6 +6,8 @@ import PostList from '../components/posts/postList'
 // import ReactDOM from 'react-dom';
 // import Category from './categories'
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
+import {fetchCategories} from '../actions/category-actions';
+
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import CategoriesContainer from './categories'
@@ -29,7 +31,7 @@ class PostsContainer extends Component {
   }
 
 
-  
+
 
   handleOnChange(event) {
       event.preventDefault();
@@ -49,6 +51,8 @@ class PostsContainer extends Component {
   componentDidMount() {
     console.log('POST in component did mount')
     this.props.fetchPosts();
+    this.props.fetchCategories();
+
 
 
   }
@@ -100,7 +104,8 @@ class PostsContainer extends Component {
     console.log("Mapped dispatch to props")
     return {
       fetchPosts: bindActionCreators(fetchPosts, dispatch),
-      fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch)
+      fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
+      fetchCategories: bindActionCreators(fetchCategories, dispatch)
 
     }
   }

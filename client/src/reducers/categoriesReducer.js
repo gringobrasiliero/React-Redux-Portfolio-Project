@@ -8,11 +8,8 @@ import initialState from './initialState';
 export default (state = initialState.categories, action) => {
   switch(action.type) {
     case FETCH_CATEGORIES:
-      let index = state.findIndex(el => el.id === action.payload.id);
+        return [...state, ...action.payload]
 
-      if(index === -1) {
-        return [...action.payload]
-      }
 
 
     // case FETCH_CATPOSTS:
@@ -24,7 +21,7 @@ export default (state = initialState.categories, action) => {
 
 
     case NEW_CATEGORY:
-      return [...state, ...action.payload]
+      return [...state.concat(action.payload)]
 
     default:
       return state

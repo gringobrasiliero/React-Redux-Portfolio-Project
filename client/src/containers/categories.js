@@ -56,7 +56,7 @@ class CategoriesContainer extends Component {
 
    shouldComponentUpdate(nextProps, nextState) {
      console.log("Should Component Update:", nextProps, nextState)
-     if (nextState.status === 1) {
+     if (nextState.status === 0) {
        return false;
      }
      return true;

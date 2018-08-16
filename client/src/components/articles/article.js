@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 
- let Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit, handleTitleChange}) => (
+ let Article = ({ id, title, description, url, publishedAt, urlToImage, category, handleNeddit, handleTitleChange}) => (
   <div className="article" key={url}>
     <section className="articleContainer">
       <img src={urlToImage} alt={title} />
@@ -11,17 +11,16 @@ import { Field, reduxForm } from 'redux-form'
         <h2> <a href={url}>{title}</a></h2>
         <p> {description}</p>
 
-      </div>
-
-      <form onSubmit={handleNeddit}>
+        <form onSubmit={handleNeddit}>
         <input type="text" id="title" name="title" defaultValue={title} style={{display: 'none'}} />
         <input type="text" id="description" name="description" defaultValue={description} style={{display: 'none'}} />
         <input type="text" id="url" name="url"  defaultValue={url} style={{display: 'none'}} />
         <input type="text" name="urlToImage" id="urlToImage"  defaultValue={urlToImage} style={{display: 'none'}} />
+
         <input type="submit" value="Neddit!" />
+        </form>
 
-      </form>
-
+      </div>
     </section>
     <br />
   </div>
