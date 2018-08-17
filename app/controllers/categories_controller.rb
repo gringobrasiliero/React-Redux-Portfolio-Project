@@ -1,31 +1,32 @@
 class CategoriesController < ApplicationController
-before_action :set_category, only: [:show, :update, :destroy]
-def index
-  @categories = Category.all
-  json_response(@categories)
-end
+  before_action :set_category, only: [:show, :update, :destroy]
 
-def create
-  @category = Category.create!(category_params)
-json_response(@category, :created)
-end
+  def index
+    @categories = Category.all
+    json_response(@categories)
+  end
 
-def show
-  json_response(@category)
-end
+  def create
+    @category = Category.create!(category_params)
+  json_response(@category, :created)
+  end
 
-def destroy
-  @category.destroy
-  head :no_content
-end
+  def show
+    json_response(@category)
+  end
 
-private
+  def destroy
+    @category.destroy
+    head :no_content
+  end
 
-def category_params
-  params.permit(:category, :created_at)
-end
+  private
 
-def set_category
-  @category = Category.find(params[:id])
-end
+  def category_params
+    params.permit(:category, :created_at)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 end

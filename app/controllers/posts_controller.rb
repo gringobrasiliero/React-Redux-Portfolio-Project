@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
     @posts =  Post.all
   end
-  
+
     json_response(@posts)
   end
 
@@ -17,7 +17,6 @@ class PostsController < ApplicationController
     @post = Post.create!(post_params)
   json_response(@post, :created)
   end
-
 
   def update
     @post.update!(post_params)
@@ -38,6 +37,7 @@ class PostsController < ApplicationController
   def post_params
     params.permit( :created_at, :category_id, :title, :description, :url, :urlToImage, :publishedAt, :created_at, :publishedAt)
   end
+
   def set_post
     @post = Post.find(params[:id])
   end

@@ -13,29 +13,20 @@ import rootReducer from './reducers';
 const allStoreEnhancers = compose(applyMiddleware(logger, thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 const store = createStore(rootReducer,
-{
-  categories: [],
-  posts: [],
-  articles: [],
-  comments: [],
+  {
+    categories: [],
+    posts: [],
+    articles: [],
+    comments: [],
 
-}, allStoreEnhancers
+  }, allStoreEnhancers
  );
-
-
 
   render(
     <Provider store={store}>
-    <BrowserRouter>
-
-      <App />
+      <BrowserRouter>
+        <App />
       </BrowserRouter>
-
     </Provider>,
     document.getElementById('root')
   )
-
-
-
-
-store.dispatch({ type: '@@INIT' });

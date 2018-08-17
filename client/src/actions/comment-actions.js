@@ -1,24 +1,19 @@
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 export const NEW_COMMENT = 'NEW_COMMENT';
 
-
 export const fetchComments = (url = "") => {
   return (dispatch) => {
-
     console.log(fetch(url))
     fetch(url)
       .then(res => res.json())
-      .then(comments => {
-        dispatch({
-          type: FETCH_COMMENTS,
-          payload: comments
+        .then(comments => {
+          dispatch({
+            type: FETCH_COMMENTS,
+            payload: comments
+          })
         })
-      })
   }
 }
-
-
-
 
 export const newComment = (url = "/comments", data = {}) => {
   return (dispatch) => {
@@ -30,14 +25,12 @@ export const newComment = (url = "/comments", data = {}) => {
       redirect: "follow", // manual, *follow, error
       body: JSON.stringify(data), // body data type must match "Content-Type" header
   })
-  .then(res => res.json())
-  .then(comments => {
-    dispatch({
-      type: NEW_COMMENT,
-      payload: comments
-    }
-
-        )
+    .then(res => res.json())
+      .then(comments => {
+        dispatch({
+          type: NEW_COMMENT,
+          payload: comments
+        })
       })
-}
+  }
 }

@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import CategoriesList from '../components/categories/categoriesList'
 import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';
-
 import {bindActionCreators} from 'redux'
-
 
 class CategoriesContainer extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       catId: "",
@@ -31,7 +27,6 @@ class CategoriesContainer extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    alert(e.target.value);
     this.setState({
       status: 0,
       posts: [],
@@ -41,25 +36,14 @@ class CategoriesContainer extends Component {
       this.props.fetchPosts();
     }else{
       this.props.fetchCatPosts(`/categories/${this.state.catId}/posts`);
-};
+    };
   }
-
-
-
-  componentDidMount() {
-    // this.props.fetchCategories();
-   }
-
 
    shouldComponentUpdate(nextProps, nextState) {
      if (nextState.status === 0) {
        return false;
      }
      return true;
-   }
-
-   componentWillUnmount() {
-     // this.props.fetchCategories();
    }
 
   render() {
@@ -80,7 +64,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   console.log("Mapped dispatch to props")
   return {
     fetchCategories: bindActionCreators(fetchCategories, dispatch),

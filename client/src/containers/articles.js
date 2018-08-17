@@ -19,11 +19,10 @@ class Articles extends React.Component {
       title: '',
       description: '',
       url: '',
-      urlToImage: '',
+      urlToImage: 'https://laracasts.com/images/series/circles/do-you-react.png',
 
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+
 
   }
 
@@ -45,7 +44,7 @@ class Articles extends React.Component {
 
   handleNeddit = (e) => {
     e.preventDefault();
-    debugger;
+    alert("This article has been saved!")
     const category = this.props.categories.find(category => category.category === this.state.searchCat);
     const theId = category.id;
     this.props.newPost("/posts", { category_id: theId, title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value});
@@ -66,9 +65,6 @@ class Articles extends React.Component {
         </h3>
         <ArticleList articles={this.props.articles} onHandleNeddit={this.handleNeddit}  />
       </div>
-
-
-
     )
   }
 
@@ -86,7 +82,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   console.log("Mapped dispatch to props")
   return {
     fetchArticles: bindActionCreators(fetchArticles, dispatch),

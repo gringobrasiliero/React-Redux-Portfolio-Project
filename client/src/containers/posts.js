@@ -9,32 +9,12 @@ import CategoriesContainer from './categories'
 class PostsContainer extends Component {
   constructor(props) {
     super(props);
-  this.handleOnChange = this.handleOnChange.bind(this);
 
     this.state = {
       currentFilter: null,
       status: 0,
     };
-    setTimeout(() => {
-      this.setState({
-        status: 0
-      });
-    },3000);
   }
-
-
-
-
-  handleOnChange(event) {
-      event.preventDefault();
-      this.setState({status: 0})
-      this.props.fetchCatPosts();
-
-      fetch(`categories/${event.target.id}/posts`)
-        .then(response => response.json())
-        .then(posts => this.setState({posts}));
-
-  };
 
   componentDidMount() {
     console.log('POST in component did mount')
@@ -49,41 +29,38 @@ class PostsContainer extends Component {
     return true;
   };
 
-    componentWillUnmount() {
-      this.props.fetchPosts()
-    };
+  componentWillUnmount() {
+    this.props.fetchPosts()
+  };
 
   render() {
     return(
 
-<div className='searchable-articles'>
-
-<ul id="nav-bar">
-<CategoriesContainer />
-</ul>
-
-       <PostList posts={this.props.posts} />
-       </div>
-     )
+      <div className='searchable-articles'>
+        <ul id="nav-bar">
+          <CategoriesContainer />
+        </ul>
+        <PostList posts={this.props.posts} />
+      </div>
+    )
   }
 
+} // End of Class
+
+const mapStateToProps = (state) => {
+  console.log('in map state to props')
+  return{
+    posts: state.posts
   }
+}
 
-  const mapStateToProps = (state) => {
-    console.log('in map state to props')
-    return{
-      posts: state.posts
-    }
+const mapDispatchToProps = (dispatch) => {
+  console.log("Mapped dispatch to props")
+  return {
+    fetchPosts: bindActionCreators(fetchPosts, dispatch),
+    fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
+    fetchCategories: bindActionCreators(fetchCategories, dispatch)
   }
-  function mapDispatchToProps(dispatch) {
-    console.log("Mapped dispatch to props")
-    return {
-      fetchPosts: bindActionCreators(fetchPosts, dispatch),
-      fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
-      fetchCategories: bindActionCreators(fetchCategories, dispatch)
+}
 
-    }
-  }
-
-
-  export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
