@@ -1,12 +1,13 @@
+import React from 'react'
 
 
 
-let ArticleSearch = ({props}) => (
+let ArticleSearch = ({onHandleChange, onHandleSubmit, value }) => (
 
 <div className='searchable-articles'>
   <h3><strong> Search for new Posts </strong>
-    <form onSubmit={ (e) => props.handleSubmit(e) }>
-      <input type="text" id="catForm" onChange={(e) => props.handleChange(e)} value={this.props.text} />
+    <form onSubmit={onHandleSubmit}>
+      <input type="text" id="catForm" onChange={onHandleChange} value={value} />
       <input type='submit' value="Submit" />
     </form>
   </h3>

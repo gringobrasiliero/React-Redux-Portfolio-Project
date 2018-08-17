@@ -6,6 +6,8 @@ import {newPost} from '../actions/posts-actions'
 import ArticleList from '../components/articles/articleList'
 import {fetchArticles} from '../actions/article-actions';
 import {fetchCategories} from '../actions/category-actions';
+import ArticleBrowsingButtons from '../components/articles/articleBrowsingButtons'
+import ArticleSearch from '../components/articles/articleSearch'
 
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
@@ -38,20 +40,22 @@ class Articles extends React.Component {
   };
 
 handleNext = (e) => {
+  e.preventDefault();
   this.setState({page: this.state.page + 1});
   this.props.fetchArticles(this.state.searchCat, this.state.page);
 }
 
 handleBack = (e) => {
+    e.preventDefault();
   this.setState({page: this.state.page - 1});
   this.props.fetchArticles(this.state.searchCat, this.state.page);
 }
 
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.newCategory("/categories", {category: this.state.searchCat});
-    this.props.fetchArticles(this.state.searchCat, this.state.page);
+handleSubmit = (e) => {
+  e.preventDefault();
+  this.props.newCategory("/categories", {category: this.state.searchCat});
+  this.props.fetchArticles(this.state.searchCat, this.state.page);
   }
 
   handleNeddit = (e) => {
@@ -68,15 +72,9 @@ handleBack = (e) => {
 
   render() {
     return(
-      <div className='searchable-articles'>
-        <h3><strong> Search for new Posts </strong>
-          <form onSubmit={ (e) => this.handleSubmit(e) }>
-            <input type="text" id="catForm" onChange={(e) => this.handleChange(e)} value={this.state.text} />
-            <input type='submit' value="Submit" />
-          </form>
-          <button onClick={ (e) => this.handleBack(e)}>Back</button>
-          <button onClick={ (e) => this.handleNext(e)}>Next</button>
-        </h3>
+      <div>
+        <ArticleSearch onHandleSubmit={this.handleSubmit} onHandleChange={this.handleChange} value={this.state.text} />
+        <ArticleBrowsingButtons onHandleNext={this.handleNext} onHandleBack={this.handleBack} />
         <ArticleList articles={this.props.articles} onHandleNeddit={this.handleNeddit}  />
       </div>
     )
