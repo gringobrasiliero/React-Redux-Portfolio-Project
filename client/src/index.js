@@ -1,9 +1,6 @@
 import React from 'react';
 import './index.css';
 import App from './App';
-// import Header from './components/header';
-// import Login from './login';
-// import Home from './Home';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import {applyMiddleware, compose, createStore} from 'redux'
@@ -18,11 +15,9 @@ const allStoreEnhancers = compose(applyMiddleware(logger, thunkMiddleware), wind
 const store = createStore(rootReducer,
 {
   categories: [],
-  votes: [],
   posts: [],
   articles: [],
   comments: [],
-  users: []
 
 }, allStoreEnhancers
  );

@@ -21,7 +21,8 @@ const PostsShow = ({post, comments})=>
     <br />
     <Comments post_id={post.id} />
   </div>
-  </div>;
+
+  </div>
 
 
 const mapStateToProps = (state, ownProps) => {

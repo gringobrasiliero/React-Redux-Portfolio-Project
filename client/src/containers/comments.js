@@ -11,7 +11,6 @@ import CommentForm from '../components/comments/CommentForm'
 class Comments extends Component {
   constructor(props) {
     super(props);
-      // this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       comment: "",
@@ -19,7 +18,7 @@ class Comments extends Component {
     };
     setTimeout(() => {
       this.setState({
-        status: 1
+        status: 0
       });
     },3000);
 
@@ -39,42 +38,28 @@ class Comments extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault();
-      alert(this.state.comment)
-      this.props.newComment('/comments', {comment: this.state.comment, post_id: this.props.post_id, created_at: new Date() });
+      let date = new Date();
+      this.props.newComment('/comments', {comment: this.state.comment, post_id: this.props.post_id, created_at: date });
 
   }
 
   componentDidMount() {
-    console.log('in component did mount')
     this.props.fetchComments(`/posts/${this.props.post_id}/comments`);
-    console.log(this.props.post_id)
-
    }
 
-   componentWillReceiveProps(nextProps) {
-     console.log("Component will recieve props", nextProps)
-   }
+
 
    shouldComponentUpdate(nextProps, nextState) {
-     console.log("Should Component Update:", nextProps, nextState)
      if (nextState.status === 1) {
        return false;
      }
      return true;
    }
 
-   componentWillUpdate(nextProps, nextState) {
-     console.log("Component Will Update:", nextProps, nextState)
-   }
 
-   componentDidUpdate(prevProps, prevState) {
-     console.log("Component Did Update:", prevProps, prevState)
-   }
 
    componentWillUnmount() {
-     console.log("Component will unmount")
      this.props.fetchComments(`/posts/${this.props.post_id}/comments`);
-
    }
 
   render() {

@@ -8,23 +8,9 @@ require('dotenv').config();
 
 
 const Home = () => (
-
-
-
-
-
-
-
-      <div className="App">
-
-
-      <Articles />
-
-
-
-      </div>
-
-
+  <div className="App">
+    <Articles />
+  </div>
 )
 
 export default Home;

@@ -15,7 +15,6 @@ class Category extends Component {
 
   handleClick = (event) => {
       event.preventDefault();
-      alert("Cat hiiiiiiiiiiiiiiiiiii");
       this.setState({status: 0})
       this.props.fetchCatPosts();
 

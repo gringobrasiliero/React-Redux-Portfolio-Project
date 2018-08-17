@@ -31,12 +31,13 @@ class CategoriesContainer extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
+    alert(e.target.value);
     this.setState({
       status: 0,
       posts: [],
 
     });
-    if (this.state.catId === 0) {
+    if (this.state.catId == 0) {
       this.props.fetchPosts();
     }else{
       this.props.fetchCatPosts(`/categories/${this.state.catId}/posts`);
@@ -46,36 +47,22 @@ class CategoriesContainer extends Component {
 
 
   componentDidMount() {
-    console.log('in component did mount')
-    this.props.fetchCategories();
+    // this.props.fetchCategories();
    }
 
-   componentWillReceiveProps(nextProps) {
-     console.log("Component will recieve props", nextProps)
-   }
 
    shouldComponentUpdate(nextProps, nextState) {
-     console.log("Should Component Update:", nextProps, nextState)
      if (nextState.status === 0) {
        return false;
      }
      return true;
    }
 
-   componentWillUpdate(nextProps, nextState) {
-     console.log("Component Will Update:", nextProps, nextState)
-   }
-
-   componentDidUpdate(prevProps, prevState) {
-     console.log("Component Did Update:", prevProps, prevState)
-   }
-
    componentWillUnmount() {
-     console.log("Component will unmount")
+     // this.props.fetchCategories();
    }
 
   render() {
-    // const { match, categories } = this.props;
 
     return(
       <div>

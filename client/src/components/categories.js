@@ -21,41 +21,6 @@ export default class CategoriesContainer extends Component {
 
   }
 
-  // fetchCategories = () => {
-  //   fetch('/categories')
-  //     .then(response => response.json())
-  //     .then(categories => this.setState({categories}))
-  //
-  // }
-  //
-  // fetchCatPosts = (e) => {
-  //   e.preventDefault()
-  //   fetch(`categories/${this.id}/posts`)
-  //     .then(response => response.json())
-  //     .then(posts => this.setState({posts}));
-  //
-  // }
-
-
-  // handleClick(event) {
-  //     event.preventDefault();
-  //     this.fetchCatPosts();
-  //     alert(event.target.getAttribute('id'));
-  // }
-
-
-  //
-  // componentDidMount() {
-  //   this.fetchCategories();
-  //   document.addEventListener('click', this.handleClick, false);
-  //
-  //
-  // }
-  //
-  // componentWillUnmount() {
-  //     document.addEventListener('click', this.handleClick, true);
-  //   }
-
 
 render() {
   return(

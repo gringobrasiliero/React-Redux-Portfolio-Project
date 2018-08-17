@@ -37,8 +37,6 @@ class Articles extends React.Component {
     })
   };
 
-
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.newCategory("/categories", {category: this.state.searchCat});

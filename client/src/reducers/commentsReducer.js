@@ -15,7 +15,7 @@ export default (state = initialState.comments, action) => {
 
 
     case NEW_COMMENT:
-      return [...state, ...action.payload];
+    return [...state.concat(action.payload)]
 
     default:
       return state

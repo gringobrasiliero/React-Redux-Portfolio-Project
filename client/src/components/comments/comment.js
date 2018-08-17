@@ -5,14 +5,16 @@ import React from 'react'
   <div className="comment" key={id}>
     <section className="commentContainer">
       <div className="content">
+
       <h2>{comment}</h2>
-      <h2>{created_at}</h2>
+      <p>{created_at}</p>
+      <br />
 
       </div>
 
     </section>
-    <br />
-  </div>
+
+    </div>
 )
 
 

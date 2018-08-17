@@ -20,7 +20,7 @@ export default (state = initialState.posts, action) => {
 
 
     case NEW_POST:
-      return [...state, ...action.payload]
+    return [...state.concat(action.payload)]
 
     default:
       return state

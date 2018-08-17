@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 
- let Article = ({ id, title, description, url, publishedAt, urlToImage, category, handleNeddit, handleTitleChange}) => (
+ let Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit, handleTitleChange}) => (
   <div className="article" key={url}>
     <section className="articleContainer">
       <img src={urlToImage} alt={title} />
