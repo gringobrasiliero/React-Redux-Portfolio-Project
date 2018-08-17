@@ -5,7 +5,7 @@ import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';
 import {bindActionCreators} from 'redux'
 
-class CategoriesContainer extends Component {
+class Categories extends Component {
   constructor(props) {
     super(props);
 
@@ -73,4 +73,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

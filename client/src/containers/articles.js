@@ -15,6 +15,7 @@ class Articles extends React.Component {
 
     this.state = {
       categories: [],
+      page: 1,
       searchCat: 'politics',
       title: '',
       description: '',
@@ -36,10 +37,21 @@ class Articles extends React.Component {
     })
   };
 
+handleNext = (e) => {
+  this.setState({page: this.state.page + 1});
+  this.props.fetchArticles(this.state.searchCat, this.state.page);
+}
+
+handleBack = (e) => {
+  this.setState({page: this.state.page - 1});
+  this.props.fetchArticles(this.state.searchCat, this.state.page);
+}
+
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.newCategory("/categories", {category: this.state.searchCat});
-    this.props.fetchArticles(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`);
+    this.props.fetchArticles(this.state.searchCat, this.state.page);
   }
 
   handleNeddit = (e) => {
@@ -51,7 +63,7 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArticles(`https://newsapi.org/v2/everything?q=${this.state.searchCat}&apiKey=${apiKey}`);
+    this.props.fetchArticles(this.state.searchCat, this.state.page);
   }
 
   render() {
@@ -62,6 +74,8 @@ class Articles extends React.Component {
             <input type="text" id="catForm" onChange={(e) => this.handleChange(e)} value={this.state.text} />
             <input type='submit' value="Submit" />
           </form>
+          <button onClick={ (e) => this.handleBack(e)}>Back</button>
+          <button onClick={ (e) => this.handleNext(e)}>Next</button>
         </h3>
         <ArticleList articles={this.props.articles} onHandleNeddit={this.handleNeddit}  />
       </div>

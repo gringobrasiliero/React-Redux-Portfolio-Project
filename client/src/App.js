@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './index.css';
 import Home from './Home';
 import PostsContainer from './containers/posts'
-import CategoriesContainer from './containers/categories';
+import Categories from './containers/categories';
 import PostsShow from './components/posts/postsShow'
 import {fetchCategories} from './actions/category-actions';
 import {fetchPosts} from './actions/posts-actions';

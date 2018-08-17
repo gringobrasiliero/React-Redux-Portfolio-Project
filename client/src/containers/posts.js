@@ -4,9 +4,9 @@ import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {fetchCategories} from '../actions/category-actions';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
-import CategoriesContainer from './categories'
+import Categories from './categories'
 
-class PostsContainer extends Component {
+class Posts extends Component {
   constructor(props) {
     super(props);
 
@@ -38,7 +38,7 @@ class PostsContainer extends Component {
 
       <div className='searchable-articles'>
         <ul id="nav-bar">
-          <CategoriesContainer />
+          <Categories />
         </ul>
         <PostList posts={this.props.posts} />
       </div>
@@ -63,4 +63,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);
