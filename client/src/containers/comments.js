@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux'
 import {fetchComments, newComment} from '../actions/comment-actions';
 import { Route, Switch } from 'react-router-dom';
 import CommentForm from '../components/comments/CommentForm'
+var arraySort = require('array-sort');
 
 class Comments extends Component {
   constructor(props) {
@@ -22,7 +23,6 @@ class Comments extends Component {
     },3000);
 
   }
-
 
   handleChange =(e) => {
       this.setState({[e.target.name]: e.target.value})
@@ -81,9 +81,10 @@ class Comments extends Component {
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')
-
+console.log(state.comments)
   return{
-    comments: state.comments
+    comments: arraySort(state.comments, 'created_at', {reverse: true} )
+
 
 
   }
