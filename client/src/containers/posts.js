@@ -5,6 +5,7 @@ import {fetchCategories} from '../actions/category-actions';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import Categories from './categories'
+var arraySort = require('array-sort');
 
 class Posts extends Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class Posts extends Component {
 const mapStateToProps = (state) => {
   console.log('in map state to props')
   return{
-    posts: state.posts
+    posts: arraySort(state.posts, 'created_at', {reverse: true} )
   }
 }
 
