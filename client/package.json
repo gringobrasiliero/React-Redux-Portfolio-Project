@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "array-sort": "^1.0.0",
     "babel-core": "^6.26.3",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",

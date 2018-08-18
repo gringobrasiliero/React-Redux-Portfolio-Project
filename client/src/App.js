@@ -4,8 +4,7 @@ import Header from './components/header';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './index.css';
 import Home from './Home';
-import PostsContainer from './containers/posts'
-import Categories from './containers/categories';
+import Posts from './containers/posts'
 import PostsShow from './components/posts/postsShow'
 import {fetchCategories} from './actions/category-actions';
 import {fetchPosts} from './actions/posts-actions';
@@ -47,7 +46,7 @@ class App extends Component {
         <React.Fragment>
           <Route path="/" component={Header} />
              <Route exact path="/" component={Home} />
-                <Route exact path="/posts" component={PostsContainer} />
+                <Route exact path="/posts" component={Posts} />
                 <Route exact path="/posts/:postId"  component={PostsShow} />
         </React.Fragment>
       </Router>

@@ -9,9 +9,8 @@ import {fetchCategories} from '../actions/category-actions';
 import ArticleBrowsingButtons from '../components/articles/articleBrowsingButtons'
 import ArticleSearch from '../components/articles/articleSearch'
 
-const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
-class Articles extends React.Component {
+class Articles extends Component {
   constructor(props) {
     super(props)
 

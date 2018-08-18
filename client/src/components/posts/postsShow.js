@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CommentForm from '../comments/CommentForm'
 import Comments from '../../containers/comments'
-import CommentList from '../comments/commentsList'
 
 const PostsShow = ({post, comments})=>
 

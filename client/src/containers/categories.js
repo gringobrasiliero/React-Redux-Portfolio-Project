@@ -27,12 +27,13 @@ class Categories extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
+    alert("HI");
     this.setState({
       status: 0,
       posts: [],
 
     });
-    if (this.state.catId == 0) {
+    if (this.state.catId === 0) {
       this.props.fetchPosts();
     }else{
       this.props.fetchCatPosts(`/categories/${this.state.catId}/posts`);
