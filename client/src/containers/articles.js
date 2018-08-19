@@ -39,8 +39,8 @@ class Articles extends Component {
   };
 
 handleNext = (e) => {
-  e.preventDefault();
   this.setState({page: this.state.page + 1});
+  e.preventDefault();
   this.props.fetchArticles(this.state.searchCat, this.state.page);
 }
 
@@ -67,7 +67,18 @@ handleSubmit = (e) => {
 
   componentDidMount() {
     this.props.fetchArticles(this.state.searchCat, this.state.page);
+    this.props.fetchCategories();
+
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.articles !== nextProps.articles) {
+      return true;
+    }
+    console.log("ARTICLES no update")
+    return false;
+  }
+
 
   render() {
     return(

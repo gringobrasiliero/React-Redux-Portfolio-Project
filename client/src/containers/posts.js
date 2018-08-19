@@ -23,16 +23,12 @@ class Posts extends Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("Should Component Update:", nextProps, nextState)
-    if (nextState.status === 1) {
-      return false;
+    if (this.props.posts !== nextProps.props) {
+      return true;
     }
-    return true;
-  };
-
-  componentWillUnmount() {
-    this.props.fetchPosts()
-  };
+    console.log("POSTS no update")
+    return false;
+  }
 
   render() {
     return(

@@ -27,7 +27,6 @@ class Categories extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    alert("HI");
     this.setState({
       status: 0,
       posts: [],
@@ -40,12 +39,21 @@ class Categories extends Component {
     };
   }
 
-   shouldComponentUpdate(nextProps, nextState) {
-     if (nextState.status === 0) {
-       return false;
-     }
-     return true;
-   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.categories !== nextProps.categories) {
+      return true;
+    }
+    console.log("CAT no update")
+    return false;
+  }
+
+   // 
+   // shouldComponentUpdate(nextProps, nextState) {
+   //   if (nextState.status === 0) {
+   //     return false;
+   //   }
+   //   return true;
+   // }
 
   render() {
 

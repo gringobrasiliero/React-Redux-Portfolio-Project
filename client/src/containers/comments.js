@@ -14,13 +14,8 @@ class Comments extends Component {
     this.state = {
       comment: "",
       post_id: 0,
-      status: 0
     };
-    setTimeout(() => {
-      this.setState({
-        status: 1
-      });
-    },3000);
+
 
   }
 
@@ -48,19 +43,19 @@ class Comments extends Component {
   }
 
 
-
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.status === 1) {
-      return false;
-    }
+    if (this.props.comments !== nextProps.comments) {
       return true;
-   }
+    }
+    console.log("COMMENTS no update")
+    return false;
+  }
 
+componentWillUnmount() {
+  console.log("UNMOUNTING")
 
+}
 
-   componentWillUnmount() {
-     this.props.fetchComments(`/posts/${this.props.post_id}/comments`);
-   }
 
   render() {
     return(
