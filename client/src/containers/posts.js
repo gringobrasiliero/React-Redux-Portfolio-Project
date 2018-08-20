@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PostList from '../components/posts/postList'
 import PostsShow from '../components/posts/postsShow'
 import { Route, Switch } from 'react-router-dom';
+import {fetchComments, newComment} from '../actions/comment-actions';
 
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {fetchCategories} from '../actions/category-actions';
@@ -43,14 +44,25 @@ class Posts extends Component {
   }
 
   render() {
+    const { match, posts } = this.props;
+
     return(
       <div className='searchable-articles'>
-        <ul id="nav-bar">
-        <Categories />
-        </ul>
-        <PostList posts={this.props.posts} />
 
-      </div>
+<Switch>
+  <Route exact path={`${match.url}/:postId`} component={PostsShow}/>
+  <Route exact path={match.url} render={() => (
+      <div>
+             <ul id="nav-bar">
+             <Categories />
+             </ul>
+             <PostList posts={this.props.posts} />
+             </div>
+           )}/>
+         </Switch>
+       </div>
+
+
     )
   }
 
@@ -62,10 +74,12 @@ componentWillUnmount() {
 
 } // End of Class
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   console.log('in map state to props')
   return{
-    posts: arraySort(state.posts, 'created_at', {reverse: true} )
+    posts: arraySort(state.posts, 'created_at', {reverse: true} ),
+    postId: ownProps.match.params.postId
+
   }
 }
 
@@ -74,7 +88,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchPosts: bindActionCreators(fetchPosts, dispatch),
     fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
-    fetchCategories: bindActionCreators(fetchCategories, dispatch)
+    fetchCategories: bindActionCreators(fetchCategories, dispatch),
+    fetchComments: bindActionCreators(fetchComments, dispatch)
+
   }
 }
 

@@ -18,6 +18,7 @@ require('dotenv').config();
 
 class App extends Component {
 
+
   componentDidMount() {
     console.log('in component did mount')
     this.props.fetchCategories();
@@ -31,8 +32,7 @@ class App extends Component {
         <React.Fragment>
           <Route path="/" component={Header} />
              <Route exact path="/" component={Home} />
-                <Route exact path="/posts" component={Posts} />
-                <Route exact path="/posts/:postId"  component={PostsShow} />
+                <Route path="/posts" component={Posts} />
         </React.Fragment>
       </Router>
     );
