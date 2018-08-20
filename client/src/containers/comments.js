@@ -29,11 +29,9 @@ class Comments extends Component {
     })
   };
 
-
   handleSubmit = (e) => {
       e.preventDefault();
       let date = new Date();
-      this.setState({status: 0})
       this.props.newComment('/comments', {comment: this.state.comment, post_id: this.props.post_id, created_at: date });
 
   }
@@ -51,10 +49,6 @@ class Comments extends Component {
     return false;
   }
 
-componentWillUnmount() {
-  console.log("UNMOUNTING")
-
-}
 
 
   render() {
@@ -70,6 +64,11 @@ componentWillUnmount() {
         }}/>
       </Switch>
     )
+  }
+
+  componentWillUnmount() {
+    console.log("UNMOUNTING")
+
   }
 
 } // End of class
