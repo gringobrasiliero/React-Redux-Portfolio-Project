@@ -67,15 +67,15 @@ handleSubmit = (e) => {
 
   componentDidMount() {
     this.props.fetchArticles(this.state.searchCat, this.state.page);
-    this.props.fetchCategories();
+    // this.props.fetchCategories();
 
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.articles !== nextProps.articles) {
+      console.log("ARTICLES update")
       return true;
     }
-    console.log("ARTICLES no update")
     return false;
   }
 
