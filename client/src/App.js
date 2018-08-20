@@ -17,28 +17,13 @@ require('dotenv').config();
 
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //
-  //   this.state = {
-  //   };
-  //   setTimeout(() => {
-  //     this.setState({
-  //       status: 0
-  //     });
-  //   },3000);
-  // }
-  //
-  // componentDidMount() {
-  //   console.log('in component did mount')
-  //   this.props.fetchCategories();
-  //   this.props.fetchPosts();
-  // }
-  //
-  // componentWillUnmount() {
-  //   this.props.fetchCategories();
-  //   this.props.fetchPosts();
-  // }
+
+  componentDidMount() {
+    console.log('in component did mount')
+    this.props.fetchCategories();
+    this.props.fetchPosts();
+  }
+
 
   render() {
     return (
@@ -54,21 +39,21 @@ class App extends Component {
   }
 } // End of Class
 
-//
-// const mapStateToProps = state => ({
-//   categories: state.categories,
-//   users: state.users,
-// })
-//
-// const mapDispatchToProps = (dispatch) => {
-//   console.log("Mapped dispatch to props")
-//   return {
-//     fetchCategories: bindActionCreators(fetchCategories, dispatch),
-//     fetchPosts: bindActionCreators(fetchPosts, dispatch),
-//     fetchComments: bindActionCreators(fetchComments, dispatch),
-//   }
-// }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+const mapStateToProps = state => ({
+  categories: state.categories,
+  users: state.users,
+})
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  console.log("Mapped dispatch to props")
+  return {
+    fetchCategories: bindActionCreators(fetchCategories, dispatch),
+    fetchPosts: bindActionCreators(fetchPosts, dispatch),
+    fetchComments: bindActionCreators(fetchComments, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// export default App;
