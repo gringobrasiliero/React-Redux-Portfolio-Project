@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PostList from '../components/posts/postList'
+import PostsShow from '../components/posts/postsShow'
+import { Route, Switch } from 'react-router-dom';
+
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {fetchCategories} from '../actions/category-actions';
 import {bindActionCreators} from 'redux'
@@ -17,8 +20,17 @@ class Posts extends Component {
     };
   }
 
+  startInterval = () => {
+    console.log("INTERVAL")
+     this.interval = setInterval(this.props.fetchPosts, 10000);
+   }
+
+   cleanUpInterval = () => clearInterval(this.interval);
+
+
   componentDidMount() {
     console.log('POST in component did mount')
+    this.startInterval()
     this.props.fetchPosts();
   };
 
@@ -32,15 +44,21 @@ class Posts extends Component {
 
   render() {
     return(
-
       <div className='searchable-articles'>
         <ul id="nav-bar">
-          <Categories />
+        <Categories />
         </ul>
         <PostList posts={this.props.posts} />
+
       </div>
     )
   }
+
+
+componentWillUnmount() {
+  this.cleanUpInterval()
+}
+
 
 } // End of Class
 
