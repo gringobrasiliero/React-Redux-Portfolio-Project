@@ -5,7 +5,11 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './index.css';
 import Home from './Home';
 import Posts from './containers/posts'
+import Categories from './containers/categories'
+
 import PostsShow from './components/posts/postsShow'
+import CategoriesShow from './components/categories/categoriesShow'
+
 import {fetchCategories} from './actions/category-actions';
 import {fetchPosts} from './actions/posts-actions';
 import { connect } from 'react-redux';
@@ -33,6 +37,7 @@ class App extends Component {
           <Route path="/" component={Header} />
              <Route exact path="/" component={Home} />
                 <Route path="/posts" component={Posts} />
+              <Route path='/categories' component={Categories} />
         </React.Fragment>
       </Router>
     );

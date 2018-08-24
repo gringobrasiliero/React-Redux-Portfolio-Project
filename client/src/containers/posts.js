@@ -23,7 +23,7 @@ class Posts extends Component {
 
   startInterval = () => {
     console.log("INTERVAL")
-     this.interval = setInterval(this.props.fetchPosts, 10000);
+     // this.interval = setInterval(this.props.fetchPosts, 10000);
    }
 
    cleanUpInterval = () => clearInterval(this.interval);
@@ -55,6 +55,7 @@ class Posts extends Component {
       <div>
              <ul id="nav-bar">
              <Categories />
+             <h1>All</h1>
              </ul>
              <PostList posts={this.props.posts} />
              </div>
