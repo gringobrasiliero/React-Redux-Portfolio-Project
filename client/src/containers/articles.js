@@ -67,7 +67,6 @@ handleSubmit = (e) => {
 
   componentDidMount() {
     this.props.fetchArticles(this.state.searchCat, this.state.page);
-    // this.props.fetchCategories();
 
   }
 
