@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import PostList from '../components/posts/postList'
-import PostsShow from '../components/posts/postsShow'
 import { Route, Switch } from 'react-router-dom';
-import {fetchComments, newComment} from '../actions/comment-actions';
-
-import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
-import {fetchCategories} from '../actions/category-actions';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import Categories from './categories'
+import PostList from '../components/posts/postList'
+import PostsShow from '../components/posts/postsShow'
+import {fetchComments} from '../actions/comment-actions';
+import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
+import {fetchCategories} from '../actions/category-actions';
 var arraySort = require('array-sort');
 
 class Posts extends Component {
@@ -23,11 +22,12 @@ class Posts extends Component {
 
   startInterval = () => {
     console.log("INTERVAL")
-     // this.interval = setInterval(this.props.fetchPosts, 10000);
+    this.interval = setInterval(this.props.fetchPosts, 10000);
    }
 
-   cleanUpInterval = () => clearInterval(this.interval);
-
+   cleanUpInterval = () => {
+     clearInterval(this.interval);
+   }
 
   componentDidMount() {
     console.log('POST in component did mount')
@@ -44,33 +44,28 @@ class Posts extends Component {
   }
 
   render() {
-    const { match, posts } = this.props;
-
+    const { match } = this.props;
     return(
-      <div className='searchable-articles'>
-
-<Switch>
-  <Route exact path={`${match.url}/:postId`} component={PostsShow}/>
-  <Route exact path={match.url} render={() => (
-      <div>
-             <ul id="nav-bar">
-             <Categories />
-             <h1>All</h1>
-             </ul>
-             <PostList posts={this.props.posts} />
-             </div>
-           )}/>
-         </Switch>
-       </div>
-
-
+      <React.Fragment>
+        <Switch>
+          <Route exact path={`${match.url}/:postId`} component={PostsShow}/>
+          <Route exact path={match.url} render={() => (
+            <div>
+              <ul id="nav-bar">
+              <Categories />
+              <h1>All</h1>
+              </ul>
+              <PostList posts={this.props.posts} />
+            </div>
+          )}/>
+        </Switch>
+      </React.Fragment>
     )
   }
 
-
-componentWillUnmount() {
-  this.cleanUpInterval()
-}
+  componentWillUnmount() {
+    this.cleanUpInterval()
+  }
 
 
 } // End of Class

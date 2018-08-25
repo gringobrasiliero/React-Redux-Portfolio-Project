@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/header';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './index.css';
+import Header from './components/header';
 import Home from './Home';
 import Posts from './containers/posts'
 import Categories from './containers/categories'
-
-import PostsShow from './components/posts/postsShow'
-import CategoriesShow from './components/categories/categoriesShow'
-
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import {fetchCategories} from './actions/category-actions';
 import {fetchPosts} from './actions/posts-actions';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
 import {fetchComments} from './actions/comment-actions';
-
 require('dotenv').config();
 
-
-
 class App extends Component {
-
 
   componentDidMount() {
     console.log('in component did mount')
     this.props.fetchCategories();
     this.props.fetchPosts();
   }
-
 
   render() {
     return (
@@ -60,5 +51,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// export default App;

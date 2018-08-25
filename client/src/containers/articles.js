@@ -18,11 +18,6 @@ class Articles extends Component {
       categories: [],
       page: 1,
       searchCat: 'politics',
-      title: '',
-      description: '',
-      url: '',
-      urlToImage: 'https://laracasts.com/images/series/circles/do-you-react.png',
-
     }
 
 
@@ -81,17 +76,31 @@ handleSubmit = (e) => {
 
   render() {
     return(
-      <div>
+      <React.Fragment>
         <ArticleSearch onHandleSubmit={this.handleSubmit} onHandleChange={this.handleChange} value={this.state.text} />
         <ArticleBrowsingButtons onHandleNext={this.handleNext} onHandleBack={this.handleBack} />
         <ArticleList articles={this.props.articles} onHandleNeddit={this.handleNeddit}  />
-      </div>
+      </React.Fragment>
     )
   }
 
 
 } //End of Class
 
+
+Articles.defaultProps = {
+  title: 'Untitled',
+  description: 'No Description',
+  url: '',
+  urlToImage: 'https://laracasts.com/images/series/circles/do-you-react.png',
+}
+
+Articles.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  url: PropTypes.string,
+  urlToImage: PropTypes.string
+}
 
 const mapStateToProps = (state, ownProps) => {
   console.log('in map state to props')

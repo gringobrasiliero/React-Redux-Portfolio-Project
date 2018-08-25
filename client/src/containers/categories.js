@@ -43,31 +43,22 @@ class Categories extends Component {
   }
 
   render() {
-    const { match, categories } = this.props;
 
     return(
       <React.Fragment>
-
-      <div>
         <CategoriesList categories={this.props.categories} onHandleChange={this.handleChange} onHandleClick={this.handleClick}  />
-      </div>
-
-
-      <Switch>
-      <Route path='/categories/:catId/posts' component={CategoriesShow} />
-
-      </Switch>
-
-
-
+        <Switch>
+          <Route path='/categories/:catId/posts' component={CategoriesShow} />
+        </Switch>
       </React.Fragment>
-
-
-
-
     )
   }
-}
+
+
+
+} //End of class
+
+
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')
