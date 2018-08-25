@@ -10,7 +10,8 @@ import PostsShow from '../components/posts/postsShow'
 import {fetchComments} from '../actions/comment-actions';
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {fetchCategories} from '../actions/category-actions';
-var arraySort = require('array-sort');
+import arraySort from 'array-sort'
+
 
 class Posts extends Component {
   constructor(props) {

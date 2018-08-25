@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import CommentList from '../components/comments/commentsList'
 import CommentForm from '../components/comments/CommentForm'
 import {fetchComments, newComment} from '../actions/comment-actions';
-var arraySort = require('array-sort');
+import arraySort from 'array-sort'
 
 class Comments extends Component {
   constructor(props) {
