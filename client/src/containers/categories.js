@@ -28,12 +28,8 @@ class Categories extends Component {
     this.setState({catId: e.target.value});
   }
 
-
-
   handleClick = (e) => {
-    alert(e.target.id);
       this.props.fetchCatPosts(`/categories/${e.target.id}/posts`);
-
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -59,6 +55,11 @@ class Categories extends Component {
 
 
 } //End of class
+
+Categories.defaultProps = {
+  category: "",
+  id: 0
+}
 
 Categories.propTypes = {
   category: PropTypes.string.isRequired,

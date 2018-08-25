@@ -71,6 +71,15 @@ class Posts extends Component {
 
 
 } // End of Class
+Posts.defaultProps = {
+  title: "",
+  description: "",
+  url: "",
+  urlToImage: "",
+  id: 0,
+  category_id: 0
+}
+
 
 Posts.propTypes = {
   title: PropTypes.string,

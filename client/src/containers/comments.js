@@ -68,8 +68,15 @@ class Comments extends Component {
 
 } // End of class
 
+Comments.defaultProps = {
+  comment: "",
+  id: 0
+}
+
+
+
 Comments.propTypes = {
-  commment: PropTypes.string.isRequired,
+  commment: PropTypes.string,
   id: PropTypes.number.isRequired
 }
 

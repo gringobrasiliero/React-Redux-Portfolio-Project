@@ -23,19 +23,9 @@ class Articles extends Component {
     }
   }
 
-  searchArticles = (e) => {
-    e.preventDefault();
-  }
-
-  handleChange =(e) => {
-    this.setState({
-      searchCat: e.target.value,
-    })
-  };
 
   handleNext = (e) => {
     this.setState({page: this.state.page + 1});
-    e.preventDefault();
     this.props.fetchArticles(this.state.searchCat, this.state.page);
   }
 
@@ -45,6 +35,11 @@ class Articles extends Component {
     this.props.fetchArticles(this.state.searchCat, this.state.page);
   }
 
+  handleChange =(e) => {
+    this.setState({
+      searchCat: e.target.value,
+    })
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
