@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
+import PropTypes from 'prop-types';
+
 import {newCategory} from '../actions/category-actions'
 import {newPost} from '../actions/posts-actions'
 import ArticleList from '../components/articles/articleList'
@@ -19,8 +21,6 @@ class Articles extends Component {
       page: 1,
       searchCat: 'politics',
     }
-
-
   }
 
   searchArticles = (e) => {
@@ -33,24 +33,24 @@ class Articles extends Component {
     })
   };
 
-handleNext = (e) => {
-  this.setState({page: this.state.page + 1});
-  e.preventDefault();
-  this.props.fetchArticles(this.state.searchCat, this.state.page);
-}
-
-handleBack = (e) => {
+  handleNext = (e) => {
+    this.setState({page: this.state.page + 1});
     e.preventDefault();
-  this.setState({page: this.state.page - 1});
-  this.props.fetchArticles(this.state.searchCat, this.state.page);
-}
-
-
-handleSubmit = (e) => {
-  e.preventDefault();
-  this.props.newCategory("/categories", {category: this.state.searchCat});
-  this.props.fetchArticles(this.state.searchCat, this.state.page);
+    this.props.fetchArticles(this.state.searchCat, this.state.page);
   }
+
+  handleBack = (e) => {
+      e.preventDefault();
+    this.setState({page: this.state.page - 1});
+    this.props.fetchArticles(this.state.searchCat, this.state.page);
+  }
+
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.newCategory("/categories", {category: this.state.searchCat});
+    this.props.fetchArticles(this.state.searchCat, this.state.page);
+    }
 
   handleNeddit = (e) => {
     e.preventDefault();
@@ -79,7 +79,7 @@ handleSubmit = (e) => {
       <React.Fragment>
         <ArticleSearch onHandleSubmit={this.handleSubmit} onHandleChange={this.handleChange} value={this.state.text} />
         <ArticleBrowsingButtons onHandleNext={this.handleNext} onHandleBack={this.handleBack} />
-        <ArticleList articles={this.props.articles} onHandleNeddit={this.handleNeddit}  />
+        <ArticleList articles={this.props.articles} onHandleNeddit={this.handleNeddit} />
       </React.Fragment>
     )
   }

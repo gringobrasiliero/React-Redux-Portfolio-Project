@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import CategoriesList from '../components/categories/categoriesList'
 import CategoriesShow from '../components/categories/categoriesShow'
 
@@ -57,6 +59,11 @@ class Categories extends Component {
 
 
 } //End of class
+
+Categories.propTypes = {
+  category: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
+}
 
 
 

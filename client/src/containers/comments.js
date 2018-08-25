@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import CommentList from '../components/comments/commentsList'
 import CommentForm from '../components/comments/CommentForm'
 import {fetchComments, newComment} from '../actions/comment-actions';
@@ -65,6 +67,14 @@ class Comments extends Component {
   }
 
 } // End of class
+
+Comments.propTypes = {
+  commment: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
+}
+
+
+
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')

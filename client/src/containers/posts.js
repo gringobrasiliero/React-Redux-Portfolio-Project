@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Categories from './categories'
 import PostList from '../components/posts/postList'
 import PostsShow from '../components/posts/postsShow'
@@ -69,6 +71,15 @@ class Posts extends Component {
 
 
 } // End of Class
+
+Posts.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  url: PropTypes.string,
+  urlToImage: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  category_id: PropTypes.number.isRequired
+}
 
 const mapStateToProps = (state, ownProps) => {
   console.log('in map state to props')

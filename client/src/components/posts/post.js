@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const Post = (props) => (
-  <div className="post" key={props.id}>
-    <img src={props.urlToImage} alt="" />
-    <section>
+  <div className="article" key={props.id}>
+  <section>
+
+  <img  src={props.urlToImage ? props.urlToImage : 'https://laracasts.com/images/series/circles/do-you-react.png'} alt={props.title} />
+
 
       <div className="content">
         <h2> <a href={props.url} target="_blank">{props.title}</a></h2>

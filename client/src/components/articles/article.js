@@ -1,9 +1,9 @@
 import React from 'react'
 
- let Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit, handleTitleChange}) => (
+ let Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit}) => (
   <div className="article" key={url}>
     <section className="articleContainer">
-      <img src={urlToImage} alt={title} />
+      <img  src={urlToImage ? urlToImage : 'https://laracasts.com/images/series/circles/do-you-react.png'} alt={title} />
       <div className="content">
 
         <h2> <a href={url} target="_blank">{title}</a></h2>
