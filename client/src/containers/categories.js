@@ -17,12 +17,17 @@ class Categories extends Component {
     this.state = {
       catId: "",
     };
-    setTimeout(() => {
-      this.setState({
-        status: 0
-      });
-    },3000);
   }
+
+  startInterval = () => {
+    console.log("INTERVAL")
+    this.interval = setInterval(this.props.fetchCatPosts(this.props.location.pathname), 10000);
+   }
+
+   cleanUpInterval = () => {
+     clearInterval(this.interval);
+   }
+
 
   handleChange = (e) => {
     this.setState({catId: e.target.value});
@@ -31,6 +36,11 @@ class Categories extends Component {
   handleClick = (e) => {
       this.props.fetchCatPosts(`/categories/${e.target.id}/posts`);
   }
+
+  componentDidMount() {
+    this.startInterval();
+  }
+
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.categories !== nextProps.categories || this.props.posts !== nextProps.posts ) {
@@ -41,7 +51,6 @@ class Categories extends Component {
   }
 
   render() {
-
     return(
       <React.Fragment>
         <CategoriesList categories={this.props.categories} onHandleChange={this.handleChange} onHandleClick={this.handleClick}  />
@@ -52,6 +61,10 @@ class Categories extends Component {
     )
   }
 
+  componentWillUnmount() {
+    console.log("CAT UNMOUNT")
+    this.cleanUpInterval()
+  }
 
 
 } //End of class

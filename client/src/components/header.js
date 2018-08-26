@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 // import ArticlesContainer from './articlesContainer';
 import { Link } from 'react-router-dom';
 
-export default class Header extends Component {
-  render() {
+ const Header = () => {
     return(
       <div className="App">
           <header className="App-header">
@@ -15,5 +14,6 @@ export default class Header extends Component {
           </header>
       </div>
     )
-  }
 }
+
+export default Header

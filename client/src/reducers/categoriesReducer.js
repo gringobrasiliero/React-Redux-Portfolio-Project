@@ -3,6 +3,7 @@ import initialState from './initialState';
 
 export default (state = initialState.categories, action) => {
   switch(action.type) {
+
     case FETCH_CATEGORIES:
         return [...state, ...action.payload]
 

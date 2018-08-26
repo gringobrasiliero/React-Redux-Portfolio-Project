@@ -3,7 +3,6 @@ export const NEW_COMMENT = 'NEW_COMMENT';
 
 export const fetchComments = (url = "") => {
   return (dispatch) => {
-    console.log(fetch(url))
     fetch(url)
       .then(res => res.json())
         .then(comments => {
@@ -15,14 +14,14 @@ export const fetchComments = (url = "") => {
   }
 }
 
-export const newComment = (url = "/comments", data = {}) => {
+export const newComment = (data = {}) => {
   return (dispatch) => {
-    fetch(url, {
+    fetch("/comments", {
       method: "POST",
       headers: {
           "Content-Type": "application/json; charset=utf-8",
       },
-      redirect: "follow", // manual, *follow, error
+      redirect: "follow", // follows the redirect response
       body: JSON.stringify(data), // body data type must match "Content-Type" header
   })
     .then(res => res.json())

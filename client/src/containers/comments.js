@@ -32,7 +32,7 @@ class Comments extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let date = new Date();
-    this.props.newComment('/comments', {comment: this.state.comment,
+    this.props.newComment({comment: this.state.comment,
                                         post_id: this.props.post_id,
                                         created_at: date });
   }
@@ -79,9 +79,6 @@ Comments.propTypes = {
   commment: PropTypes.string,
   id: PropTypes.number.isRequired
 }
-
-
-
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')

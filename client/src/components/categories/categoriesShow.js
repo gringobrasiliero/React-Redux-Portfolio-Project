@@ -17,12 +17,12 @@ const CategoriesShow = ({category, post})=> {
 const mapStateToProps = (state, ownProps) => {
   const catId = ownProps.match.params.postId;
   const category = state.categories.find(category => category.id.toString() === ownProps.match.params.catId);
-  const post = state.posts.filter(post => post.category_id.toString() === ownProps.match.params.catId);
-  if (post && category) {
+  const post = state.posts;
+  if (category && post) {
     return { post, category, catId }
   }else {
     return{ category: {},
-            post: [],
+
           }
   }
 };

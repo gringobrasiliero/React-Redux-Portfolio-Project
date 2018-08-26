@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Comments from '../../containers/comments'
 
-const PostsShow = ({post, comments})=>
-
+const PostsShow = ({post, comments})=> {
+return comments ? (
   <div className="col-md-8">
     <div className="post" key={post.id}>
       <img src={post.urlToImage} alt="" />
@@ -17,12 +17,12 @@ const PostsShow = ({post, comments})=>
       <br />
       <Comments post_id={post.id} />
     </div>
-  </div>
-
+  </div>) : ( <div>Loading...</div>)
+}
 const mapStateToProps = (state, ownProps) => {
   const postId = ownProps.match.params.postId;
   const post = state.posts.find(post => post.id.toString() === ownProps.match.params.postId);
-  const comments = state.comments.filter(comment => comment.post_id.toString() === ownProps.match.params.postId);
+  const comments = state.comments;
 
   if (post && comments) {
     return { post, comments, postId }

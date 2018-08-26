@@ -18,7 +18,6 @@ class App extends Component {
   componentDidMount() {
     console.log('in component did mount')
     this.props.fetchCategories();
-    this.props.fetchPosts();
   }
 
   render() {
