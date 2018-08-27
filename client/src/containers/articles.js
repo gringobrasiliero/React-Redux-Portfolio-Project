@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux'
 import PropTypes from 'prop-types';
-
+import ArticleList from '../components/articles/ArticleList'
+import ArticleBrowsingButtons from '../components/articles/ArticleBrowsingButtons'
+import ArticleSearch from '../components/articles/ArticleSearch'
+import {bindActionCreators} from 'redux'
 import {newCategory} from '../actions/category-actions'
 import {newPost} from '../actions/posts-actions'
-import ArticleList from '../components/articles/articleList'
 import {fetchArticles} from '../actions/article-actions';
 import {fetchCategories} from '../actions/category-actions';
-import ArticleBrowsingButtons from '../components/articles/articleBrowsingButtons'
-import ArticleSearch from '../components/articles/articleSearch'
+
 
 
 class Articles extends Component {

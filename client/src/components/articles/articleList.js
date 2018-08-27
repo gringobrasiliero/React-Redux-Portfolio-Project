@@ -1,5 +1,5 @@
 import React from 'react'
-import Article from './article'
+import Article from './Article'
 
 export const ArticleList = ({ articles, index, onHandleNeddit}) => (
   <div className="article-list">

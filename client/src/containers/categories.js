@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import CategoriesList from '../components/categories/categoriesList'
-import CategoriesShow from './categoriesShow'
+import CategoriesList from '../components/categories/CategoriesList'
+import CategoriesShow from './CategoriesShow'
+
 
 import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';

@@ -1,5 +1,4 @@
 import React from 'react';
-// import ArticlesContainer from './articlesContainer';
 import { Link } from 'react-router-dom';
 
  const Header = () => {

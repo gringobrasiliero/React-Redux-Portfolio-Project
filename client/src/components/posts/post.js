@@ -19,5 +19,5 @@ const Post = (props) => (
     <br />
   </div>
 )
-
+ 
 export default Post;

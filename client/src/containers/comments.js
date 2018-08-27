@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import CommentList from '../components/comments/commentsList'
+import CommentList from '../components/comments/CommentsList'
 import CommentForm from '../components/comments/CommentForm'
 import {fetchComments, newComment} from '../actions/comment-actions';
 import arraySort from 'array-sort'

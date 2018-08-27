@@ -1,5 +1,5 @@
 import React from 'react'
-import ArticleForm from './articleForm'
+import ArticleForm from './ArticleForm'
  let Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit}) => (
   <div className="article" key={url}>
     <section className="articleContainer">

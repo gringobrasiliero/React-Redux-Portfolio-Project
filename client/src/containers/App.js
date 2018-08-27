@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
-import './index.css';
-import Header from './components/header';
-import Home from './Home';
-import Posts from './containers/posts'
-import Categories from './containers/categories'
-import { BrowserRouter as Router, Route} from 'react-router-dom';
-import {fetchCategories} from './actions/category-actions';
-import {fetchPosts} from './actions/posts-actions';
+import '../App.css';
+import '../index.css';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
-import {fetchComments} from './actions/comment-actions';
+import Header from '../components/Header';
+import Posts from './Posts'
+import Categories from './Categories'
+import Articles from './Articles'
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import {fetchCategories} from '../actions/category-actions';
+import {fetchPosts} from '../actions/posts-actions';
+import {fetchComments} from '../actions/comment-actions';
 require('dotenv').config();
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Route path="/" component={Header} />
-             <Route exact path="/" component={Home} />
+             <Route exact path="/" component={Articles} />
                 <Route path="/posts" component={Posts} />
               <Route path='/categories' component={Categories} />
         </React.Fragment>
