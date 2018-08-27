@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ArticleForm from './articleForm'
  let Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit}) => (
   <div className="article" key={url}>
     <section className="articleContainer">
@@ -9,14 +9,7 @@ import React from 'react'
         <h2> <a href={url} target="_blank">{title}</a></h2>
         <p> {description}</p>
 
-        <form onSubmit={handleNeddit}>
-          <input type="text" id="title" name="title" defaultValue={title} style={{display: 'none'}} />
-          <input type="text" id="description" name="description" defaultValue={description} style={{display: 'none'}} />
-          <input type="text" id="url" name="url"  defaultValue={url} style={{display: 'none'}} />
-          <input type="text" name="urlToImage" id="urlToImage"  defaultValue={urlToImage} style={{display: 'none'}} />
-
-          <input type="submit" value="Neddit!" />
-        </form>
+        <ArticleForm id={id} title={title} description={description} url={url} publishedAt={publishedAt} urlToImage={urlToImage} onHandleNeddit={handleNeddit}/>
 
       </div>
     </section>

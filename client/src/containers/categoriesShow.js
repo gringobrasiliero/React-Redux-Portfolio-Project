@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PostList from '../posts/postList'
+import PostList from '../components/posts/postList'
 
 
 const CategoriesShow = ({category, post})=> {

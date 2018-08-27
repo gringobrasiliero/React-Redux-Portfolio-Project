@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import CategoriesList from '../components/categories/categoriesList'
-import CategoriesShow from '../components/categories/categoriesShow'
+import CategoriesShow from './categoriesShow'
 
 import {fetchCategories, fetchCatPosts} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';

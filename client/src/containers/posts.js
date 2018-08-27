@@ -3,11 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CategoriesList from '../components/categories/categoriesList'
-import Categories from './categories'
-import PostList from '../components/posts/postList'
-import PostsShow from '../components/posts/postsShow'
-import PostsIndex from '../components/posts/postsIndex'
+import PostsShow from './postsShow'
+import PostsIndex from './postsIndex'
 import {fetchComments} from '../actions/comment-actions';
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {fetchCategories} from '../actions/category-actions';

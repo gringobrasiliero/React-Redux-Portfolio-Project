@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PostList from '../posts/postList'
-import CategoriesList from '../categories/categoriesList'
+import PostList from '../components/posts/postList'
+import CategoriesList from '../components/categories/categoriesList'
 
 
 const PostsIndex = ({categories, posts})=> {
@@ -26,6 +26,6 @@ const mapStateToProps = (state, ownProps) => {
   }else {
     return{ categories: {},
   }
-};
+}
 }
 export default connect(mapStateToProps)(PostsIndex);

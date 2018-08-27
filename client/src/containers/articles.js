@@ -114,7 +114,7 @@ const mapDispatchToProps = (dispatch) => {
     newCategory: bindActionCreators(newCategory, dispatch),
     newPost: bindActionCreators(newPost, dispatch),
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
-    
+
   }
 }
 
