@@ -19,7 +19,7 @@ class Articles extends Component {
     this.state = {
       categories: [],
       page: 1,
-      searchCat: 'politics',
+      searchCat: 'Politics',
     }
   }
 
