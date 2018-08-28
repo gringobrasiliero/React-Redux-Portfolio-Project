@@ -1,7 +1,7 @@
 import React from 'react'
 import Post from './Post'
 
-const PostList = ({ posts }) => (
+const PostList = ({ posts, onHandleClick }) => (
   <div className="post-list">
     {posts.map(post =>
        <Post
@@ -13,6 +13,8 @@ const PostList = ({ posts }) => (
           url={post.url}
           publishedAt={post.publishedAt}
           urlToImage={post.urlToImage}
+          likes={post.likes}
+          onSubmit={onHandleClick}
       />
     )}
   </div>

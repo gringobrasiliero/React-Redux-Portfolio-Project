@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180723083247) do
     t.text "url"
     t.text "urlToImage"
     t.string "publishedAt"
+    t.integer "likes", default: 0
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

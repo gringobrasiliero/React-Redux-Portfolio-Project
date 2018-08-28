@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.permit( :created_at, :category_id, :title, :description, :url, :urlToImage, :publishedAt, :created_at, :publishedAt)
+    params.permit( :created_at, :category_id, :title, :description, :url, :urlToImage, :publishedAt, :created_at, :publishedAt, :likes)
   end
 
   def set_post

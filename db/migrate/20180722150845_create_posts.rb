@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.text :url
       t.text :urlToImage
       t.string :publishedAt
+      t.integer :likes, default: 0
 
       t.references :category, foreign_key: true
 

@@ -18,7 +18,8 @@ class Posts extends Component {
     this.state = {
       currentFilter: null,
       status: 0,
-    };
+      likes: 0}
+
   }
 
   startInterval = () => {
@@ -68,7 +69,8 @@ Posts.defaultProps = {
   url: "",
   urlToImage: "",
   id: 0,
-  category_id: 0
+  category_id: 0,
+  likes: 0
 }
 
 
@@ -87,6 +89,7 @@ const mapStateToProps = (state, ownProps) => {
     posts: arraySort(state.posts, 'created_at', {reverse: true} ),
     postId: ownProps.match.params.postId,
     categories: state.categories,
+    likes: state.likes
 
   }
 }

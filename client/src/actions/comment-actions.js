@@ -15,6 +15,7 @@ export const fetchComments = (url = "") => {
 }
 
 export const newComment = (data = {}) => {
+  console.log('C')
   return (dispatch) => {
     fetch("/comments", {
       method: "POST",
@@ -25,11 +26,13 @@ export const newComment = (data = {}) => {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
   })
     .then(res => res.json())
-      .then(comments => {
+      .then(comment => {
+        console.log('D')
         dispatch({
           type: NEW_COMMENT,
-          payload: comments
+          payload: comment
         })
       })
   }
+  console.log('E')
 }
