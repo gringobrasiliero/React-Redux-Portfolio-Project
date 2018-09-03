@@ -14,13 +14,12 @@ class Likes extends Component {
 
 onHandleClick = (e) => {
   e.preventDefault();
-
 const id = `${this.props.id}`;
-const newTotalLikes = parseInt(this.state.likes) + 1;
+const newTotalLikes = parseInt(this.state.likes, 10) + 1;
 this.setState({
   likes: newTotalLikes
 });
-  fetch('/posts/' + `${id}` , {
+  fetch(`/posts/${id}` , {
     method: 'PUT',
     headers: {
         "Content-Type": "application/json; charset=utf-8",

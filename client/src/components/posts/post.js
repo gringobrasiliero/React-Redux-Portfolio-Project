@@ -11,7 +11,7 @@ const Post = (props) => (
         <Link to={`/posts/${props.id}`}>Comments</Link>
         <br />
         <br />
-        <Likes id={props.id} likes={props.likes} id={props.id} />
+        <Likes id={props.id} likes={props.likes} />
       </div>
   </section>
     <br />

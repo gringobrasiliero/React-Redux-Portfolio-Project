@@ -4,7 +4,7 @@ import '../index.css';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
 import Header from '../components/Header';
-import Posts from './Posts'
+import Posts from './posts'
 import Categories from './Categories'
 import Articles from './Articles'
 import { BrowserRouter as Router, Route} from 'react-router-dom';

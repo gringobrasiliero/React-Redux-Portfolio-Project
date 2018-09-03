@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update!(post_params)
-    head :no_content
+    json_response(@post, :updated)
   end
 
   def show
