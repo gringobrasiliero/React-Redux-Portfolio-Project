@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update!(post_params)
-    json_response(@post, :updated)
+    json_response(@post)
   end
 
   def show
