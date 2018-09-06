@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PostsShow from './PostsShow'
-import PostsIndex from './postsIndex'
+import PostsIndex from './PostsIndex'
 import {fetchComments} from '../actions/comment-actions';
 import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
 import {fetchCategories} from '../actions/category-actions';
@@ -18,7 +18,9 @@ class Posts extends Component {
     this.state = {
       currentFilter: null,
       status: 0,
-      likes: 0}
+      likes: 0,
+      sortedBy: "time"
+    }
 
   }
 
@@ -31,9 +33,16 @@ class Posts extends Component {
      clearInterval(this.interval);
    }
 
+handleClick = (e) => {
+  e.preventDefault;
+alert("HI")
+
+}
+
+
   componentDidMount() {
     console.log('POST in component did mount')
-    this.startInterval()
+    // this.startInterval()
     this.props.fetchPosts();
   };
 
@@ -93,7 +102,6 @@ const mapStateToProps = (state, ownProps) => {
 
   }
 }
-
 const mapDispatchToProps = (dispatch) => {
   console.log("Mapped dispatch to props")
   return {
