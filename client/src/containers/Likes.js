@@ -16,9 +16,6 @@ onHandleClick = (e) => {
   e.preventDefault();
 const id = `${this.props.id}`;
 const newTotalLikes = parseInt(this.state.likes, 10) + 1;
-this.setState({
-  likes: newTotalLikes
-});
   fetch(`/posts/${id}` , {
     method: 'PUT',
     headers: {
@@ -31,7 +28,7 @@ this.setState({
  // body data type must match "Content-Type" header
 }).then((response) => response.json())
 .then((responseJson) => {
-  return responseJson.posts;
+    this.setState({ likes: newTotalLikes})
 })
 .catch((error) => {
   console.log(error);
