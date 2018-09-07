@@ -19,9 +19,21 @@ class Posts extends Component {
       currentFilter: null,
       status: 0,
       likes: 0,
-      sortedBy: "time"
-    }
+      posts: props.posts }
 
+  }
+
+  handleClick = (e) => {
+    e.preventDefault;
+    if (e.target.id === "least popular"){
+      this.setState({
+        posts: arraySort(this.state.posts, "likes")
+      })
+    }else{
+    this.setState({
+      posts: arraySort(this.state.posts, e.target.id, {reverse: true} )
+    })
+  }
   }
 
   startInterval = () => {
@@ -33,18 +45,17 @@ class Posts extends Component {
      clearInterval(this.interval);
    }
 
-handleClick = (e) => {
-  e.preventDefault;
-alert("HI")
-
-}
-
-
   componentDidMount() {
     console.log('POST in component did mount')
     // this.startInterval()
     this.props.fetchPosts();
   };
+
+  componentWillReceiveProps(nextProps){
+  if (nextProps.posts !== this.props.posts) {
+    this.setState({ posts: nextProps.posts })
+  }
+}
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.posts !== nextProps.props) {
@@ -60,7 +71,12 @@ alert("HI")
       <React.Fragment>
         <Switch>
           <Route exact path={`${match.url}/:postId`} component={PostsShow}/>
-          <Route exact path={match.url} component={PostsIndex}/>
+          <Route exact path={match.url} render={(props) => {
+            return (
+              <PostsIndex  posts={this.state.posts} categories={this.props.categories} handleClick={this.handleClick} />
+            )
+          }}/>
+
         </Switch>
       </React.Fragment>
     )
@@ -102,6 +118,7 @@ const mapStateToProps = (state, ownProps) => {
 
   }
 }
+
 const mapDispatchToProps = (dispatch) => {
   console.log("Mapped dispatch to props")
   return {
