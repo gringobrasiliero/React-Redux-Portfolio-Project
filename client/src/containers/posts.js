@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import PostsShow from './PostsShow'
 import PostsIndex from './PostsIndex'
 import {fetchComments} from '../actions/comment-actions';
-import {fetchPosts, fetchCatPosts} from '../actions/posts-actions';
+import {fetchPosts, fetchCatPosts, deleteOldPost} from '../actions/posts-actions';
 import {fetchCategories} from '../actions/category-actions';
 import arraySort from 'array-sort'
 
@@ -41,6 +41,22 @@ class Posts extends Component {
     this.interval = setInterval(this.props.fetchPosts, 10000);
    }
 
+   checkForOldPosts = () => {
+     console.log(this.props.posts)
+     let i;
+     for (i = 0; i < this.state.posts.length; i++) {
+       let postCreatedAt = Date.parse(this.state.posts[i].created_at);
+       let now = Date.now();
+       let daysAgo = Math.floor((now-postCreatedAt)/86400/1440)
+       if( daysAgo >= 0 ){
+         let oldPostId = this.state.posts[i].id;
+         let oldPost = this.state.posts[i];
+         this.props.deleteOldPost(`/posts/${oldPostId}`, oldPost);
+         console.log("deleting " + oldPostId)
+}
+}
+   }
+
    cleanUpInterval = () => {
      clearInterval(this.interval);
    }
@@ -49,6 +65,8 @@ class Posts extends Component {
     console.log('POST in component did mount')
     // this.startInterval()
     this.props.fetchPosts();
+    this.checkForOldPosts();
+
   };
 
   componentWillReceiveProps(nextProps){
@@ -67,6 +85,7 @@ class Posts extends Component {
 
   render() {
     const { match } = this.props;
+
     return(
       <React.Fragment>
         <Switch>
@@ -125,8 +144,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchPosts: bindActionCreators(fetchPosts, dispatch),
     fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
-    fetchComments: bindActionCreators(fetchComments, dispatch)
-
+    fetchComments: bindActionCreators(fetchComments, dispatch),
+    deleteOldPost: bindActionCreators(deleteOldPost, dispatch)
   }
 }
 

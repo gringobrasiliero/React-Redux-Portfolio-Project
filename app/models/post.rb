@@ -1,8 +1,7 @@
 class Post < ApplicationRecord
-  belongs_to :category, dependent: :destroy
+  belongs_to :category
 
-  has_many :comments
-  has_many :votes
+  has_many :comments, dependent: :destroy
 
   validates :url, uniqueness: true
   validates :description, uniqueness: true

@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    head :no_content
+    json_response(@post)
   end
 
   private
