@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PostList from '../components/posts/PostList'
 import CategoriesList from '../components/categories/CategoriesList'
- 
+
 
 const PostsIndex = ({categories, posts, onClick, handleClick})=> {
   return posts ? (

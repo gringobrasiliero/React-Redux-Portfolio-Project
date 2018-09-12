@@ -12,7 +12,7 @@ export const fetchArticles = (category, page) => {
     q: category,
     language: 'en',
     to: '2018-12-12',
-    from: '2010-12-12',
+    from: '2018-09-1',
     page: page,
     pageSize: 10,
     sortBy: 'publishedAt',

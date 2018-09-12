@@ -21,7 +21,6 @@ class Posts extends Component {
   }
 
   handleClick = (e) => {
-    e.preventDefault;
     if (e.target.id === "least popular"){
       this.setState({
         posts: arraySort(this.state.posts, "likes")
