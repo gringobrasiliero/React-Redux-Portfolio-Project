@@ -12,10 +12,11 @@ class CategoriesShow extends Component {
     }
 }
 
-componentWillReceiveProps(nextProps){
-  if (nextProps.posts !== this.props.posts) {
-    this.setState({ posts: nextProps.posts })
+static getDerivedStateFromProps(nextProps, prevState){
+   if(nextProps.posts!==prevState.posts){
+     return { posts: nextProps.posts};
   }
+  else return null;
 }
 
 handleClick = (e) => {

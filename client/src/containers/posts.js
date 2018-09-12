@@ -16,11 +16,8 @@ class Posts extends Component {
     super(props);
 
     this.state = {
-      currentFilter: null,
-      status: 0,
-      likes: 0,
-      posts: props.posts }
-
+      posts: props.posts
+    }
   }
 
   handleClick = (e) => {
@@ -48,13 +45,13 @@ class Posts extends Component {
        let postCreatedAt = Date.parse(this.state.posts[i].created_at);
        let now = Date.now();
        let daysAgo = Math.floor((now-postCreatedAt)/86400/1440)
-       if( daysAgo >= 0 ){
+       if( daysAgo >= 3 ){
          let oldPostId = this.state.posts[i].id;
          let oldPost = this.state.posts[i];
          this.props.deleteOldPost(`/posts/${oldPostId}`, oldPost);
          console.log("deleting " + oldPostId)
-}
-}
+       }
+     }
    }
 
    cleanUpInterval = () => {
@@ -69,11 +66,12 @@ class Posts extends Component {
 
   };
 
-  componentWillReceiveProps(nextProps){
-  if (nextProps.posts !== this.props.posts) {
-    this.setState({ posts: nextProps.posts })
+  static getDerivedStateFromProps(nextProps, prevState){
+     if(nextProps.posts!==prevState.posts){
+       return { posts: nextProps.posts};
+    }
+    else return null;
   }
-}
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.posts !== nextProps.props) {

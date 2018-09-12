@@ -6,10 +6,8 @@ class Likes extends Component {
     super(props);
 
     this.state = {
-      currentFilter: null,
-      status: 0,
-      likes: `${this.props.likes}`}
-
+      likes: `${this.props.likes}`
+    }
   }
 
 onHandleClick = (e) => {
