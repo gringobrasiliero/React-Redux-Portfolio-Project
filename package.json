@@ -1,0 +1,36 @@
+{
+  "name": "neddit",
+  "version": "1.0.0",
+  "description": "Neddit is an application that pulls news articles off of News-API, and allows visitors to search for news articles of their choosing. for categories and posts worth reading, if you click on the \"Neddit\" button, it saves the articles for people to view. It serves as a community driven filter of news articles that are relevant to the categories people are interested in.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "moment": "^2.22.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-devise": "^0.0.19",
+    "react-compose-state": "^1.1.0",
+    "redux-form": "^7.4.2",
+    "semantic-ui-react": "^0.82.2",
+    "yarn": "^1.9.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+   "build": "cd client && npm install && npm run build && cd ..",
+   "deploy": "cp -a client/build/. public/",
+   "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+ },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gringobrasiliero/React-Redux-Portfolio-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gringobrasiliero/React-Redux-Portfolio-Project/issues"
+  },
+  "homepage": "https://github.com/gringobrasiliero/React-Redux-Portfolio-Project#readme"
+}
