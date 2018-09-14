@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Comments from './Comments'
+import Comments from './comments'
 
 const PostsShow = ({post, comments})=> {
 return comments ? (

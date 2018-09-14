@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LikesButton from '../components/likes/LikesButton'
+import likesButton from '../components/likes/LikesButton'
 
 class Likes extends Component {
   constructor(props) {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ArticleList from '../components/articles/ArticleList'
-import ArticleBrowsingButtons from '../components/articles/ArticleBrowsingButtons'
-import ArticleSearch from '../components/articles/ArticleSearch'
+import articleList from '../components/articles/ArticleList'
+import articleBrowsingButtons from '../components/articles/ArticleBrowsingButtons'
+import articleSearch from '../components/articles/ArticleSearch'
 import {bindActionCreators} from 'redux'
 import {newCategory} from '../actions/category-actions'
 import {newPost} from '../actions/posts-actions'

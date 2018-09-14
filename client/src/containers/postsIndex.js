@@ -1,6 +1,6 @@
 import React from 'react';
-import PostList from '../components/posts/PostList'
-import CategoriesList from '../components/categories/CategoriesList'
+import PostList from '../components/posts/postList'
+import CategoriesList from '../components/categories/categoriesList'
 
 
 const PostsIndex = ({categories, posts, onClick, handleClick})=> {
