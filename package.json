@@ -2,7 +2,7 @@
   "name": "neddit",
   "version": "1.0.0",
   "description": "Neddit is an application that pulls news articles off of News-API, and allows visitors to search for news articles of their choosing. for categories and posts worth reading, if you click on the \"Neddit\" button, it saves the articles for people to view. It serves as a community driven filter of news articles that are relevant to the categories people are interested in.",
-  "main": "index.js",
+  "main": "/client/index.js",
   "directories": {
     "lib": "lib",
     "test": "test"
