@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-let ArticleSearch = ({onHandleChange, onHandleSubmit, value }) => (
+const ArticleSearch = ({onHandleChange, onHandleSubmit, value }) => (
 
   <div className='searchable-articles'>
     <h3><strong> Search for new Posts </strong>
