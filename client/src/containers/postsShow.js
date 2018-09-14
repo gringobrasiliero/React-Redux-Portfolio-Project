@@ -20,12 +20,11 @@ return comments ? (
   </div>) : ( <div>Loading...</div>)
 }
 const mapStateToProps = (state, ownProps) => {
-  const postId = ownProps.match.params.postId;
   const post = state.posts.find(post => post.id.toString() === ownProps.match.params.postId);
   const comments = state.comments;
 
   if (post && comments) {
-    return { post, comments, postId }
+    return { post, comments}
   }else {
     return{ post: {} }
   }

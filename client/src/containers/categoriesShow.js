@@ -32,7 +32,6 @@ handleClick = (e) => {
 }
 
 render() {
-  console.log(this.state)
   return this.state.posts ? (
     <div className="col-md-8">
       <h1>{this.props.category.category}</h1>
@@ -51,15 +50,14 @@ render() {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const catId = ownProps.match.params.postId;
   const category = state.categories.find(category => category.id.toString() === ownProps.match.params.catId);
-  const posts = state.posts;
-  if (category && posts) {
-    return { posts, category, catId }
-  }else {
-    return{ category: {},
+  const posts = arraySort(state.posts, 'created_at', {reverse: true} )
 
-          }
+  if (category && posts) {
+    return { posts, category}
+  }else {
+    return{ category: {}
+    }
   }
 };
 

@@ -5,11 +5,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PostsShow from './PostsShow'
 import PostsIndex from './PostsIndex'
-import {fetchComments} from '../actions/comment-actions';
-import {fetchPosts, fetchCatPosts, deleteOldPost} from '../actions/posts-actions';
-import {fetchCategories} from '../actions/category-actions';
-import arraySort from 'array-sort'
 
+import {fetchPosts, deleteOldPost} from '../actions/posts-actions';
+import arraySort from 'array-sort'
 
 class Posts extends Component {
   constructor(props) {
@@ -22,8 +20,16 @@ class Posts extends Component {
 
   handleClick = (e) => {
     if (e.target.id === "least popular"){
-      this.setState({
-        posts: arraySort(this.state.posts, "likes")
+      // grab all the posts
+      // iterate through
+      // sort
+    let sortingPosts =  this.state.posts;
+    sortingPosts.sort(function(a, b){return a.likes- b.likes});
+
+      this.setState(function(prevState){
+        return {
+          posts: prevState.sort
+        }
       })
     }else{
     this.setState({
@@ -128,10 +134,7 @@ const mapStateToProps = (state, ownProps) => {
   console.log('in map state to props')
   return{
     posts: arraySort(state.posts, 'created_at', {reverse: true} ),
-    postId: ownProps.match.params.postId,
     categories: state.categories,
-    likes: state.likes
-
   }
 }
 
@@ -139,9 +142,6 @@ const mapDispatchToProps = (dispatch) => {
   console.log("Mapped dispatch to props")
   return {
     fetchPosts: bindActionCreators(fetchPosts, dispatch),
-    fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
-    fetchCategories: bindActionCreators(fetchCategories, dispatch),
-    fetchComments: bindActionCreators(fetchComments, dispatch),
     deleteOldPost: bindActionCreators(deleteOldPost, dispatch)
   }
 }

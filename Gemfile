@@ -10,7 +10,11 @@ gem 'foreman', '~> 0.82.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :development # Added development group.
+  gem 'pg', group: :production # Added postgres and made it production only.
+  # Use SCSS for stylesheets
+   gem 'rails_12factor'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
