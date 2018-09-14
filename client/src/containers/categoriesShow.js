@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import postList from '../components/posts/postList'
+import PostList from '../components/posts/postList'
 import arraySort from 'array-sort'
 
 class CategoriesShow extends Component {
