@@ -3,10 +3,10 @@ import '../App.css';
 import '../index.css';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
-import Header from '../components/Header';
 import Posts from './Posts'
 import Categories from './Categories'
 import Articles from './Articles'
+import Header from '../components/Header';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import {fetchCategories} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';
