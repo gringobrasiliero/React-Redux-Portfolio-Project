@@ -1,6 +1,6 @@
 import React from 'react'
 
- let CommentForm = ({ id, comment, onHandleSubmit, onHandleChange}) => (
+ const CommentForm = ({ id, comment, onHandleSubmit, onHandleChange}) => (
   <div className="comment" key={id}>
       <form onSubmit={onHandleSubmit}>
         <label>Comment: </label>
