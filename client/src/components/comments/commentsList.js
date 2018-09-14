@@ -1,5 +1,5 @@
 import React from 'react'
-import Comment from './Comment'
+import Comment from './comment'
 var moment = require('moment');
 
 const CommentList = ({ comments, onHandleClick }) => (

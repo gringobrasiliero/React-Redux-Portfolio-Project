@@ -1,6 +1,6 @@
 import React from 'react'
-import ArticleForm from './ArticleForm'
- let Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit}) => (
+import ArticleForm from './articleForm'
+ const Article = ({ id, title, description, url, publishedAt, urlToImage, handleNeddit}) => (
   <div className="article" key={url}>
     <section className="articleContainer">
       <img  src={urlToImage ? urlToImage : 'https://laracasts.com/images/series/circles/do-you-react.png'} alt={title} />
