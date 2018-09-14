@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux'
 import Posts from './Posts'
 import Categories from './Categories'
 import Articles from './Articles'
-
+import Header from '../components/Header';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import {fetchCategories} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';
@@ -24,6 +24,7 @@ class App extends Component {
     return (
       <Router>
         <React.Fragment>
+          <Route path="/" component={Header} />
              <Route exact path="/" component={Articles} />
                 <Route path="/posts" component={Posts} />
               <Route path='/categories' component={Categories} />
