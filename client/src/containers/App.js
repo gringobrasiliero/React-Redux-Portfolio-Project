@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
 import Posts from './Posts'
 import Categories from './Categories'
-import Articles from './Articles'
+import Articles from './articles'
 import Header from '../components/header';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import {fetchCategories} from '../actions/category-actions';
