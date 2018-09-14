@@ -1,5 +1,5 @@
 import React from 'react'
-import Post from './Post'
+import Post from './post'
 
 const PostList = ({ posts, onHandleClick, handleClick }) => (
   <div className="post-list">
