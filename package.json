@@ -1,8 +1,5 @@
 {
   "name": "neddit",
-  "engines": {
-    "node": "8.11.3"
-  },
   "scripts": {
     "build": "cd client && npm install && npm run build && cd ..",
     "deploy": "cp -a client/build/. public/",
