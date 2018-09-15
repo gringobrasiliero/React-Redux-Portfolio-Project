@@ -1,5 +1,5 @@
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
-const NewsAPI = require('newsapi');
+import NewsAPI from '../myNewsApi';
 const apiKey = process.env.REACT_APP_NEWS_SECRET_KEY
 
 const newsapi = new NewsAPI(apiKey);
