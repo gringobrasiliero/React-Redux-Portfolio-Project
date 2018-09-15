@@ -2,7 +2,7 @@
   "name": "neddit",
   "version": "0.1.0",
   "private": true,
-  "proxy": "0.0.0.0",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "array-sort": "^1.0.0",
     "babel-core": "^6.26.3",
