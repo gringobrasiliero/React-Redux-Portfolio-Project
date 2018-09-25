@@ -7,7 +7,7 @@ import ArticleForm from './articleForm'
       <div className="content">
 
         <h2> <a href={url} target="_blank">{title}</a></h2>
-        <p> {description}</p>
+        <p id="description"> {description}</p>
 
         <ArticleForm id={id} title={title} description={description} url={url} publishedAt={publishedAt} urlToImage={urlToImage} onHandleNeddit={handleNeddit}/>
 
