@@ -84,6 +84,7 @@ Categories.propTypes = {
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')
+  debugger
   return{
     categories: state.categories,
     posts: state.posts,

@@ -12,6 +12,12 @@ float: left;
   float: left;
 }
 
+.post img {
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+
  .content {
 margin-left: 125px;
 font-size: 14px;
@@ -24,6 +30,13 @@ font-size: 14px;
    width: 200px;
    float: left;
  }
+
+ .post img {
+   height: 150px;
+   width: 200px;
+   float: left;
+ }
+
 
  .content {
  margin-left: 250px;
@@ -102,11 +115,7 @@ li a:hover {
 
 }
 
-.post img {
-  height: 150px;
-  width: 200px;
-  float: left;
-}
+
 
 .searchable-posts {
   color: black
