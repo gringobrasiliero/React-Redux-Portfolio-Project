@@ -43,7 +43,9 @@ class Articles extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.newCategory("/categories", {category: this.state.searchCat});
+    let categoryInput = this.state.searchCat;
+    let cat = categoryInput.charAt(0).toUpperCase() + categoryInput.slice(1)
+    this.props.newCategory("/categories", {category: cat});
     this.props.fetchArticles(this.state.searchCat, this.state.page);
     }
 

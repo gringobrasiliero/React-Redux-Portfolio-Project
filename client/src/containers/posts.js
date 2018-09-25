@@ -44,12 +44,11 @@ class Posts extends Component {
    }
 
    checkForOldPosts = () => {
-     console.log(this.props.posts)
      let i;
      for (i = 0; i < this.state.posts.length; i++) {
-       let postCreatedAt = Date.parse(this.state.posts[i].created_at);
+       let postUpdatedAt = Date.parse(this.state.posts[i].updated_at);
        let now = Date.now();
-       let daysAgo = Math.floor((now-postCreatedAt)/86400/1440)
+       let daysAgo = Math.floor((now-postUpdatedAt)/86400/1440)
        if( daysAgo >= 3 ){
          let oldPostId = this.state.posts[i].id;
          let oldPost = this.state.posts[i];
