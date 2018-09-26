@@ -7,14 +7,13 @@ const Post = (props) => (
       <img  src={props.urlToImage ? props.urlToImage : 'https://laracasts.com/images/series/circles/do-you-react.png'} alt={props.title} />
       <div className="content">
         <h2> <a href={props.url} target="_blank">{props.title}</a></h2>
-        <p> {props.description}</p>
+        <p id="description"> {props.description}</p>
         <Link to={`/posts/${props.id}`}>Comments</Link>
         <br />
         <br />
         <Likes id={props.id} likes={props.likes} />
       </div>
   </section>
-    <br />
     <br />
   </div>
 )

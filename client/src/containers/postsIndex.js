@@ -9,7 +9,7 @@ const PostsIndex = ({categories, posts, onClick, handleClick})=> {
       <ul id="nav-bar">
       <CategoriesList categories={categories} />
       <h1>All</h1>
-      <h2>Sort By:
+      <h2 id="sortBy">Sort By:
               <button id="likes" onClick={handleClick}>Most Popular</button>
               <button id="least popular" onClick={handleClick}>Least Popular</button>
               <button id="created_at" onClick={handleClick}>Most Recent</button>

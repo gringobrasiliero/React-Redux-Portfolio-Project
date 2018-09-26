@@ -6,6 +6,10 @@ margin-left: -100px;
 float: left;
 }
 
+#sortBy {
+  font-size: 1em;
+}
+
 .article img {
   height: 100px;
   width: 100px;
