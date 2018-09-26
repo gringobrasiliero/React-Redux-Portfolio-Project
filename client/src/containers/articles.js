@@ -25,14 +25,13 @@ class Articles extends Component {
 
 
   handleNext = (e) => {
+    this.props.fetchArticles(this.state.searchCat, this.state.page+1);
     this.setState({page: this.state.page + 1});
-    this.props.fetchArticles(this.state.searchCat, this.state.page);
   }
 
   handleBack = (e) => {
-      e.preventDefault();
+    this.props.fetchArticles(this.state.searchCat, this.state.page-1);
     this.setState({page: this.state.page - 1});
-    this.props.fetchArticles(this.state.searchCat, this.state.page);
   }
 
   handleChange =(e) => {

@@ -31,11 +31,9 @@ class Comments extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let date = new Date();
-    console.log('A')
     this.props.newComment({comment: this.state.comment,
                                         post_id: this.props.post_id,
                                         created_at: date });
-                                        console.log('B')
   }
 
   componentDidMount() {
