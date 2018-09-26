@@ -35,10 +35,15 @@ class App extends Component {
 } // End of Class
 
 
-const mapStateToProps = state => ({
-  categories: state.categories,
-  users: state.users,
-})
+const mapStateToProps = (state) => {
+  console.log('in map state to props')
+  let x = [];
+  state.posts.forEach(post=> x.push(post.category_id))
+  console.log(x)
+  return{
+    categories: state.categories.filter(cat=> x.includes(cat.id)),
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   console.log("Mapped dispatch to props")

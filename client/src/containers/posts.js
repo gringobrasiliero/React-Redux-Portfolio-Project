@@ -131,9 +131,11 @@ Posts.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   console.log('in map state to props')
+  let x = [];
+  state.posts.forEach(post=> x.push(post.category_id))
   return{
     posts: arraySort(state.posts, 'created_at', {reverse: true} ),
-    categories: state.categories,
+    categories: state.categories.filter(cat=> x.includes(cat.id)),
   }
 }
 

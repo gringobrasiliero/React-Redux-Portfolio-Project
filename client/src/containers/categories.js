@@ -39,7 +39,7 @@ class Categories extends Component {
   }
 
   componentDidMount() {
-    this.startInterval();
+    // this.startInterval();
   }
 
 
@@ -84,9 +84,12 @@ Categories.propTypes = {
 
 const mapStateToProps = (state) => {
   console.log('in map state to props')
-  debugger
+  let x = [];
+  state.posts.forEach(post=> x.push(post.category_id))
+
+  console.log(x)
   return{
-    categories: state.categories,
+    categories: state.categories.filter(cat=> x.includes(cat.id)),
     posts: state.posts,
     catId: state.catId
   }
