@@ -6,13 +6,13 @@ const newsapi = new NewsAPI(apiKey);
 
 
 
-export const fetchArticles = (category, page) => {
+export const fetchArticles = (category, page, prevDate, date) => {
   return (dispatch) => {
     newsapi.v2.everything({
     q: category,
     language: 'en',
-    to: '2018-12-12',
-    from: '2018-09-1',
+    to: date,
+    from: prevDate,
     page: page,
     pageSize: 10,
     sortBy: 'publishedAt',

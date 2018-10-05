@@ -9,28 +9,31 @@ import {newCategory} from '../actions/category-actions'
 import {newPost} from '../actions/posts-actions'
 import {fetchArticles} from '../actions/article-actions';
 import {fetchCategories} from '../actions/category-actions';
-
+import moment from 'moment';
 
 
 class Articles extends Component {
   constructor(props) {
     super(props)
-
+    let date = moment()
+    let prevDate = date.subtract(30, 'days').calendar();
     this.state = {
       categories: [],
       page: 1,
       searchCat: 'Politics',
+      date: date,
+      prevDate: prevDate
     }
   }
 
 
   handleNext = (e) => {
-    this.props.fetchArticles(this.state.searchCat, this.state.page+1);
+    this.props.fetchArticles(this.state.searchCat, this.state.page+1, this.state.prevDate, this.state.date);
     this.setState({page: this.state.page + 1});
   }
 
   handleBack = (e) => {
-    this.props.fetchArticles(this.state.searchCat, this.state.page-1);
+    this.props.fetchArticles(this.state.searchCat, this.state.page-1, this.state.prevDate, this.state.date);
     this.setState({page: this.state.page - 1});
   }
 
@@ -45,7 +48,7 @@ class Articles extends Component {
     let categoryInput = this.state.searchCat;
     let cat = categoryInput.charAt(0).toUpperCase() + categoryInput.slice(1)
     this.props.newCategory("/categories", {category: cat});
-    this.props.fetchArticles(this.state.searchCat, this.state.page);
+    this.props.fetchArticles(this.state.searchCat, this.state.page, this.state.prevDate, this.state.date);
     }
 
   handleNeddit = (e) => {
@@ -57,7 +60,7 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchArticles(this.state.searchCat, this.state.page);
+    this.props.fetchArticles(this.state.searchCat, this.state.page, this.state.prevDate, this.state.date);
 
   }
 
