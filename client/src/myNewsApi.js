@@ -1,6 +1,5 @@
 // Hopefully an ES5 Transpiled version of newsapi npm package.
 
-'use strict';
 /**
  * This module provides access to the News API
  * https://newsapi.org/

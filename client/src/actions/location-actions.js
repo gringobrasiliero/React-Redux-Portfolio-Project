@@ -1,4 +1,5 @@
-
+import dotenv from 'dotenv'
+dotenv.config()
 export const FETCH_LOCATION = 'FETCH_LOCATION';
 const mapsApiKey = process.env.REACT_APP_KEY;
 
