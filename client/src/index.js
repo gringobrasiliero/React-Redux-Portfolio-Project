@@ -7,10 +7,11 @@ import {applyMiddleware, compose, createStore} from 'redux'
 import thunkMiddleware from 'redux-thunk';
 import logger from 'redux-logger';
 import { BrowserRouter } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
 
-const allStoreEnhancers = compose(applyMiddleware(logger, thunkMiddleware))
+const allStoreEnhancers = compose(applyMiddleware(logger, thunkMiddleware), composeWithDevTools())
 
 const store = createStore(rootReducer,
   {
@@ -18,6 +19,7 @@ const store = createStore(rootReducer,
     posts: [],
     articles: [],
     comments: [],
+    locations: []
 
   }, allStoreEnhancers
  );

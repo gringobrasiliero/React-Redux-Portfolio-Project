@@ -3,4 +3,5 @@ export default {
   posts: [],
   articles: [],
   comments: [],
+  locations: []
 }

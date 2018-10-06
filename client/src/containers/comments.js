@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import CommentList from '../components/comments/commentsList';
 import CommentForm from '../components/comments/CommentForm';
 import {fetchComments, newComment} from '../actions/comment-actions';
+import {fetchLocation} from '../actions/location-actions';
+
 import arraySort from 'array-sort'
 
 class Comments extends Component {
@@ -15,8 +17,25 @@ class Comments extends Component {
     this.state = {
       comment: "",
       post_id: 0,
+      latitude: 0,
+      longitude: 0,
     };
   }
+
+
+  getCoords = () => {
+    if (navigator.geolocation) { //check if geolocation is available
+              navigator.geolocation.getCurrentPosition(position =>{
+                this.props.fetchLocation( position.coords.latitude, position.coords.longitude);
+                this.setState({
+                  latitude: position.coords.latitude,
+                  longitude: position.coords.longitude,
+                });
+
+              });
+          }
+  }
+
 
   handleChange =(e) => {
       this.setState({[e.target.name]: e.target.value})
@@ -38,6 +57,7 @@ class Comments extends Component {
 
   componentDidMount() {
     this.props.fetchComments(`/posts/${this.props.post_id}/comments`);
+    this.getCoords();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -92,6 +112,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchComments: bindActionCreators(fetchComments, dispatch),
     newComment: bindActionCreators(newComment, dispatch),
+    fetchLocation: bindActionCreators(fetchLocation, dispatch)
   }
 }
 

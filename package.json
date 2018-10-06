@@ -9,6 +9,7 @@
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
   },
   "dependencies": {
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "redux-devtools-extension": "^2.13.5"
   }
 }
