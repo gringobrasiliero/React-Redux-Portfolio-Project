@@ -1,12 +1,12 @@
 import React from 'react'
 
 
- let Comment = ({ id, comment, created_at}) => (
+ let Comment = ({ id, comment, guestName, created_at}) => (
   <div className="comment" key={id}>
     <section className="commentContainer">
       <div className="content">
-        <h2>{comment}</h2>
-        <p>{created_at}</p>
+        <h3>{comment}</h3>
+        <p>{guestName} - {created_at}</p>
         <br />
       </div>
     </section>

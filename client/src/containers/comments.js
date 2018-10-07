@@ -31,10 +31,17 @@ class Comments extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    let username;
+    if (this.props.users[0]){
+      username = this.props.users[0].guestName
+    }else{
+      username = ""
+    }
     let date = new Date();
     this.props.newComment({comment: this.state.comment,
-                                        post_id: this.props.post_id,
-                                        created_at: date });
+                          post_id: this.props.post_id,
+                          guestName: username,
+                          created_at: date });
   }
 
   componentDidMount() {
@@ -84,7 +91,8 @@ const mapStateToProps = (state) => {
   console.log('in map state to props')
   console.log(state.comments)
   return{
-    comments: arraySort(state.comments, 'created_at', {reverse: true} )
+    comments: arraySort(state.comments, 'created_at', {reverse: true} ),
+    users: state.users
   }
 }
 
