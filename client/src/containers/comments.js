@@ -32,15 +32,22 @@ class Comments extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let username;
+    let guestLocation;
     if (this.props.users[0]){
       username = this.props.users[0].guestName
     }else{
       username = ""
     }
+    if (this.props.locations[0]){
+      guestLocation = `${this.props.locations[0][2].long_name}, ${this.props.locations[0][4].long_name}`
+    }else{
+      guestLocation = ""
+    }
     let date = new Date();
     this.props.newComment({comment: this.state.comment,
                           post_id: this.props.post_id,
                           guestName: username,
+                          guestLocation: guestLocation,
                           created_at: date });
   }
 
@@ -92,7 +99,8 @@ const mapStateToProps = (state) => {
   console.log(state.comments)
   return{
     comments: arraySort(state.comments, 'created_at', {reverse: true} ),
-    users: state.users
+    users: state.users,
+    locations: state.locations
   }
 }
 

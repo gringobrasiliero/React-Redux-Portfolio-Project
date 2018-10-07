@@ -6,7 +6,6 @@ export default (state = initialState.users, action) => {
   switch(action.type) {
 
     case GUEST_LOGIN:
-    debugger;
       return [ action.payload];
 
     default:

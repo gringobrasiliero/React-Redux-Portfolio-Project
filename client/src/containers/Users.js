@@ -24,6 +24,8 @@ class Users extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    let form = document.getElementById("guestForm")
+    form.innerHTML = ""
     this.props.guestLogin({guestName: this.state.guestName});
   }
 
@@ -34,7 +36,7 @@ class Users extends Component {
   render() {
     return(
       <React.Fragment>
-      <form onSubmit={this.handleSubmit}>
+      <form id="guestForm" onSubmit={this.handleSubmit}>
         <label>Sign in as Guest: </label>
           <input type="text" id="guest" name="guestName" onChange={this.handleChange} />
         <input type="submit" value="Sign in" />

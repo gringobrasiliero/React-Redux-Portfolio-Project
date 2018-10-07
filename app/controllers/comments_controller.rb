@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.permit(:comment, :created_at, :post_id, :guestName)
+    params.permit(:comment, :created_at, :post_id, :guestName, :guestLocation)
   end
 
   def set_comment

@@ -9,6 +9,7 @@ const CommentList = ({ comments, onHandleClick }) => (
         onClick={onHandleClick}
         id={comment.id}
         guestName={comment.guestName}
+        guestLocation={comment.guestLocation}
         created_at={moment(comment.created_at).format('LLL')}
         key={comment.id}
         comment={comment.comment}
