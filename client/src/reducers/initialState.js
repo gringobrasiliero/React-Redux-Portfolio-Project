@@ -3,5 +3,6 @@ export default {
   posts: [],
   articles: [],
   comments: [],
-  locations: []
+  locations: [],
+  users: []
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Users from '../containers/Users'
  const Header = () => {
     return(
       <div className="App">
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
               <li><Link to={'/'}>Home</Link></li>
               <li><Link to={'/posts'}>Posts</Link></li>
             </ul>
+            <Users />
           </header>
       </div>
     )

@@ -18,7 +18,8 @@ const store = createStore(rootReducer,
     posts: [],
     articles: [],
     comments: [],
-    locations: []
+    locations: [],
+    users: []
 
   }, allStoreEnhancers
  );
