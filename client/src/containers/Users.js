@@ -37,9 +37,9 @@ class Users extends Component {
     return(
       <React.Fragment>
       <form id="guestForm" onSubmit={this.handleSubmit}>
-        <label>Sign in as Guest: </label>
+        <label>Guest Sign in: </label>
           <input type="text" id="guest" name="guestName" onChange={this.handleChange} />
-        <input type="submit" value="Sign in" />
+        <input type="submit" value="Submit" />
       </form>
       </React.Fragment>
     )

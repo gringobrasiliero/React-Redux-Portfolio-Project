@@ -5,7 +5,7 @@ import React from 'react'
       <form onSubmit={onHandleSubmit}>
         <label>Comment: </label>
           <input type="text" id="comment" name="comment" onChange={onHandleChange} />
-        <input type="submit" value="Post Your Comment!" />
+        <input type="submit" value="Submit" />
       </form>
   </div>
 )
