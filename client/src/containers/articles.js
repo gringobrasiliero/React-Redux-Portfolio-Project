@@ -43,19 +43,29 @@ class Articles extends Component {
     })
   };
 
+  toTitleCase = (str) =>{
+    str = str.toLowerCase().split(' ');
+    for (var i = 0; i < str.length; i++){
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+
+    }
+    return str.join(' ');
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    let categoryInput = this.state.searchCat;
+    let categoryInput = this.toTitleCase(this.state.searchCat);
     let cat = categoryInput.charAt(0).toUpperCase() + categoryInput.slice(1)
-    this.props.newCategory("/categories", {category: cat});
-    this.props.fetchArticles(this.state.searchCat, this.state.page, this.state.prevDate, this.state.date);
+    this.props.newCategory("/categories", {category: categoryInput});
+    this.props.fetchArticles(categoryInput, this.state.page, this.state.prevDate, this.state.date);
     }
 
   handleNeddit = (e) => {
     e.preventDefault();
     alert("This article has been saved!")
-    const category = this.props.categories.find(category => category.category === this.state.searchCat);
-    const theId = category.id;
+    let categoryInput = this.toTitleCase(this.state.searchCat);
+    const category = this.props.categories.find(category => category.category === categoryInput);
+    let theId = category.id;
     this.props.newPost("/posts", { category_id: theId, title: e.target.children[0].value, description: e.target.children[1].value, url: e.target.children[2].value, urlToImage: e.target.children[3].value});
   }
 
