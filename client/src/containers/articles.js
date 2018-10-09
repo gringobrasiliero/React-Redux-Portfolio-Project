@@ -76,7 +76,6 @@ class Articles extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.articles !== nextProps.articles) {
-      console.log("ARTICLES update")
       return true;
     }
     return false;
@@ -112,7 +111,6 @@ Articles.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('in map state to props')
 
   return{
     categories: state.categories,
@@ -122,7 +120,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log("Mapped dispatch to props")
   return {
     fetchArticles: bindActionCreators(fetchArticles, dispatch),
     newCategory: bindActionCreators(newCategory, dispatch),

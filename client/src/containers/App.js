@@ -27,7 +27,6 @@ class App extends Component {
 
 
   componentDidMount() {
-    console.log('in component did mount')
     this.props.fetchCategories();
     this.getCoords()
   }
@@ -48,7 +47,6 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  console.log('in map state to props')
   let x = [];
   state.posts.forEach(post=> x.push(post.category_id))
   console.log(x)
@@ -58,7 +56,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log("Mapped dispatch to props")
   return {
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
     fetchPosts: bindActionCreators(fetchPosts, dispatch),

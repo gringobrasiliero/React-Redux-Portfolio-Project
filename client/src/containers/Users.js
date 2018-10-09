@@ -58,15 +58,12 @@ Users.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  console.log('in map state to props')
-  console.log(state.users)
   return{
     users: state.users
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log("Mapped dispatch to props")
   return {
     guestLogin: bindActionCreators(guestLogin, dispatch),
   }

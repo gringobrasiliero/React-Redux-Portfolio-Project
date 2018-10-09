@@ -59,7 +59,6 @@ class Comments extends Component {
     if (this.props.comments !== nextProps.comments) {
       return true;
     }
-    console.log("COMMENTS no update")
     return false;
   }
 
@@ -95,8 +94,6 @@ Comments.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  console.log('in map state to props')
-  console.log(state.comments)
   return{
     comments: arraySort(state.comments, 'created_at', {reverse: true} ),
     users: state.users,
@@ -105,7 +102,6 @@ const mapStateToProps = (state) => {
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log("Mapped dispatch to props")
   return {
     fetchComments: bindActionCreators(fetchComments, dispatch),
     newComment: bindActionCreators(newComment, dispatch),

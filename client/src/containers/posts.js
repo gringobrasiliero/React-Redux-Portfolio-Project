@@ -39,7 +39,6 @@ class Posts extends Component {
   }
 
   startInterval = () => {
-    console.log("INTERVAL")
     this.interval = setInterval(this.props.fetchPosts, 10000);
    }
 
@@ -63,7 +62,6 @@ class Posts extends Component {
    }
 
   componentDidMount() {
-    console.log('POST in component did mount')
     // this.startInterval()
     this.props.fetchPosts();
     this.checkForOldPosts();
@@ -81,7 +79,6 @@ class Posts extends Component {
     if (this.props.posts !== nextProps.props) {
       return true;
     }
-    console.log("POSTS no update")
     return false;
   }
 
@@ -130,7 +127,6 @@ Posts.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('in map state to props')
   let x = [];
   state.posts.forEach(post=> x.push(post.category_id))
   return{
@@ -140,7 +136,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log("Mapped dispatch to props")
   return {
     fetchPosts: bindActionCreators(fetchPosts, dispatch),
     deleteOldPost: bindActionCreators(deleteOldPost, dispatch)

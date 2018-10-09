@@ -21,7 +21,6 @@ class Categories extends Component {
   }
 
   startInterval = () => {
-    console.log("INTERVAL")
     this.interval = setInterval(this.props.fetchCatPosts(this.props.location.pathname), 10000);
    }
 
@@ -63,7 +62,6 @@ class Categories extends Component {
   }
 
   componentWillUnmount() {
-    console.log("CAT UNMOUNT")
     this.cleanUpInterval()
   }
 
@@ -83,11 +81,9 @@ Categories.propTypes = {
 
 
 const mapStateToProps = (state) => {
-  console.log('in map state to props')
   let x = [];
   state.posts.forEach(post=> x.push(post.category_id))
 
-  console.log(x)
   return{
     categories: state.categories.filter(cat=> x.includes(cat.id)),
     posts: state.posts,
@@ -96,7 +92,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log("Mapped dispatch to props")
   return {
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
     fetchCatPosts: bindActionCreators(fetchCatPosts, dispatch),
