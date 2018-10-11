@@ -64,7 +64,7 @@ class Posts extends Component {
   componentDidMount() {
     // this.startInterval()
     this.props.fetchPosts();
-    this.checkForOldPosts();
+    // this.checkForOldPosts();
 
   };
 
