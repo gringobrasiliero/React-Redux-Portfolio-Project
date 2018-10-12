@@ -4,12 +4,14 @@
     "node": "8.11.3"
   },
   "scripts": {
-    "build": "cd client && npm install && npm run build && cd ..",
+    "build": "cd client && npm install && npm run build && react-snapshot && cd ..",
     "deploy": "cp -a client/build/. public/",
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
   },
   "dependencies": {
     "moment": "^2.22.2",
+    "react-helmet": "^5.2.0",
+    "react-snapshot": "^1.3.0",
     "redux-devtools-extension": "^2.13.5"
   }
 }
