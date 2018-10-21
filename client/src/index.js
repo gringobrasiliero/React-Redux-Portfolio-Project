@@ -28,7 +28,8 @@ const store = createStore(rootReducer,
     <Provider store={store}>
       <BrowserRouter>
       <React.Fragment>
-        <Helmet />
+      <Helmet title="You Are Doing Great" />
+
         <App />
         </React.Fragment>
 

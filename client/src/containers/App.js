@@ -12,6 +12,7 @@ import {fetchCategories} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';
 import {fetchComments} from '../actions/comment-actions';
 import {fetchLocation} from '../actions/location-actions';
+import Helmet from 'react-helmet';
 
 require('dotenv').config();
 
@@ -20,7 +21,6 @@ class App extends Component {
   getCoords = () => {
     if (navigator.geolocation) { //check if geolocation is available
               navigator.geolocation.getCurrentPosition(position =>{
-                debugger;
                 this.props.fetchLocation( position.coords.latitude, position.coords.longitude);
               });
           }
@@ -34,6 +34,7 @@ class App extends Component {
 
   render() {
     return (
+
       <Router>
         <React.Fragment>
           <Route path="/" component={Header} />
