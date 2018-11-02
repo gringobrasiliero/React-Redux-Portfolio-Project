@@ -12,7 +12,6 @@ import {fetchCategories} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';
 import {fetchComments} from '../actions/comment-actions';
 import {fetchLocation} from '../actions/location-actions';
-import Helmet from 'react-helmet';
 
 require('dotenv').config();
 

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import CommentList from '../components/comments/commentsList';
-import CommentForm from '../components/comments/CommentForm';
 import {guestLogin} from '../actions/user-actions';
 
 
