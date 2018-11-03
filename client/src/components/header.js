@@ -10,6 +10,7 @@ import Users from '../containers/Users'
             <ul>
               <li><Link to={'/'}>Home</Link></li>
               <li><Link to={'/posts'}>Posts</Link></li>
+              <li><Link to={'/login'}>Log in</Link></li>
             </ul>
             <Users />
           </header>
