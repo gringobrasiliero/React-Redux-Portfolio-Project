@@ -22,8 +22,8 @@ class Users extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let form = document.getElementById("guestForm")
-    form.innerHTML = ""
     this.props.guestLogin({guestName: this.state.guestName});
+    form.innerHTML = `Welcome, ${this.state.guestName}`
   }
 
   componentDidMount() {
