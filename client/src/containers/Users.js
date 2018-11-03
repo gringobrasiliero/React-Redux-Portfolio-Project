@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {guestLogin} from '../actions/user-actions';
-
+import GuestSignin from '../components/users/GuestSignin'
 
 class Users extends Component {
   constructor(props) {
@@ -33,11 +33,8 @@ class Users extends Component {
   render() {
     return(
       <React.Fragment>
-      <form id="guestForm" onSubmit={this.handleSubmit}>
-        <label>Guest Sign in: </label>
-          <input type="text" id="guest" name="guestName" onChange={this.handleChange} />
-        <input type="submit" value="Submit" />
-      </form>
+
+      <GuestSignin onChange={this.handleChange} onSubmit={this.handleSubmit} />
       </React.Fragment>
     )
   }
