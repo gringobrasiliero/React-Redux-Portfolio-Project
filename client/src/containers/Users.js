@@ -17,6 +17,9 @@ class Users extends Component {
 
     this.state = {
       guestName: "",
+      username: "",
+      password: "",
+      confirmPassword: ""
 
     };
   }
@@ -35,6 +38,8 @@ class Users extends Component {
 handleSignUp = (e) => {
   e.preventDefault();
   alert("Sign-up")
+  this.props.signUp({username: this.state.username, password: this.state.password, confirmPassword: this.state.confirmPassword});
+
 }
 
 

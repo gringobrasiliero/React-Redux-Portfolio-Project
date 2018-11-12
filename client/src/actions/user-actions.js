@@ -1,5 +1,6 @@
 export const GUEST_LOGIN = 'GUEST_LOGIN';
 export const SIGN_UP = 'SIGN_UP';
+
 export const guestLogin = (guestName) => {
   return (dispatch) => {
     dispatch({

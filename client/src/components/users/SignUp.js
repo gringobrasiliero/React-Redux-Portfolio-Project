@@ -6,7 +6,7 @@ const SignUp = ({onChange, onSubmit}) => (
 <form id="SignupForm" onSubmit={onSubmit}>
 
   <label>Username:
-    <input type="text" id="userName" name="userName" onChange={onChange} />
+    <input type="text" id="userName" name="username" onChange={onChange} />
   </label>
 <br/>
   <label>Password:
@@ -14,7 +14,7 @@ const SignUp = ({onChange, onSubmit}) => (
   </label>
 <br/>
   <label>Confirm Password:
-    <input type="password" id="password" name="password" onChange={onChange} />
+    <input type="password" id="password" name="confirmPassword" onChange={onChange} />
   </label>
 
   <input type="submit" value="Sign up" />
