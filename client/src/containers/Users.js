@@ -3,6 +3,8 @@ import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {guestLogin} from '../actions/user-actions';
+import {signUp} from '../actions/user-actions';
+
 import GuestSignin from '../components/users/GuestSignin'
 import Login from '../components/users/Login'
 import SignUp from '../components/users/SignUp'
@@ -30,6 +32,13 @@ class Users extends Component {
     form.innerHTML = `Welcome, ${this.state.guestName}`
   }
 
+handleSignUp = (e) => {
+  e.preventDefault();
+  alert("Sign-up")
+}
+
+
+
   componentDidMount() {
 
   }
@@ -48,7 +57,7 @@ class Users extends Component {
 
       <Route exact path="/signup" render={(props) => {
         return (
-          <SignUp  onChange={this.handleChange} onSubmit={this.handleSubmit} />
+          <SignUp  onChange={this.handleChange} onSubmit={this.handleSignUp} />
         )
       }}/>
 
@@ -83,6 +92,8 @@ const mapStateToProps = (state) => {
 function mapDispatchToProps(dispatch) {
   return {
     guestLogin: bindActionCreators(guestLogin, dispatch),
+    signUp: bindActionCreators(signUp, dispatch),
+
   }
 }
 
