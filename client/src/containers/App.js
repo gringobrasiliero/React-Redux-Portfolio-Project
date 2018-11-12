@@ -41,7 +41,8 @@ class App extends Component {
              <Route exact path="/" component={Articles} />
                 <Route path="/posts" component={Posts} />
               <Route path='/categories' component={Categories} />
-              <Route path='/categories' component={Users} />
+              <Route path='/login' component={Users} />
+              <Route path='/signup' component={Users} />
         </React.Fragment>
       </Router>
     );
