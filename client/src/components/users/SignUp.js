@@ -3,7 +3,7 @@ import React from 'react'
 const SignUp = ({onChange, onSubmit}) => (
 <React.Fragment>
 <h1>Sign Up</h1>
-<form id="LoginForm" onSubmit={onSubmit}>
+<form id="SignupForm" onSubmit={onSubmit}>
 
   <label>Username:
     <input type="text" id="userName" name="userName" onChange={onChange} />
