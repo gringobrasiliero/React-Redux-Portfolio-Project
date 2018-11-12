@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {guestLogin} from '../actions/user-actions';
 import GuestSignin from '../components/users/GuestSignin'
+import Login from '../components/users/Login'
+import SignUp from '../components/users/SignUp'
+
 import { Route, Switch } from 'react-router-dom';
 
 class Users extends Component {
@@ -35,6 +38,20 @@ class Users extends Component {
     return(
       <React.Fragment>
       <Switch>
+
+
+      <Route exact path="/login" render={(props) => {
+        return (
+          <Login  onChange={this.handleChange} onSubmit={this.handleSubmit} />
+        )
+      }}/>
+
+      <Route exact path="/signup" render={(props) => {
+        return (
+          <SignUp  onChange={this.handleChange} onSubmit={this.handleSubmit} />
+        )
+      }}/>
+
       <Route exact path="/" render={(props) => {
         return (
           <GuestSignin  onChange={this.handleChange} onSubmit={this.handleSubmit} />
