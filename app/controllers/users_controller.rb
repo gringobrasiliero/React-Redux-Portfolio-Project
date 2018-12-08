@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     json_response(@users)
   end
 
+  def new
+    @user = User.new
+  end
+
   def create
     @user = User.create!(user_params)
   json_response(@user, :created)
@@ -23,7 +27,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :username, :password)
+    params.permit(:email, :username, :password_digest)
   end
 
   def set_user
