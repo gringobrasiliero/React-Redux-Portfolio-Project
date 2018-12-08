@@ -27,3 +27,21 @@ RSpec.describe 'Users API', type: :request do
      end
 
    end
+
+
+   describe 'POST /users' do
+     # valid payload
+     let(:valid_attributes) { { username: 'buzzlightyear', created_at: Time.now, password_digest: "Password", email: "buzzlightyear@gmail.com" } }
+
+     context 'when the request is valid' do
+       before { post '/users', params: valid_attributes }
+
+       it 'creates a user' do
+         expect(json['username']).to eq('buzzlightyear')
+       end
+
+       it 'returns status code 201' do
+         expect(response).to have_http_status(201)
+       end
+     end
+   end
