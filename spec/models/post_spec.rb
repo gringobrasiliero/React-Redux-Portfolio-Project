@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'spec_helper'
 
 
 RSpec.describe Post, type: :model do
@@ -8,7 +7,6 @@ RSpec.describe Post, type: :model do
  it { should belong_to(:category).dependent(:destroy) }
 
  it { should have_many(:comments)}
- it { should have_many(:votes)}
 
   # Validation tests
 

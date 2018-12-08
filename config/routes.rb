@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :posts
   resources :comments
-
+  resources :users
   resources :posts do
     resources :comments
   end

@@ -15,7 +15,7 @@ gem 'sqlite3', group: :development # Added development group.
   gem 'pg', group: :production # Added postgres and made it production only.
   # Use SCSS for stylesheets
    gem 'rails_12factor'
-
+gem 'bcrypt'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
