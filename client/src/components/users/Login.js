@@ -4,7 +4,7 @@ const Login = ({onChange, onSubmit}) => (
 <form id="LoginForm" onSubmit={onSubmit}>
 
   <label>Username:
-    <input type="text" id="userName" name="userName" onChange={onChange} />
+    <input type="text" id="userName" name="username" onChange={onChange} />
   </label>
 <br/>
   <label>Password:

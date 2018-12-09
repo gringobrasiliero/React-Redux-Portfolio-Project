@@ -3,8 +3,7 @@ import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {guestLogin} from '../actions/user-actions';
-import {signUp} from '../actions/user-actions';
-
+import {signUp, signIn} from '../actions/user-actions';
 import GuestSignin from '../components/users/GuestSignin'
 import Login from '../components/users/Login'
 import SignUp from '../components/users/SignUp'
@@ -30,7 +29,8 @@ class Users extends Component {
 
   handleSignIn = (e) => {
     e.preventDefault();
-    alert("Signing in")
+    this.props.signIn({username: this.state.username, password: this.state.password});
+    alert(this.state.username)
   }
 
   handleSignUp = (e) => {
@@ -90,6 +90,7 @@ const mapStateToProps = (state) => {
 function mapDispatchToProps(dispatch) {
   return {
     signUp: bindActionCreators(signUp, dispatch),
+    signIn: bindActionCreators(signIn, dispatch),
 
   }
 }
