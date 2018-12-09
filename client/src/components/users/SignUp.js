@@ -9,6 +9,10 @@ const SignUp = ({onChange, onSubmit}) => (
     <input type="text" id="userName" name="username" onChange={onChange} />
   </label>
 <br/>
+  <label>Email:
+    <input type="email" id="email" name="email" onChange={onChange} />
+    </label>
+<br/>
   <label>Password:
     <input type="password" id="password" name="password" onChange={onChange} />
   </label>

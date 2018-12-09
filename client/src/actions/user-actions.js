@@ -11,9 +11,9 @@ export const guestLogin = (guestName) => {
 }
 
 
-export const signUp = (url = "/users", data = {}) => {
+export const signUp = (data = {}) => {
   return (dispatch) => {
-    fetch(url, {
+    fetch("/users", {
       method: "POST",
       headers: {
           "Content-Type": "application/json; charset=utf-8",

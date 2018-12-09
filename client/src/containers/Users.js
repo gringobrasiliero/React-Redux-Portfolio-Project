@@ -18,6 +18,7 @@ class Users extends Component {
     this.state = {
       guestName: "",
       username: "",
+      email: "",
       password: "",
       confirmPassword: ""
 
@@ -37,8 +38,11 @@ class Users extends Component {
 
 handleSignUp = (e) => {
   e.preventDefault();
-  alert("Sign-up")
-  this.props.signUp({username: this.state.username, password: this.state.password, confirmPassword: this.state.confirmPassword});
+  if (this.state.password === this.state.confirmPassword){
+    this.props.signUp({username: this.state.username, password: this.state.password, email: this.state.email});
+  }else{
+    alert("Please confirm your password.")
+  }
 
 }
 
