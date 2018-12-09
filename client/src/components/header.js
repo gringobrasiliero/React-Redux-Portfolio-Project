@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Users from '../containers/Users'
+import GuestUsers from '../containers/GuestUsers'
  const Header = () => {
     return(
       <div className="App">
@@ -14,7 +15,7 @@ import Users from '../containers/Users'
               <li><Link to={'/signup'}>Sign Up</Link></li>
 
             </ul>
-            <Users />
+            <GuestUsers />
           </header>
       </div>
     )

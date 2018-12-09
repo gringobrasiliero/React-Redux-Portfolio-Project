@@ -16,7 +16,6 @@ class Users extends Component {
     super(props);
 
     this.state = {
-      guestName: "",
       username: "",
       email: "",
       password: "",
@@ -29,25 +28,21 @@ class Users extends Component {
       this.setState({[e.target.name]: e.target.value})
   };
 
-  handleSubmit = (e) => {
+  handleSignIn = (e) => {
     e.preventDefault();
-    let form = document.getElementById("guestForm")
-    this.props.guestLogin({guestName: this.state.guestName});
-    form.innerHTML = `Welcome, ${this.state.guestName}`
+    alert("Signing in")
   }
 
-handleSignUp = (e) => {
-  e.preventDefault();
-  if (this.state.password === this.state.confirmPassword){
-    this.props.signUp({username: this.state.username, password: this.state.password, email: this.state.email});
-    this.props.history.push('/')
-  }else{
-    alert("Please confirm your password.")
+  handleSignUp = (e) => {
+    e.preventDefault();
+    if (this.state.password === this.state.confirmPassword){
+      this.props.signUp({username: this.state.username, password: this.state.password, email: this.state.email});
+      this.props.history.push('/')
+    }else{
+      alert("Please confirm your password.")
+    }
+
   }
-
-}
-
-
 
   componentDidMount() {
 
@@ -56,27 +51,22 @@ handleSignUp = (e) => {
   render() {
     return(
       <React.Fragment>
-      <Switch>
+        <Switch>
 
 
-      <Route exact path="/login" render={(props) => {
-        return (
-          <Login  onChange={this.handleChange} onSubmit={this.handleSubmit} />
-        )
-      }}/>
+        <Route exact path="/login" render={(props) => {
+          return (
+            <Login  onChange={this.handleChange} onSubmit={this.handleSignIn} />
+          )
+        }}/>
 
-      <Route exact path="/signup" render={(props) => {
-        return (
-          <SignUp  onChange={this.handleChange} onSubmit={this.handleSignUp} />
-        )
-      }}/>
+        <Route exact path="/signup" render={(props) => {
+          return (
+            <SignUp  onChange={this.handleChange} onSubmit={this.handleSignUp} />
+          )
+        }}/>
 
-      <Route exact path="/" render={(props) => {
-        return (
-          <GuestSignin  onChange={this.handleChange} onSubmit={this.handleSubmit} />
-        )
-      }}/>
-      </Switch>
+        </Switch>
       </React.Fragment>
     )
   }
@@ -86,8 +76,6 @@ handleSignUp = (e) => {
 Users.defaultProps = {
   guestName: "",
 }
-
-
 
 Users.propTypes = {
   guestName: PropTypes.string,
@@ -101,7 +89,6 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    guestLogin: bindActionCreators(guestLogin, dispatch),
     signUp: bindActionCreators(signUp, dispatch),
 
   }
