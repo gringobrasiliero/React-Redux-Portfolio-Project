@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    json_response(@user)
+
   end
 
   def create
