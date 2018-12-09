@@ -40,6 +40,7 @@ handleSignUp = (e) => {
   e.preventDefault();
   if (this.state.password === this.state.confirmPassword){
     this.props.signUp({username: this.state.username, password: this.state.password, email: this.state.email});
+    this.props.history.push('/')
   }else{
     alert("Please confirm your password.")
   }
