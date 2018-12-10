@@ -34,7 +34,7 @@ export const signUp = (data = {}) => {
 
 export const signIn = (data = {}) => {
   return (dispatch) => {
-    fetch("/authenticate", {
+    fetch("/login", {
       method: "POST",
       headers: {
           "Content-Type": "application/json; charset=utf-8",

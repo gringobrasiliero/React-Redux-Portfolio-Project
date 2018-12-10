@@ -26,6 +26,14 @@ class UsersController < ApplicationController
     head :no_content
   end
 
+  def login
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      json_response(@user)
+  end
+  end
+
+
   private
 
   def user_params
