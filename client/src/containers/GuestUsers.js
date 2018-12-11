@@ -37,9 +37,13 @@ class GuestUsers extends Component {
       <Switch>
 
       <Route exact path="/" render={(props) => {
-        return (
-          <GuestSignin  onChange={this.handleChange} onSubmit={this.handleSubmit} />
-        )
+        if(this.props.users.length === 0){
+          return (
+            <GuestSignin  onChange={this.handleChange} onSubmit={this.handleSubmit} />
+          )
+        }else{
+          return null
+        }
       }}/>
       </Switch>
       </React.Fragment>
