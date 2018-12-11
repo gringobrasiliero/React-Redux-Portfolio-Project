@@ -30,7 +30,8 @@ class Users extends Component {
   handleSignIn = (e) => {
     e.preventDefault();
     this.props.signIn({username: this.state.username, password: this.state.password});
-    alert(this.state.username)
+    this.props.history.push('/')
+
   }
 
   handleSignUp = (e) => {
