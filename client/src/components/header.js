@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Users from '../containers/Users'
 import GuestUsers from '../containers/GuestUsers'
+
  const Header = () => {
     return(
       <div className="App">
@@ -13,7 +14,6 @@ import GuestUsers from '../containers/GuestUsers'
               <li><Link to={'/posts'}>Posts</Link></li>
               <li><Link to={'/login'}>Log in</Link></li>
               <li><Link to={'/signup'}>Sign Up</Link></li>
-
             </ul>
             <GuestUsers />
           </header>
