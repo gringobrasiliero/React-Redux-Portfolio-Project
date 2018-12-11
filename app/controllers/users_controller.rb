@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
-      json_response(@user)
+      json_response(username: @user.username, token: @user.token)
   end
   end
 
