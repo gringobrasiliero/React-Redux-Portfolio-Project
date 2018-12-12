@@ -18,7 +18,7 @@
 !/tmp/.keep
 client/node_modules/*
 .byebug_history
-
+.env
 # dependencies
 /node_modules
 
