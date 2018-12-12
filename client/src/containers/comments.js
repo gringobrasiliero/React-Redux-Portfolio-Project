@@ -33,8 +33,9 @@ class Comments extends Component {
     e.preventDefault();
     let username;
     let guestLocation;
+
     if (this.props.users[0]){
-      username = this.props.users[0].guestName
+      username = this.props.users[0].username || this.props.users[0].guestName
     }else{
       username = ""
     }
