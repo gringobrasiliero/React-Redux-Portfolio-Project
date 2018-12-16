@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Users from '../containers/Users'
 import GuestUsers from '../containers/GuestUsers'
- const LoginHeader = () => {
-
+ const LoginHeader = (user) => {
+   console.log(user)
      return(
        <React.Fragment>
          <li><Link to={'/login'}>Log in</Link></li>

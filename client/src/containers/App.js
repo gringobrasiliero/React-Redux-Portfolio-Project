@@ -37,7 +37,11 @@ class App extends Component {
 
       <Router>
         <React.Fragment>
-          <Route path="/" component={Header} />
+        <Route path="/" render={(props) => {
+          return (
+            <Header users={this.props.users} />
+          )
+        }}/>
              <Route exact path="/" component={Articles} />
                 <Route path="/posts" component={Posts} />
               <Route path='/categories' component={Categories} />
@@ -56,6 +60,7 @@ const mapStateToProps = (state) => {
   console.log(x)
   return{
     categories: state.categories.filter(cat=> x.includes(cat.id)),
+    users: state.users
   }
 }
 
