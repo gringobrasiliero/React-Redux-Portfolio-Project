@@ -4,6 +4,8 @@ import Users from '../containers/Users'
 import GuestUsers from '../containers/GuestUsers'
 import LoginHeader from './LoginHeader'
  const Header = (props) => {
+
+   console.log(props.logout)
    if (props.users.length === 0){
 
     return(
@@ -16,6 +18,7 @@ import LoginHeader from './LoginHeader'
               <li><Link to={'/posts'}>Posts</Link></li>
               <li><Link to={'/login'}>Log in</Link></li>
               <li><Link to={'/signup'}>Sign Up</Link></li>
+
             </ul>
             <GuestUsers />
           </header>
@@ -30,6 +33,7 @@ import LoginHeader from './LoginHeader'
             <ul>
               <li><Link to={'/'}>Home</Link></li>
               <li><Link to={'/posts'}>Posts</Link></li>
+              <li onClick={props.logout}><Link to={'/'}>Log Out</Link></li>
             </ul>
           </header>
       </div>

@@ -36,21 +36,21 @@ class Comments extends Component {
 
     if (this.props.users[0]){
       username = this.props.users[0].username || this.props.users[0].guestName
+      if (this.props.locations[0]){
+        guestLocation = `${this.props.locations[0][2].long_name}, ${this.props.locations[0][4].long_name}`
+      }else{
+        guestLocation = ""
+      }
+      let date = new Date();
+      this.props.newComment({comment: this.state.comment,
+                            post_id: this.props.post_id,
+                            guestName: username,
+                            guestLocation: guestLocation,
+                            created_at: date });
     }else{
-      username = ""
+      alert("Sign in to leave a comment.")
     }
-    if (this.props.locations[0]){
-      guestLocation = `${this.props.locations[0][2].long_name}, ${this.props.locations[0][4].long_name}`
-    }else{
-      guestLocation = ""
-    }
-    let date = new Date();
-    this.props.newComment({comment: this.state.comment,
-                          post_id: this.props.post_id,
-                          guestName: username,
-                          guestLocation: guestLocation,
-                          created_at: date });
-  }
+      }
 
   componentDidMount() {
     this.props.fetchComments(`/posts/${this.props.post_id}/comments`);

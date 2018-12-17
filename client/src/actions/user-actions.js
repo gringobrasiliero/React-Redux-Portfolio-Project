@@ -1,12 +1,22 @@
 export const GUEST_LOGIN = 'GUEST_LOGIN';
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_IN = 'SIGN_IN';
+export const LOG_OUT = 'LOGOUT';
 
 export const guestLogin = (guestName) => {
   return (dispatch) => {
     dispatch({
       type: GUEST_LOGIN,
       payload: guestName
+    })
+  }
+}
+
+export const logOut = (users) => {
+  return (dispatch) => {
+    dispatch({
+      type: LOG_OUT,
+      payload: users
     })
   }
 }

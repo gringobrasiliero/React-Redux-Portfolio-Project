@@ -13,7 +13,7 @@ import {fetchCategories} from '../actions/category-actions';
 import {fetchPosts} from '../actions/posts-actions';
 import {fetchComments} from '../actions/comment-actions';
 import {fetchLocation} from '../actions/location-actions';
-
+import {logOut} from '../actions/user-actions';
 require('dotenv').config();
 
 class App extends Component {
@@ -27,6 +27,11 @@ class App extends Component {
   }
 
 
+  logout = (e) => {
+    e.preventDefault()
+    this.props.logOut()
+  }
+
   componentDidMount() {
     this.props.fetchCategories();
     this.getCoords()
@@ -39,7 +44,7 @@ class App extends Component {
         <React.Fragment>
         <Route path="/" render={(props) => {
           return (
-            <Header users={this.props.users} />
+            <Header users={this.props.users} logout={this.logout} />
           )
         }}/>
              <Route exact path="/" component={Articles} />
@@ -69,7 +74,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchCategories: bindActionCreators(fetchCategories, dispatch),
     fetchPosts: bindActionCreators(fetchPosts, dispatch),
     fetchComments: bindActionCreators(fetchComments, dispatch),
-    fetchLocation: bindActionCreators(fetchLocation, dispatch)
+    fetchLocation: bindActionCreators(fetchLocation, dispatch),
+    logOut: bindActionCreators(logOut, dispatch)
+
 
   }
 }
